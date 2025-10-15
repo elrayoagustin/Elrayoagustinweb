@@ -1,35 +1,710 @@
 <!doctype html>
+
 <html lang="es">
+
 <head>
+
   <meta charset="utf-8" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>El Rayo Aguston</title>
+
+  <title>Agustín “El Rayo” Alfaro — Blog oficial</title>
+
+
+
+  <!-- SEO básico -->
+
+  <meta name="description" content="Blog oficial de Agustín “El Rayo” Alfaro: entrevistas, videos, prensa y novedades del piloto chileno." />
+
+  <meta name="author" content="Agustín Alfaro Team" />
+
+  <meta property="og:title" content="Agustín “El Rayo” Alfaro — Blog oficial" />
+
+  <meta property="og:description" content="Entrevistas, videos y prensa del piloto chileno Agustín Alfaro." />
+
+  <meta property="og:type" content="website" />
+
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518544801976-3e188f1e45b0?q=80&w=1920&auto=format&fit=crop" />
+
+  <meta name="theme-color" content="#0b0b0c">
+
+
+
   <style>
-    html,body {
-      height:100%;
-      margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:#ffffff;
-      color:#a01515;
+
+    :root{
+
+      --bg:#0b0b0c;
+
+      --text:#f2f2f2;
+
+      --muted:#b7b7b7;
+
+      --brand:#ff3b30;     /* rojo racing */
+
+      --card:#141417cc;    /* semi transparente */
+
+      --glass:#14141799;   /* vidrio */
+
+      --max:1200px;
+
+      --radius:14px;
+
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+
     }
-    .wrap {
-      height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+
+    *{box-sizing:border-box}
+
+    html,body{height:100%}
+
+    body{
+
+      margin:0;
+
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+
+      background: var(--bg);
+
+      color: var(--text);
+
+      line-height:1.55;
+
+    }
+
+
+
+    /* HERO con pista de carrera */
+
+    .hero{
+
+      position:relative;
+
+      min-height:68vh;
+
+      display:grid;
+
+      place-items:center;
+
       text-align:center;
-      padding:20px;
+
+      padding: clamp(24px, 4vw, 48px);
+
+      background:
+
+        linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.75)),
+
+        url("https://images.unsplash.com/photo-1530041686307-2fdee4d1d5a1?q=80&w=1920&auto=format&fit=crop") center/cover no-repeat fixed;
+
+      /* ↑ Puedes cambiar la foto por otra de pista */
+
     }
-    h1 {
-      font-size: clamp(28px, 7vw, 72px);
-      margin:0;
-      letter-spacing: -0.02em;
+
+    .hero .inner{
+
+      max-width: 900px;
+
     }
+
+    .logo-pill{
+
+      display:inline-flex; align-items:center; gap:10px;
+
+      padding:8px 14px; border-radius:999px;
+
+      background: #ffffff10; backdrop-filter: blur(6px);
+
+      border:1px solid #ffffff22; box-shadow: var(--shadow);
+
+      font-weight:600; letter-spacing:.2px;
+
+    }
+
+    .logo-pill .dot{width:10px;height:10px;border-radius:50%;background:var(--brand);display:inline-block; box-shadow:0 0 18px var(--brand)}
+
+    h1{
+
+      margin:14px 0 8px;
+
+      font-size: clamp(28px, 6vw, 64px);
+
+      letter-spacing:-0.02em;
+
+    }
+
+    .subtitle{
+
+      margin:0 auto 18px;
+
+      max-width:720px;
+
+      color:var(--muted);
+
+      font-size: clamp(14px, 2.5vw, 18px);
+
+    }
+
+    .cta{
+
+      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+
+      margin-top:12px;
+
+    }
+
+    .btn{
+
+      appearance:none; border:1px solid #ffffff22; background:#ffffff12;
+
+      color:#fff; padding:12px 18px; border-radius:12px; cursor:pointer;
+
+      font-weight:600; text-decoration:none; transition:.2s transform ease, .2s background ease, .2s border ease;
+
+      backdrop-filter: blur(6px);
+
+    }
+
+    .btn:hover{ transform: translateY(-2px); border-color:#ffffff55; background:#ffffff18 }
+
+    .btn.brand{ background: var(--brand); border-color: transparent }
+
+    .btn.brand:hover{ filter: brightness(1.05) }
+
+
+
+    /* NAV pegajosa ligera */
+
+    .nav{
+
+      position:sticky; top:0; z-index:20;
+
+      backdrop-filter: blur(8px);
+
+      background: #0b0b0ca6; border-bottom:1px solid #ffffff14;
+
+    }
+
+    .nav .row{
+
+      max-width: var(--max); margin:0 auto; display:flex; gap:16px; align-items:center; justify-content:space-between;
+
+      padding:10px 16px;
+
+    }
+
+    .nav a{ color:#eaeaea; text-decoration:none; font-weight:600; opacity:.9 }
+
+    .nav a:hover{ opacity:1 }
+
+    .brandmark{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px }
+
+    .brandmark .flag{width:18px;height:12px; background:linear-gradient(180deg,#da1212,#ffffff,#0033a0); border-radius:2px}
+
+    .menu{ display:flex; gap:16px; flex-wrap:wrap }
+
+
+
+    /* CONTENEDOR */
+
+    .container{ max-width: var(--max); margin:0 auto; padding: 28px 16px }
+
+
+
+    /* GRID de tarjetas */
+
+    .grid{
+
+      display:grid; gap:18px;
+
+      grid-template-columns: repeat(12, 1fr);
+
+    }
+
+    .col-12{ grid-column: span 12 }
+
+    .col-8{ grid-column: span 8 }
+
+    .col-6{ grid-column: span 6 }
+
+    .col-4{ grid-column: span 4 }
+
+    @media (max-width: 980px){
+
+      .col-8{ grid-column: span 12 }
+
+      .col-6{ grid-column: span 12 }
+
+      .col-4{ grid-column: span 12 }
+
+    }
+
+
+
+    /* Tarjetas */
+
+    .card{
+
+      background: var(--card);
+
+      border:1px solid #ffffff1a;
+
+      border-radius: var(--radius);
+
+      box-shadow: var(--shadow);
+
+      overflow: clip;
+
+    }
+
+    .cardHeader{ padding:18px 18px 0 }
+
+    .card h2{ margin:0 0 6px; font-size: clamp(18px,2.4vw,26px) }
+
+    .card p{ margin:0; color:var(--muted) }
+
+    .cardBody{ padding:18px }
+
+    .chip{
+
+      display:inline-block; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+
+      padding:6px 10px; border-radius:999px; background:#ffffff14; border:1px solid #ffffff22; color:#fff
+
+    }
+
+    .meta{ color:#bdbdbd; font-size:13px; margin-top:8px }
+
+    .press-list{ list-style:none; padding:0; margin:0; display:grid; gap:12px }
+
+    .press-item{
+
+      display:flex; gap:12px; align-items:center; padding:12px; border-radius:12px; border:1px solid #ffffff14; background:#ffffff0d;
+
+    }
+
+    .press-item img{ width:72px; height:72px; object-fit:cover; border-radius:10px; border:1px solid #ffffff22 }
+
+    .press-item a{ color:#fff; font-weight:700; text-decoration:none }
+
+    .press-item small{ color:var(--muted) }
+
+
+
+    /* Embeds responsivos */
+
+    .embed{
+
+      position:relative; width:100%; padding-top:56.25%;
+
+      background:#000;
+
+      border-top-left-radius: var(--radius); border-top-right-radius: var(--radius);
+
+      overflow:hidden; border-bottom:1px solid #ffffff1a;
+
+    }
+
+    .embed iframe{
+
+      position:absolute; inset:0; width:100%; height:100%; border:0;
+
+    }
+
+
+
+    /* Footer */
+
+    footer{
+
+      margin-top:32px; padding:28px 16px; border-top:1px solid #ffffff1a; color:#bfbfbf; text-align:center;
+
+    }
+
+    footer a{ color:#fff; text-decoration:none; font-weight:600 }
+
   </style>
+
 </head>
+
 <body>
-  <div class="wrap">
-    <h1>Bienvenido a la página de El Rayo Agustin</h1>
-  </div>
+
+
+
+  <!-- NAV -->
+
+  <nav class="nav" aria-label="Navegación principal">
+
+    <div class="row">
+
+      <div class="brandmark">
+
+        <span class="flag" aria-hidden="true"></span>
+
+        <span>Agustín “El Rayo” Alfaro</span>
+
+      </div>
+
+      <div class="menu">
+
+        <a href="#blog">Blog</a>
+
+        <a href="#entrevistas">Entrevistas</a>
+
+        <a href="#prensa">Prensa</a>
+
+        <a href="#contacto">Contacto</a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+
+  <!-- HERO -->
+
+  <header class="hero" role="banner" aria-label="Portada con pista de carrera">
+
+    <div class="inner">
+
+      <span class="logo-pill"><span class="dot"></span> Piloto Chileno — Open Wheel & Karting</span>
+
+      <h1>Agustín “El Rayo” Alfaro</h1>
+
+      <p class="subtitle">Entrevistas, videos y artículos de prensa. Sigue el camino de Agustín desde el karting hasta los monoplazas eléctricos y su proyección internacional.</p>
+
+      <div class="cta">
+
+        <a class="btn brand" href="https://www.youtube.com/@TU_CANAL_DE_YOUTUBE" target="_blank" rel="noopener">YouTube</a>
+
+        <a class="btn" href="https://www.instagram.com/TU_USUARIO_INSTAGRAM" target="_blank" rel="noopener">Instagram</a>
+
+        <a class="btn" href="#prensa">Ver prensa</a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <main>
+
+
+
+    <!-- DESTACADO: último video -->
+
+    <section id="destacado" class="container">
+
+      <div class="card">
+
+        <div class="embed" aria-label="Video destacado">
+
+          <!-- Reemplaza VIDEO_ID por el ID real de YouTube -->
+
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Video destacado — Agustín Alfaro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        </div>
+
+        <div class="cardBody">
+
+          <span class="chip">Video destacado</span>
+
+          <h2>Resumen de carrera & entrevistas post-evento</h2>
+
+          <p class="meta">Publicado el <time datetime="2025-10-10">10 de octubre de 2025</time> • Autódromo</p>
+
+          <p>Revive la última fecha con onboard, highlights y las declaraciones de Agustín al finalizar la jornada.</p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- BLOG -->
+
+    <section id="blog" class="container" aria-labelledby="title-blog">
+
+      <h2 id="title-blog">Blog</h2>
+
+      <div class="grid" role="list">
+
+        <!-- Post 1 -->
+
+        <article class="card col-6" role="listitem">
+
+          <div class="cardHeader">
+
+            <span class="chip">Crónica</span>
+
+            <h2>Setup, quali y ritmo de carrera: lo que funcionó</h2>
+
+            <p class="meta">Por Equipo El Rayo • <time datetime="2025-10-05">5 oct 2025</time></p>
+
+          </div>
+
+          <div class="cardBody">
+
+            <p>Cómo se ajustó el kart/monoplaza para extraer décimas clave en clasificación, gestión de neumáticos y estrategia de sobrepaso.</p>
+
+            <p><a class="btn" href="https://TU_ARTICULO_DETALLE.html">Leer más</a></p>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- Post 2 -->
+
+        <article class="card col-6" role="listitem">
+
+          <div class="cardHeader">
+
+            <span class="chip">Análisis</span>
+
+            <h2>Telemetría: dónde ganamos y dónde hay margen</h2>
+
+            <p class="meta">Por Coach de Datos • <time datetime="2025-09-28">28 sep 2025</time></p>
+
+          </div>
+
+          <div class="cardBody">
+
+            <p>Comparativa sector por sector, frenadas, velocidad mínima en curva y tracción en salidas.</p>
+
+            <p><a class="btn" href="https://TU_ARTICULO_DETALLE.html">Leer más</a></p>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- Post 3 -->
+
+        <article class="card col-12" role="listitem">
+
+          <div class="cardHeader">
+
+            <span class="chip">Bitácora</span>
+
+            <h2>Road to Europe: entrenamientos y agenda</h2>
+
+            <p class="meta">Staff • <time datetime="2025-09-15">15 sep 2025</time></p>
+
+          </div>
+
+          <div class="cardBody">
+
+            <p>Plan de trabajo, circuitos objetivo y preparación física/técnica para las próximas fechas en Europa y EE. UU.</p>
+
+            <p><a class="btn" href="https://TU_DOC_GOOGLE_O_POST.html" target="_blank" rel="noopener">Ver agenda</a></p>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ENTREVISTAS / VIDEOS -->
+
+    <section id="entrevistas" class="container" aria-labelledby="title-entrevistas">
+
+      <h2 id="title-entrevistas">Entrevistas & Videos</h2>
+
+      <div class="grid">
+
+        <div class="card col-6">
+
+          <div class="embed" aria-label="Entrevista 1">
+
+            <!-- Reemplaza VIDEO_ID_1 -->
+
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Entrevista — Medio 1" allowfullscreen></iframe>
+
+          </div>
+
+          <div class="cardBody">
+
+            <span class="chip">Entrevista</span>
+
+            <h2>“Objetivo: escalar categorías con consistencia”</h2>
+
+            <p class="meta">Medio 1 • <time datetime="2025-08-22">22 ago 2025</time></p>
+
+            <p>Agustín comenta su método de entrenamiento, metas anuales y foco mental de carrera.</p>
+
+            <a class="btn" href="https://www.youtube.com/watch?v=VIDEO_ID_1" target="_blank" rel="noopener">Ver en YouTube</a>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="card col-6">
+
+          <div class="embed" aria-label="Entrevista 2">
+
+            <!-- Reemplaza VIDEO_ID_2 -->
+
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Entrevista — Medio 2" allowfullscreen></iframe>
+
+          </div>
+
+          <div class="cardBody">
+
+            <span class="chip">Podcast</span>
+
+            <h2>“Del karting a los monoplazas: el salto”</h2>
+
+            <p class="meta">Podcast Racing • <time datetime="2025-07-30">30 jul 2025</time></p>
+
+            <p>Charla en profundidad sobre técnica de manejo, simulador y preparación física.</p>
+
+            <a class="btn" href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank" rel="noopener">Ver en YouTube</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- PRENSA -->
+
+    <section id="prensa" class="container" aria-labelledby="title-prensa">
+
+      <h2 id="title-prensa">Prensa</h2>
+
+      <div class="card">
+
+        <div class="cardBody">
+
+          <ul class="press-list" role="list">
+
+            <!-- Ítem 1 -->
+
+            <li class="press-item" role="listitem">
+
+              <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=300&auto=format&fit=crop" alt="Miniatura medio de prensa">
+
+              <div>
+
+                <a href="https://TU_LINK_ARTICULO_1" target="_blank" rel="noopener">Medio X: “Agustín Alfaro, promesa del automovilismo chileno”</a>
+
+                <div><small>Publicado el 12 oct 2025 • Entrevista</small></div>
+
+              </div>
+
+            </li>
+
+            <!-- Ítem 2 -->
+
+            <li class="press-item" role="listitem">
+
+              <img src="https://images.unsplash.com/photo-1535057487000-57f8b8f1b60b?q=80&w=300&auto=format&fit=crop" alt="Miniatura nota de prensa">
+
+              <div>
+
+                <a href="https://TU_LINK_ARTICULO_2" target="_blank" rel="noopener">Diario Y: “El Rayo: velocidad, disciplina y futuro eléctrico”</a>
+
+                <div><small>Publicado el 30 sep 2025 • Perfil</small></div>
+
+              </div>
+
+            </li>
+
+            <!-- Ítem 3 -->
+
+            <li class="press-item" role="listitem">
+
+              <img src="https://images.unsplash.com/photo-1518226203301-8e6bd7d7b5d0?q=80&w=300&auto=format&fit=crop" alt="Miniatura entrevista TV">
+
+              <div>
+
+                <a href="https://TU_LINK_ARTICULO_3" target="_blank" rel="noopener">TV Z: “Entrevista en estudio a Agustín Alfaro”</a>
+
+                <div><small>Emitido el 18 ago 2025 • TV</small></div>
+
+              </div>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+      <p class="container" style="color:var(--muted); margin-top:10px">¿Tienes una nota o cobertura? Escríbenos para incluirla.</p>
+
+    </section>
+
+
+
+    <!-- CONTACTO -->
+
+    <section id="contacto" class="container" aria-labelledby="title-contacto">
+
+      <h2 id="title-contacto">Contacto</h2>
+
+      <div class="card">
+
+        <div class="cardBody">
+
+          <p>Prensa, auspicios y colaboraciones: <a href="mailto:contacto@TUDOMINIO.cl">contacto@TUDOMINIO.cl</a></p>
+
+          <p>Instagram: <a href="https://www.instagram.com/TU_USUARIO_INSTAGRAM" target="_blank" rel="noopener">@TU_USUARIO_INSTAGRAM</a> • YouTube: <a href="https://www.youtube.com/@TU_CANAL_DE_YOUTUBE" target="_blank" rel="noopener">@TU_CANAL_DE_YOUTUBE</a></p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+  </main>
+
+
+
+  <footer>
+
+    © <span id="year"></span> Agustín “El Rayo” Alfaro — Todos los derechos reservados
+
+  </footer>
+
+
+
+  <script>
+
+    // Año dinámico
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+
+
+    // (Opcional) Si quieres listar posts desde un JSON en el futuro, puedes agregar aquí un fetch
+
+    // y renderizar tarjetas dinámicamente.
+
+  </script>
+
 </body>
+
 </html>
+
