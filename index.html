@@ -3,24 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EL RAYO AGUSTÍN — Blog, Videos, Prensa & Fans</title>
+<title>EL RAYO AGUSTÍN — Blog, Juego, Videos & Prensa</title>
 <meta name="description" content="Blog oficial de Agustín 'El Rayo' Alfaro: mini-juego, entrevistas, videos, prensa y comentarios de fans.">
 <meta name="theme-color" content="#0c0c0f">
-
 <style>
 :root{
---bg:#0b0b0f;
---card:#14151b;
---muted:#b8bbc7;
---text:#f2f4f8;
---brand:#ff3b30;
---accent:#27d17f;
---max:1100px;
---radius:14px;
+--bg:#0b0b0f; --card:#14151b; --muted:#b8bbc7; --text:#f2f4f8;
+--brand:#ff3b30; --accent:#27d17f; --max:1100px; --radius:14px;
 --shadow:0 12px 30px rgba(0,0,0,.35);
 }
-*{box-sizing:border-box}
-html,body{height:100%}
+*{box-sizing:border-box} html,body{height:100%}
 body{
 margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial;
 background:
@@ -29,73 +21,59 @@ url('https://images.unsplash.com/photo-1530041686307-2fdee4d1d5a1?q=80&w=1920&au
 color:var(--text); line-height:1.55;
 }
 a{color:#fff; text-decoration:none}
-.nav{
-position:sticky; top:0; z-index:10; backdrop-filter: blur(8px);
-background:#0b0b0fc0; border-bottom:1px solid #ffffff1a;
-}
+
+/* Nav */
+.nav{position:sticky; top:0; z-index:10; backdrop-filter: blur(8px);
+background:#0b0b0fc0; border-bottom:1px solid #ffffff1a}
 .nav .row{max-width:var(--max); margin:0 auto; padding:10px 16px; display:flex; align-items:center; justify-content:space-between}
 .menu{display:flex; gap:16px; flex-wrap:wrap}
 .menu a{opacity:.9; font-weight:600} .menu a:hover{opacity:1}
 
-.hero{
-min-height:62vh; display:grid; place-items:center; text-align:center;
-padding: clamp(24px,4vw,48px);
-}
+/* Hero */
+.hero{min-height:62vh; display:grid; place-items:center; text-align:center; padding: clamp(24px,4vw,48px)}
+.titleWrap{position:relative; display:inline-block}
 .title{
-font-size:clamp(36px,8vw,92px); font-weight:900; letter-spacing:-0.02em; margin:0 0 10px;
-line-height:1.02; position:relative; display:inline-block;
+display:flex; gap:.06em; flex-wrap:wrap; justify-content:center;
+font-size:clamp(36px,8vw,92px); font-weight:900; letter-spacing:-0.02em; line-height:1.02; margin:0;
 }
-.title .car{
-position:absolute; top:100%; left:0; transform:translateY(8px);
-font-size:clamp(26px,6vw,56px);
-animation: drive 5s linear infinite;
-text-shadow:0 0 18px var(--brand);
+.title .letter{opacity:0; transform:translateY(6px); transition:opacity .25s ease, transform .25s ease}
+.title .letter.revealed{opacity:1; transform:none}
+.car{
+position:absolute; top:100%; left:0; transform:translateY(10px);
+font-size:clamp(26px,6vw,56px); text-shadow:0 0 18px var(--brand);
+will-change: transform;
 }
-@keyframes drive{
-0%{left:0%} 50%{left:93%} 100%{left:0%}
-}
-.subtitle{color:var(--muted); max-width:800px; margin:8px auto 18px}
+.subtitle{color:var(--muted); max-width:800px; margin:10px auto 18px}
 .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
 .btn{
 background:#ffffff10; border:1px solid #ffffff30; padding:12px 16px; border-radius:12px;
 font-weight:700; letter-spacing:.2px; box-shadow:var(--shadow); backdrop-filter: blur(6px)
 }
-.btn:hover{background:#ffffff18}
-.btn.brand{background:var(--brand); border-color:transparent}
+.btn:hover{background:#ffffff18} .btn.brand{background:var(--brand); border-color:transparent}
+
+/* Layout */
 .container{max-width:var(--max); margin:0 auto; padding:26px 16px}
 h2{font-size:clamp(20px,3.2vw,30px); margin:0 0 14px}
 .grid{display:grid; gap:18px; grid-template-columns:repeat(12,1fr)}
 .col-12{grid-column:span 12} .col-6{grid-column:span 6}
 @media (max-width:960px){ .col-6{grid-column:span 12} }
 
-.card{
-background: #0f1118cc; border:1px solid #ffffff20; border-radius:var(--radius);
-box-shadow:var(--shadow); overflow:hidden;
-}
-.cardHeader{padding:16px 16px 0}
-.cardBody{padding:16px}
-.chip{
-display:inline-block; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.08em;
-padding:6px 10px; border-radius:999px; background:#ffffff16; border:1px solid #ffffff22;
-}
+/* Cards */
+.card{background:#0f1118cc; border:1px solid #ffffff20; border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+.cardHeader{padding:16px 16px 0} .cardBody{padding:16px}
+.chip{display:inline-block; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; padding:6px 10px; border-radius:999px; background:#ffffff16; border:1px solid #ffffff22}
 .meta{color:var(--muted); font-size:13px; margin-top:6px}
 
-/* --- JUEGO --- */
+/* Game */
 #gameWrap{background:var(--card); border:1px solid #ffffff22; border-radius:var(--radius); box-shadow:var(--shadow)}
 #hud{display:flex; gap:16px; align-items:center; justify-content:space-between; padding:10px 16px; border-bottom:1px solid #ffffff1a; background:#0e1016}
 #hud span{font-weight:800}
-#game{
-display:block; width:100%; height:auto; background: #11131a;
-border-bottom-left-radius:var(--radius); border-bottom-right-radius:var(--radius);
-}
+#game{display:block; width:100%; height:auto; background:#11131a; border-bottom-left-radius:var(--radius); border-bottom-right-radius:var(--radius)}
 .help{color:var(--muted); font-size:14px; padding:10px 16px}
 .kbd{display:inline-block; padding:2px 6px; border:1px solid #ffffff30; border-radius:6px; background:#ffffff10; font-weight:700}
 
-/* Embeds responsivos */
-.embed{position:relative; width:100%; padding-top:56.25%; background:#000; border-bottom:1px solid #ffffff1a}
-.embed iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
-
-/* Listas de prensa/videos */
+/* Lists */
+.groupTitle{margin:18px 0 6px; color:#dcdde2; font-weight:900; letter-spacing:.02em}
 .list{list-style:none; margin:0; padding:0; display:grid; gap:12px}
 .item{display:flex; gap:12px; align-items:center; border:1px solid #ffffff18; background:#ffffff0e; border-radius:12px; padding:12px}
 .thumb{width:84px; height:56px; background:#000; border-radius:10px; overflow:hidden; border:1px solid #ffffff24}
@@ -103,12 +81,10 @@ border-bottom-left-radius:var(--radius); border-bottom-right-radius:var(--radius
 .item a{font-weight:800}
 .item small{color:var(--muted); display:block; margin-top:2px}
 
-/* Comentarios */
+/* Comments */
 #comments .comment{border:1px solid #ffffff18; background:#ffffff0e; border-radius:12px; padding:12px}
 #commentForm{display:grid; gap:10px}
-input, textarea{
-width:100%; background:#0f1118; border:1px solid #ffffff25; color:#fff; padding:10px 12px; border-radius:10px; resize:vertical
-}
+input, textarea{width:100%; background:#0f1118; border:1px solid #ffffff25; color:#fff; padding:10px 12px; border-radius:10px; resize:vertical}
 textarea{min-height:100px}
 .btn.submit{background:var(--accent); color:#0b0b0f; border:none}
 .empty{color:var(--muted); font-style:italic}
@@ -116,8 +92,6 @@ footer{border-top:1px solid #ffffff1a; color:var(--muted); text-align:center; pa
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav class="nav" aria-label="Navegación principal">
 <div class="row">
 <strong>El Rayo Agustín</strong>
@@ -130,13 +104,12 @@ footer{border-top:1px solid #ffffff1a; color:var(--muted); text-align:center; pa
 </div>
 </nav>
 
-<!-- HERO -->
 <header class="hero" role="banner" aria-label="Portada">
-<h1 class="title" aria-label="El Rayo Agustín">
-EL RAY<span style="white-space:nowrap;">O&nbsp;AGUSTÍN</span>
-<span class="car" aria-hidden="true">🏎️</span>
-</h1>
-<p class="subtitle">Blog oficial, juego, entrevistas, videos y artículos sobre el piloto chileno <strong>Agustín “El Rayo” Alfaro</strong>.</p>
+<div class="titleWrap">
+<h1 class="title" id="title"></h1>
+<span class="car" id="car" aria-hidden="true">🏎️</span>
+</div>
+<p class="subtitle">Blog, juego, entrevistas, videos y artículos sobre el piloto chileno <strong>Agustín “El Rayo” Alfaro</strong>.</p>
 <div class="cta">
 <a class="btn brand" target="_blank" rel="noopener" href="https://www.youtube.com/@TU_CANAL">YouTube</a>
 <a class="btn" href="#videos">Ver videos</a>
@@ -145,7 +118,6 @@ EL RAY<span style="white-space:nowrap;">O&nbsp;AGUSTÍN</span>
 </header>
 
 <main class="container">
-
 <!-- MINI JUEGO -->
 <section id="juego" aria-labelledby="title-juego">
 <h2 id="title-juego">Mini-juego: Esquiva con el F1</h2>
@@ -157,19 +129,27 @@ EL RAY<span style="white-space:nowrap;">O&nbsp;AGUSTÍN</span>
 <button id="restart" class="btn">Reiniciar</button>
 </div>
 <canvas id="game" width="900" height="520" aria-label="Pista de carrera"></canvas>
-<div class="help">
-Controles: <span class="kbd">←</span> <span class="kbd">→</span> para moverse, <span class="kbd">Espacio</span> para pausar/continuar (o toca/arrastra en móvil).
-</div>
+<div class="help">Controles: <span class="kbd">←</span> <span class="kbd">→</span> para moverse, <span class="kbd">Espacio</span> pausar/continuar (o toca/arrastra en móvil).</div>
 </div>
 </section>
 
 <!-- VIDEOS -->
 <section id="videos" aria-labelledby="title-videos" style="margin-top:26px">
-<h2 id="title-videos">Videos (ordenados por fecha)</h2>
-<div class="card">
+<h2 id="title-videos">Videos (más reciente primero)</h2>
+
+<!-- Destacado -->
+<div id="videoFeatured" class="card" style="display:none; margin-bottom:16px">
+<div class="cardHeader"><span class="chip">Destacado</span></div>
+<div class="embed" id="featuredEmbed" style="position:relative; width:100%; padding-top:56.25%; background:#000"></div>
 <div class="cardBody">
-<ul id="videoList" class="list" role="list"></ul>
+<h3 id="featuredTitle" style="margin:8px 0 6px"></h3>
+<p class="meta" id="featuredMeta"></p>
 </div>
+</div>
+
+<!-- Listado -->
+<div class="card">
+<div class="cardBody" id="videoGroups"></div>
 </div>
 </section>
 
@@ -183,7 +163,7 @@ Controles: <span class="kbd">←</span> <span class="kbd">→</span> para movers
 </div>
 </section>
 
-<!-- COMENTARIOS DE FANS -->
+<!-- COMENTARIOS -->
 <section id="fans" aria-labelledby="title-fans" style="margin-top:26px">
 <h2 id="title-fans">Comentarios de los fans</h2>
 <div class="card">
@@ -195,315 +175,275 @@ Controles: <span class="kbd">←</span> <span class="kbd">→</span> para movers
 </form>
 </div>
 </div>
-
 <div id="comments" style="margin-top:16px" aria-live="polite"></div>
 </section>
-
 </main>
 
-<footer>
-© <span id="year"></span> Agustín “El Rayo” Alfaro — Hecho con ❤️ para la comunidad.
-</footer>
+<footer>© <span id="year"></span> Agustín “El Rayo” Alfaro — Hecho con ❤️ para la comunidad.</footer>
 
 <script>
-// ========= UTILIDADES =========
+/* ======= Utilidades ======= */
 const $ = s => document.querySelector(s);
-const $$ = s => Array.from(document.querySelectorAll(s));
 $('#year').textContent = new Date().getFullYear();
 
-// ========= MINI-JUEGO (Canvas) =========
+/* ======= Título “escrito” por el auto (una sola vez) ======= */
+(function(){
+const TITLE_TEXT = 'EL RAYO AGUSTÍN';
+const titleEl = $('#title');
+const carEl = $('#car');
+const KEY = 'titlePlayed_v1'; // cambia versión si quieres forzar que se repita
+
+// Construye spans por letra
+TITLE_TEXT.split('').forEach(ch=>{
+const span = document.createElement('span');
+span.className = 'letter';
+span.textContent = ch === ' ' ? ' ' : ch; // space -> nbsp to keep layout
+titleEl.appendChild(span);
+});
+
+const letters = [...titleEl.querySelectorAll('.letter')];
+
+function revealAllStatic(){
+letters.forEach(l=> l.classList.add('revealed'));
+carEl.style.display = 'none';
+}
+
+// Si ya se ejecutó antes, mostrar estático
+if(localStorage.getItem(KEY)){
+revealAllStatic();
+return;
+}
+
+// Animación: el auto recorre el ancho del título y revela letras cuando lo alcanza
+function playOnce(){
+const rectTitle = titleEl.getBoundingClientRect();
+const startX = rectTitle.left;
+const endX = rectTitle.right;
+const total = endX - startX;
+
+// Precalcular centro X de cada letra
+const letterCenters = letters.map(l => {
+const r = l.getBoundingClientRect();
+return r.left + r.width/2;
+});
+
+const DURATION = 4200; // ms
+const startTime = performance.now();
+
+function frame(now){
+const t = Math.min(1, (now - startTime)/DURATION);
+const x = startX + total * t;
+// posicionar auto
+carEl.style.transform = `translate(calc(${x - startX}px), 10px)`;
+
+// revelar letras alcanzadas
+for(let i=0;i<letters.length;i++){
+if(!letters[i].classList.contains('revealed') && x >= letterCenters[i]){
+letters[i].classList.add('revealed');
+}
+}
+
+if(t < 1){
+requestAnimationFrame(frame);
+} else {
+// Final: asegurar todas reveladas y esconder auto
+letters.forEach(l=> l.classList.add('revealed'));
+setTimeout(()=> carEl.style.display='none', 250);
+localStorage.setItem(KEY, '1');
+}
+}
+// Colocar auto al inicio exacto
+const startOffset = 0; // px
+carEl.style.left = '0';
+carEl.style.transform = `translate(${startOffset}px, 10px)`;
+requestAnimationFrame(frame);
+}
+
+// Esperar a que el título tenga layout listo
+window.addEventListener('load', playOnce);
+window.addEventListener('resize', ()=>{ /* no reejecutamos para mantener “solo una vez” */ });
+})();
+
+/* ======= Mini-juego (igual que antes) ======= */
 (function(){
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
-
 const W = canvas.width, H = canvas.height;
-const laneCount = 4;
-const laneWidth = W / laneCount;
+const laneCount = 4, laneWidth = W / laneCount;
+const state = { running:true, score:0, speed:4, speedFactor:1.0, lives:3, obstacles:[], touchX:null };
+const player = { w:58, h:100, lane:1, color:'#ff3b30',
+get x(){ return this.lane * laneWidth + laneWidth/2 - this.w/2 }, get y(){ return H - this.h - 18 } };
 
-const state = {
-running: true,
-score: 0,
-speed: 4, // px/frame base
-speedFactor: 1.0, // se incrementa levemente
-lives: 3,
-obstacles: [],
-touchX: null
-};
-
-const player = {
-w: 58, h: 100,
-lane: 1, // 0..3
-color: '#ff3b30',
-get x(){ return this.lane * laneWidth + laneWidth/2 - this.w/2 },
-get y(){ return H - this.h - 18 }
-};
-
-function resetGame(){
-state.running = true;
-state.score = 0;
-state.speed = 4;
-state.speedFactor = 1.0;
-state.lives = 3;
-state.obstacles = [];
-$('#score').textContent = state.score;
-$('#speed').textContent = state.speedFactor.toFixed(1) + 'x';
-$('#lives').textContent = state.lives;
-}
-
-function spawnObstacle(){
-const lane = Math.floor(Math.random()*laneCount);
-const kind = Math.random() < 0.7 ? 'cone' : 'oil';
-const w = 52, h = kind==='cone' ? 60 : 46;
-state.obstacles.push({ lane, y: -h, w, h, kind });
-}
-
-let spawnTimer = 0;
+function resetGame(){ state.running=true; state.score=0; state.speed=4; state.speedFactor=1.0; state.lives=3; state.obstacles=[];
+$('#score').textContent=state.score; $('#speed').textContent=state.speedFactor.toFixed(1)+'x'; $('#lives').textContent=state.lives; }
+function spawnObstacle(){ const lane=Math.floor(Math.random()*laneCount); const kind=Math.random()<0.7?'cone':'oil';
+const w=52, h= kind==='cone'?60:46; state.obstacles.push({lane,y:-h,w,h,kind}); }
+let spawnTimer=0;
 function update(){
 if(!state.running) return;
-
-// Incremento de dificultad
-state.speedFactor += 0.0009;
-const v = state.speed * state.speedFactor;
-
-// Mover obstáculos
-for(const o of state.obstacles){
-o.y += v;
-}
-// Limpieza
-state.obstacles = state.obstacles.filter(o => o.y < H + 80);
-
-// Spawn
+state.speedFactor += 0.0009; const v = state.speed * state.speedFactor;
+for(const o of state.obstacles){ o.y += v; }
+state.obstacles = state.obstacles.filter(o=> o.y < H+80);
 spawnTimer -= v;
-if (spawnTimer <= 0) {
-spawnObstacle();
-spawnTimer = 140 + Math.random()*80 - (state.speedFactor*8);
-if(spawnTimer < 40) spawnTimer = 40;
-}
-
-// Colisiones
+if(spawnTimer <= 0){ spawnObstacle(); spawnTimer = 140 + Math.random()*80 - (state.speedFactor*8); if(spawnTimer<40) spawnTimer=40; }
 for(const o of state.obstacles){
 const ox = o.lane * laneWidth + laneWidth/2 - o.w/2;
-if (rectsOverlap(player.x, player.y, player.w, player.h, ox, o.y, o.w, o.h)) {
-// impacto
-state.lives--;
-$('#lives').textContent = state.lives;
-// "empuja" obstáculo fuera para no colisionar múltiples frames
-o.y = H + 200;
-if (state.lives <= 0){
-gameOver();
-return;
+if(rectsOverlap(player.x,player.y,player.w,player.h, ox,o.y,o.w,o.h)){
+state.lives--; $('#lives').textContent = state.lives; o.y = H+200; if(state.lives<=0){ state.running=false; }
 }
 }
+state.score += Math.floor(1*state.speedFactor);
+$('#score').textContent = state.score; $('#speed').textContent = state.speedFactor.toFixed(1)+'x';
 }
-
-// Score
-state.score += Math.floor(1 * state.speedFactor);
-$('#score').textContent = state.score;
-$('#speed').textContent = state.speedFactor.toFixed(1) + 'x';
-}
-
-function rectsOverlap(ax, ay, aw, ah, bx, by, bw, bh){
-return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
-}
-
+function rectsOverlap(ax,ay,aw,ah,bx,by,bw,bh){ return ax<bx+bw && ax+aw>bx && ay<by+bh && ay+ah>by; }
 function draw(){
-// Pista
-ctx.fillStyle = '#0d0f16';
-ctx.fillRect(0,0,W,H);
-
-// Líneas de carril
-for(let i=1;i<laneCount;i++){
-ctx.strokeStyle = '#ffffff22';
-ctx.setLineDash([16,16]);
-ctx.lineWidth = 3;
-ctx.beginPath();
-ctx.moveTo(i*laneWidth,0);
-ctx.lineTo(i*laneWidth,H);
-ctx.stroke();
-}
+ctx.fillStyle='#0d0f16'; ctx.fillRect(0,0,W,H);
+for(let i=1;i<laneCount;i++){ ctx.strokeStyle='#ffffff22'; ctx.setLineDash([16,16]); ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(i*laneWidth,0); ctx.lineTo(i*laneWidth,H); ctx.stroke(); }
 ctx.setLineDash([]);
-
-// Player (F1 estilizado)
-drawCar(player.x, player.y, player.w, player.h, player.color);
-
-// Obstáculos
-for(const o of state.obstacles){
-const ox = o.lane * laneWidth + laneWidth/2 - o.w/2;
-if(o.kind === 'cone'){
-drawCone(ox, o.y, o.w, o.h);
-} else {
-drawOil(ox, o.y, o.w, o.h);
+drawCar(player.x,player.y,player.w,player.h,player.color);
+for(const o of state.obstacles){ const ox=o.lane*laneWidth+laneWidth/2-o.w/2; o.kind==='cone'? drawCone(ox,o.y,o.w,o.h) : drawOil(ox,o.y,o.w,o.h); }
+if(!state.running){ ctx.fillStyle='rgba(0,0,0,.55)'; ctx.fillRect(0,0,W,H); ctx.fillStyle='#fff'; ctx.font='700 42px system-ui,sans-serif'; ctx.textAlign='center';
+ctx.fillText('GAME OVER', W/2, H/2-10); ctx.font='500 18px system-ui,sans-serif'; ctx.fillText('Presiona Reiniciar para jugar de nuevo', W/2, H/2+26); }
 }
-}
-
-if(!state.running){
-ctx.fillStyle = 'rgba(0,0,0,.55)';
-ctx.fillRect(0,0,W,H);
-ctx.fillStyle = '#fff';
-ctx.font = '700 42px system-ui, sans-serif';
-ctx.textAlign = 'center';
-ctx.fillText('GAME OVER', W/2, H/2 - 10);
-ctx.font = '500 18px system-ui, sans-serif';
-ctx.fillText('Presiona Reiniciar para jugar de nuevo', W/2, H/2 + 26);
-}
-}
-
-function drawCar(x,y,w,h,color){
-// Cuerpo
-ctx.fillStyle = color;
-ctx.fillRect(x+w*0.25, y, w*0.5, h);
-// alerones
-ctx.fillRect(x, y+h*0.12, w, h*0.06);
-ctx.fillRect(x, y+h*0.82, w, h*0.06);
-// cabina
-ctx.fillStyle = '#222a';
-ctx.fillRect(x+w*0.35, y+h*0.3, w*0.3, h*0.22);
-// detalles
-ctx.fillStyle = '#fff';
-ctx.fillRect(x+w*0.46, y+h*0.1, w*0.08, h*0.15);
-ctx.fillRect(x+w*0.46, y+h*0.62, w*0.08, h*0.15);
-}
-function drawCone(x,y,w,h){
-ctx.fillStyle = '#ff8a00';
-ctx.beginPath();
-ctx.moveTo(x+w/2, y);
-ctx.lineTo(x+w, y+h);
-ctx.lineTo(x, y+h);
-ctx.closePath();
-ctx.fill();
-ctx.fillStyle = '#fff';
-ctx.fillRect(x+w*0.2, y+h*0.6, w*0.6, h*0.12);
-}
-function drawOil(x,y,w,h){
-ctx.fillStyle = '#111'; ctx.beginPath();
-ctx.ellipse(x+w/2, y+h/2, w*0.55, h*0.35, 0, 0, Math.PI*2);
-ctx.fill();
-ctx.strokeStyle = '#222'; ctx.lineWidth=2; ctx.stroke();
-}
-
-function gameOver(){ state.running = false }
-
-// Loop
-function loop(){
-update();
-draw();
-requestAnimationFrame(loop);
-}
+function drawCar(x,y,w,h,color){ ctx.fillStyle=color; ctx.fillRect(x+w*0.25,y,w*0.5,h); ctx.fillRect(x,y+h*0.12,w,h*0.06); ctx.fillRect(x,y+h*0.82,w,h*0.06);
+ctx.fillStyle='#222a'; ctx.fillRect(x+w*0.35,y+h*0.3,w*0.3,h*0.22); ctx.fillStyle='#fff'; ctx.fillRect(x+w*0.46,y+h*0.1,w*0.08,h*0.15); ctx.fillRect(x+w*0.46,y+h*0.62,w*0.08,h*0.15); }
+function drawCone(x,y,w,h){ ctx.fillStyle='#ff8a00'; ctx.beginPath(); ctx.moveTo(x+w/2,y); ctx.lineTo(x+w,y+h); ctx.lineTo(x,y+h); ctx.closePath(); ctx.fill(); ctx.fillStyle='#fff'; ctx.fillRect(x+w*0.2,y+h*0.6,w*0.6,h*0.12); }
+function drawOil(x,y,w,h){ ctx.fillStyle='#111'; ctx.beginPath(); ctx.ellipse(x+w/2,y+h/2,w*0.55,h*0.35,0,0,Math.PI*2); ctx.fill(); ctx.strokeStyle='#222'; ctx.lineWidth=2; ctx.stroke(); }
+function loop(){ update(); draw(); requestAnimationFrame(loop); }
 loop();
-
-// Controles teclado
-window.addEventListener('keydown', (e)=>{
-if(e.code === 'ArrowLeft'){ player.lane = Math.max(0, player.lane-1) }
-if(e.code === 'ArrowRight'){ player.lane = Math.min(laneCount-1, player.lane+1) }
-if(e.code === 'Space'){ state.running = !state.running }
-});
-
-// Controles táctiles (arrastrar para cambiar carril)
-canvas.addEventListener('touchstart', (e)=>{
-const t = e.touches[0]; state.touchX = t.clientX; e.preventDefault();
-}, {passive:false});
-canvas.addEventListener('touchmove', (e)=>{
-const t = e.touches[0];
-if(state.touchX != null){
-const dx = t.clientX - state.touchX;
-if(Math.abs(dx) > 24){
-if(dx < 0) player.lane = Math.max(0, player.lane-1);
-else player.lane = Math.min(laneCount-1, player.lane+1);
-state.touchX = t.clientX;
-}
-}
-e.preventDefault();
-}, {passive:false});
-canvas.addEventListener('touchend', ()=> state.touchX = null);
-
-// Reinicio
+window.addEventListener('keydown', e=>{ if(e.code==='ArrowLeft') player.lane=Math.max(0,player.lane-1); if(e.code==='ArrowRight') player.lane=Math.min(laneCount-1,player.lane+1); if(e.code==='Space') state.running=!state.running; });
+canvas.addEventListener('touchstart', e=>{ const t=e.touches[0]; state.touchX=t.clientX; e.preventDefault(); }, {passive:false});
+canvas.addEventListener('touchmove', e=>{ const t=e.touches[0]; if(state.touchX!=null){ const dx=t.clientX-state.touchX; if(Math.abs(dx)>24){ if(dx<0) player.lane=Math.max(0,player.lane-1); else player.lane=Math.min(laneCount-1,player.lane+1); state.touchX=t.clientX; } } e.preventDefault(); }, {passive:false});
+canvas.addEventListener('touchend', ()=> state.touchX=null);
 document.getElementById('restart').addEventListener('click', resetGame);
-
-// Spawn inicial
 for(let i=0;i<6;i++) spawnObstacle();
 })();
 
-// ========= DATOS DE VIDEOS & PRENSA (EDITA AQUÍ) =========
-// Reemplaza por tus entradas reales. Se ordenan por fecha automáticamente (más reciente primero).
+/* ======= DATA: edita estos arrays ======= */
 const VIDEOS = [
-// { titulo:'Resumen fecha X', fecha:'2025-10-10', url:'https://www.youtube.com/watch?v=VIDEO_ID', thumb:'https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg' },
-{ titulo:'Onboard & highlights — Fecha Bélgica', fecha:'2025-10-12', url:'https://www.youtube.com/watch?v=wtaqzMdBqZA', thumb:'https://img.youtube.com/vi/wtaqzMdBqZA/hqdefault.jpg' },
-{ titulo:'Entrevista post carrera — Autódromo', fecha:'2025-09-28', url:'https://www.youtube.com/watch?v=VIDEO_ID_2', thumb:'https://img.youtube.com/vi/VIDEO_ID_2/hqdefault.jpg' }
+// Reemplaza con tus videos reales (usa la fecha exacta de publicación)
+{ titulo:'Onboard & highlights — Fecha Bélgica', fecha:'2025-10-12', url:'https://www.youtube.com/watch?v=wtaqzMdBqZA', ytId:'wtaqzMdBqZA' },
+{ titulo:'Entrevista post carrera — Autódromo', fecha:'2025-09-28', url:'https://www.youtube.com/watch?v=VIDEO_ID_2', ytId:'VIDEO_ID_2' },
+{ titulo:'Sprint race — Resumen', fecha:'2025-08-31', url:'https://www.youtube.com/watch?v=VIDEO_ID_3', ytId:'VIDEO_ID_3' }
 ];
 const PRENSA = [
 { titulo:'Perfil: “El Rayo, promesa del norte de Chile”', fecha:'2025-10-11', medio:'Diario Y', url:'https://TU_ARTICULO_1', thumb:'https://images.unsplash.com/photo-1535057487000-57f8b8f1b60b?q=80&w=300&auto=format&fit=crop' },
 { titulo:'Entrevista en TV: “Ritmo, foco y consistencia”', fecha:'2025-09-30', medio:'Canal Z', url:'https://TU_ARTICULO_2', thumb:'https://images.unsplash.com/photo-1518226203301-8e6bd7d7b5d0?q=80&w=300&auto=format&fit=crop' }
 ];
 
-// ========= RENDER LISTAS ORDENADAS =========
-function renderList(data, containerSelector, isVideo=true){
-const list = document.querySelector(containerSelector);
-if(!list) return;
-const sorted = [...data].sort((a,b)=> new Date(b.fecha) - new Date(a.fecha));
-if(sorted.length === 0){
-list.innerHTML = `<li class="item empty">No hay elementos aún. Vuelve pronto.</li>`;
+/* ======= Render: Videos ORDENADOS + destacado y agrupación por Año/Mes ======= */
+(function(){
+const groupsEl = document.getElementById('videoGroups');
+const featuredCard = document.getElementById('videoFeatured');
+const featuredEmbed = document.getElementById('featuredEmbed');
+const featuredTitle = document.getElementById('featuredTitle');
+const featuredMeta = document.getElementById('featuredMeta');
+
+if(!groupsEl) return;
+// Orden descendente por fecha
+const vids = [...VIDEOS].sort((a,b)=> new Date(b.fecha) - new Date(a.fecha));
+
+// Destacado = primero
+if(vids.length){
+const f = vids[0];
+featuredCard.style.display = 'block';
+featuredTitle.textContent = f.titulo;
+featuredMeta.textContent = new Date(f.fecha).toLocaleDateString('es-CL');
+featuredEmbed.innerHTML = `<iframe src="https://www.youtube.com/embed/${f.ytId}" title="${f.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute; inset:0; width:100%; height:100%; border:0"></iframe>`;
+}
+
+// Agrupar resto por Año/Mes
+const rest = vids.slice(1);
+if(rest.length===0){
+groupsEl.innerHTML = `<p class="empty">Aún no hay más videos.</p>`;
 return;
 }
+
+const byGroup = {};
+rest.forEach(v=>{
+const d = new Date(v.fecha);
+const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+if(!byGroup[key]) byGroup[key] = [];
+byGroup[key].push(v);
+});
+
+const orderedKeys = Object.keys(byGroup).sort((a,b)=> b.localeCompare(a));
+groupsEl.innerHTML = '';
+orderedKeys.forEach(key=>{
+const [year, month] = key.split('-');
+const monthName = new Date(Number(year), Number(month)-1, 1).toLocaleString('es-CL', {month:'long'});
+const h = document.createElement('div');
+h.className = 'groupTitle';
+h.textContent = `${monthName.charAt(0).toUpperCase()+monthName.slice(1)} ${year}`;
+groupsEl.appendChild(h);
+
+const ul = document.createElement('ul');
+ul.className = 'list';
+byGroup[key].forEach(v=>{
+const li = document.createElement('li');
+li.className = 'item';
+const thumb = v.ytId ? `https://img.youtube.com/vi/${v.ytId}/hqdefault.jpg` : '';
+li.innerHTML = `
+<div class="thumb">${thumb?`<img src="${thumb}" alt="Miniatura">`:''}</div>
+<div>
+<a href="${v.url}" target="_blank" rel="noopener">${v.titulo}</a>
+<small>${new Date(v.fecha).toLocaleDateString('es-CL')}</small>
+</div>`;
+ul.appendChild(li);
+});
+groupsEl.appendChild(ul);
+});
+})();
+
+/* ======= Render: Prensa (ordenada) ======= */
+(function(){
+const list = document.getElementById('pressList');
+if(!list) return;
+const sorted = [...PRENSA].sort((a,b)=> new Date(b.fecha) - new Date(a.fecha));
+if(sorted.length===0){ list.innerHTML = `<li class="item empty">No hay artículos aún.</li>`; return; }
 list.innerHTML = '';
-sorted.forEach(item=>{
+sorted.forEach(p=>{
 const li = document.createElement('li');
 li.className = 'item';
 li.innerHTML = `
-<div class="thumb">${ item.thumb ? `<img src="${item.thumb}" alt="Miniatura">` : '' }</div>
+<div class="thumb">${p.thumb?`<img src="${p.thumb}" alt="Miniatura">`:''}</div>
 <div>
-<a href="${item.url}" target="_blank" rel="noopener">${item.titulo}</a>
-<small>${new Date(item.fecha).toLocaleDateString('es-CL')} ${item.medio ? ' • ' + item.medio : ''}</small>
-</div>
-`;
+<a href="${p.url}" target="_blank" rel="noopener">${p.titulo}</a>
+<small>${new Date(p.fecha).toLocaleDateString('es-CL')}${p.medio?` • ${p.medio}`:''}</small>
+</div>`;
 list.appendChild(li);
 });
-}
-renderList(VIDEOS, '#videoList', true);
-renderList(PRENSA, '#pressList', false);
+})();
 
-// ========= COMENTARIOS (localStorage) =========
+/* ======= Comentarios (localStorage) ======= */
 (function(){
-const KEY = 'elrayo_agustin_comments_v1';
+const KEY='elrayo_agustin_comments_v2';
 const form = document.getElementById('commentForm');
 const out = document.getElementById('comments');
-
-function getComments(){
-try { return JSON.parse(localStorage.getItem(KEY)) || [] } catch { return [] }
-}
-function setComments(arr){ localStorage.setItem(KEY, JSON.stringify(arr)) }
+const get = ()=> JSON.parse(localStorage.getItem(KEY)||'[]');
+const set = d => localStorage.setItem(KEY, JSON.stringify(d));
+const escapeHtml = s => s.replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 function render(){
-const data = getComments().sort((a,b)=> b.ts - a.ts);
+const data = get().sort((a,b)=> b.ts - a.ts);
 if(data.length===0){ out.innerHTML = `<p class="empty">Aún no hay comentarios. ¡Sé el primero en saludar a Agustín! 🏁</p>`; return; }
 out.innerHTML = '';
 data.forEach(c=>{
 const div = document.createElement('div');
-div.className = 'comment';
-div.innerHTML = `
-<strong>${escapeHtml(c.name)}</strong> <span class="meta">• ${new Date(c.ts).toLocaleString('es-CL')}</span>
-<p style="margin:6px 0 0">${escapeHtml(c.msg)}</p>
-`;
+div.className='comment';
+div.innerHTML = `<strong>${escapeHtml(c.name)}</strong> <span class="meta">• ${new Date(c.ts).toLocaleString('es-CL')}</span>
+<p style="margin:6px 0 0">${escapeHtml(c.msg)}</p>`;
 out.appendChild(div);
 });
-}
-function escapeHtml(s){
-return s.replace(/[&<>"']/g, m=> ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]) );
 }
 form.addEventListener('submit', e=>{
 e.preventDefault();
 const name = document.getElementById('name').value.trim();
 const msg = document.getElementById('message').value.trim();
 if(!name || !msg) return;
-const arr = getComments();
-arr.push({name, msg, ts: Date.now()});
-setComments(arr);
-form.reset();
-render();
+const arr = get(); arr.push({name, msg, ts: Date.now()}); set(arr); form.reset(); render();
 });
 render();
 })();
 </script>
 </body>
 </html>
-
-
-
