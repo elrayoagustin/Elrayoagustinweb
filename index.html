@@ -1,710 +1,509 @@
 <!doctype html>
-
 <html lang="es">
-
 <head>
-
-  <meta charset="utf-8" />
-
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <title>Agustín “El Rayo” Alfaro — Blog oficial</title>
-
-
-
-  <!-- SEO básico -->
-
-  <meta name="description" content="Blog oficial de Agustín “El Rayo” Alfaro: entrevistas, videos, prensa y novedades del piloto chileno." />
-
-  <meta name="author" content="Agustín Alfaro Team" />
-
-  <meta property="og:title" content="Agustín “El Rayo” Alfaro — Blog oficial" />
-
-  <meta property="og:description" content="Entrevistas, videos y prensa del piloto chileno Agustín Alfaro." />
-
-  <meta property="og:type" content="website" />
-
-  <meta property="og:image" content="https://images.unsplash.com/photo-1518544801976-3e188f1e45b0?q=80&w=1920&auto=format&fit=crop" />
-
-  <meta name="theme-color" content="#0b0b0c">
-
-
-
-  <style>
-
-    :root{
-
-      --bg:#0b0b0c;
-
-      --text:#f2f2f2;
-
-      --muted:#b7b7b7;
-
-      --brand:#ff3b30;     /* rojo racing */
-
-      --card:#141417cc;    /* semi transparente */
-
-      --glass:#14141799;   /* vidrio */
-
-      --max:1200px;
-
-      --radius:14px;
-
-      --shadow: 0 10px 25px rgba(0,0,0,.35);
-
-    }
-
-    *{box-sizing:border-box}
-
-    html,body{height:100%}
-
-    body{
-
-      margin:0;
-
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
-
-      background: var(--bg);
-
-      color: var(--text);
-
-      line-height:1.55;
-
-    }
-
-
-
-    /* HERO con pista de carrera */
-
-    .hero{
-
-      position:relative;
-
-      min-height:68vh;
-
-      display:grid;
-
-      place-items:center;
-
-      text-align:center;
-
-      padding: clamp(24px, 4vw, 48px);
-
-      background:
-
-        linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.75)),
-
-        url("https://images.unsplash.com/photo-1530041686307-2fdee4d1d5a1?q=80&w=1920&auto=format&fit=crop") center/cover no-repeat fixed;
-
-      /* ↑ Puedes cambiar la foto por otra de pista */
-
-    }
-
-    .hero .inner{
-
-      max-width: 900px;
-
-    }
-
-    .logo-pill{
-
-      display:inline-flex; align-items:center; gap:10px;
-
-      padding:8px 14px; border-radius:999px;
-
-      background: #ffffff10; backdrop-filter: blur(6px);
-
-      border:1px solid #ffffff22; box-shadow: var(--shadow);
-
-      font-weight:600; letter-spacing:.2px;
-
-    }
-
-    .logo-pill .dot{width:10px;height:10px;border-radius:50%;background:var(--brand);display:inline-block; box-shadow:0 0 18px var(--brand)}
-
-    h1{
-
-      margin:14px 0 8px;
-
-      font-size: clamp(28px, 6vw, 64px);
-
-      letter-spacing:-0.02em;
-
-    }
-
-    .subtitle{
-
-      margin:0 auto 18px;
-
-      max-width:720px;
-
-      color:var(--muted);
-
-      font-size: clamp(14px, 2.5vw, 18px);
-
-    }
-
-    .cta{
-
-      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
-
-      margin-top:12px;
-
-    }
-
-    .btn{
-
-      appearance:none; border:1px solid #ffffff22; background:#ffffff12;
-
-      color:#fff; padding:12px 18px; border-radius:12px; cursor:pointer;
-
-      font-weight:600; text-decoration:none; transition:.2s transform ease, .2s background ease, .2s border ease;
-
-      backdrop-filter: blur(6px);
-
-    }
-
-    .btn:hover{ transform: translateY(-2px); border-color:#ffffff55; background:#ffffff18 }
-
-    .btn.brand{ background: var(--brand); border-color: transparent }
-
-    .btn.brand:hover{ filter: brightness(1.05) }
-
-
-
-    /* NAV pegajosa ligera */
-
-    .nav{
-
-      position:sticky; top:0; z-index:20;
-
-      backdrop-filter: blur(8px);
-
-      background: #0b0b0ca6; border-bottom:1px solid #ffffff14;
-
-    }
-
-    .nav .row{
-
-      max-width: var(--max); margin:0 auto; display:flex; gap:16px; align-items:center; justify-content:space-between;
-
-      padding:10px 16px;
-
-    }
-
-    .nav a{ color:#eaeaea; text-decoration:none; font-weight:600; opacity:.9 }
-
-    .nav a:hover{ opacity:1 }
-
-    .brandmark{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px }
-
-    .brandmark .flag{width:18px;height:12px; background:linear-gradient(180deg,#da1212,#ffffff,#0033a0); border-radius:2px}
-
-    .menu{ display:flex; gap:16px; flex-wrap:wrap }
-
-
-
-    /* CONTENEDOR */
-
-    .container{ max-width: var(--max); margin:0 auto; padding: 28px 16px }
-
-
-
-    /* GRID de tarjetas */
-
-    .grid{
-
-      display:grid; gap:18px;
-
-      grid-template-columns: repeat(12, 1fr);
-
-    }
-
-    .col-12{ grid-column: span 12 }
-
-    .col-8{ grid-column: span 8 }
-
-    .col-6{ grid-column: span 6 }
-
-    .col-4{ grid-column: span 4 }
-
-    @media (max-width: 980px){
-
-      .col-8{ grid-column: span 12 }
-
-      .col-6{ grid-column: span 12 }
-
-      .col-4{ grid-column: span 12 }
-
-    }
-
-
-
-    /* Tarjetas */
-
-    .card{
-
-      background: var(--card);
-
-      border:1px solid #ffffff1a;
-
-      border-radius: var(--radius);
-
-      box-shadow: var(--shadow);
-
-      overflow: clip;
-
-    }
-
-    .cardHeader{ padding:18px 18px 0 }
-
-    .card h2{ margin:0 0 6px; font-size: clamp(18px,2.4vw,26px) }
-
-    .card p{ margin:0; color:var(--muted) }
-
-    .cardBody{ padding:18px }
-
-    .chip{
-
-      display:inline-block; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
-
-      padding:6px 10px; border-radius:999px; background:#ffffff14; border:1px solid #ffffff22; color:#fff
-
-    }
-
-    .meta{ color:#bdbdbd; font-size:13px; margin-top:8px }
-
-    .press-list{ list-style:none; padding:0; margin:0; display:grid; gap:12px }
-
-    .press-item{
-
-      display:flex; gap:12px; align-items:center; padding:12px; border-radius:12px; border:1px solid #ffffff14; background:#ffffff0d;
-
-    }
-
-    .press-item img{ width:72px; height:72px; object-fit:cover; border-radius:10px; border:1px solid #ffffff22 }
-
-    .press-item a{ color:#fff; font-weight:700; text-decoration:none }
-
-    .press-item small{ color:var(--muted) }
-
-
-
-    /* Embeds responsivos */
-
-    .embed{
-
-      position:relative; width:100%; padding-top:56.25%;
-
-      background:#000;
-
-      border-top-left-radius: var(--radius); border-top-right-radius: var(--radius);
-
-      overflow:hidden; border-bottom:1px solid #ffffff1a;
-
-    }
-
-    .embed iframe{
-
-      position:absolute; inset:0; width:100%; height:100%; border:0;
-
-    }
-
-
-
-    /* Footer */
-
-    footer{
-
-      margin-top:32px; padding:28px 16px; border-top:1px solid #ffffff1a; color:#bfbfbf; text-align:center;
-
-    }
-
-    footer a{ color:#fff; text-decoration:none; font-weight:600 }
-
-  </style>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EL RAYO AGUSTÍN — Blog, Videos, Prensa & Fans</title>
+<meta name="description" content="Blog oficial de Agustín 'El Rayo' Alfaro: mini-juego, entrevistas, videos, prensa y comentarios de fans.">
+<meta name="theme-color" content="#0c0c0f">
+
+<style>
+:root{
+--bg:#0b0b0f;
+--card:#14151b;
+--muted:#b8bbc7;
+--text:#f2f4f8;
+--brand:#ff3b30;
+--accent:#27d17f;
+--max:1100px;
+--radius:14px;
+--shadow:0 12px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial;
+background:
+linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,.9)),
+url('https://images.unsplash.com/photo-1530041686307-2fdee4d1d5a1?q=80&w=1920&auto=format&fit=crop') center/cover fixed no-repeat;
+color:var(--text); line-height:1.55;
+}
+a{color:#fff; text-decoration:none}
+.nav{
+position:sticky; top:0; z-index:10; backdrop-filter: blur(8px);
+background:#0b0b0fc0; border-bottom:1px solid #ffffff1a;
+}
+.nav .row{max-width:var(--max); margin:0 auto; padding:10px 16px; display:flex; align-items:center; justify-content:space-between}
+.menu{display:flex; gap:16px; flex-wrap:wrap}
+.menu a{opacity:.9; font-weight:600} .menu a:hover{opacity:1}
+
+.hero{
+min-height:62vh; display:grid; place-items:center; text-align:center;
+padding: clamp(24px,4vw,48px);
+}
+.title{
+font-size:clamp(36px,8vw,92px); font-weight:900; letter-spacing:-0.02em; margin:0 0 10px;
+line-height:1.02; position:relative; display:inline-block;
+}
+.title .car{
+position:absolute; top:100%; left:0; transform:translateY(8px);
+font-size:clamp(26px,6vw,56px);
+animation: drive 5s linear infinite;
+text-shadow:0 0 18px var(--brand);
+}
+@keyframes drive{
+0%{left:0%} 50%{left:93%} 100%{left:0%}
+}
+.subtitle{color:var(--muted); max-width:800px; margin:8px auto 18px}
+.cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+.btn{
+background:#ffffff10; border:1px solid #ffffff30; padding:12px 16px; border-radius:12px;
+font-weight:700; letter-spacing:.2px; box-shadow:var(--shadow); backdrop-filter: blur(6px)
+}
+.btn:hover{background:#ffffff18}
+.btn.brand{background:var(--brand); border-color:transparent}
+.container{max-width:var(--max); margin:0 auto; padding:26px 16px}
+h2{font-size:clamp(20px,3.2vw,30px); margin:0 0 14px}
+.grid{display:grid; gap:18px; grid-template-columns:repeat(12,1fr)}
+.col-12{grid-column:span 12} .col-6{grid-column:span 6}
+@media (max-width:960px){ .col-6{grid-column:span 12} }
+
+.card{
+background: #0f1118cc; border:1px solid #ffffff20; border-radius:var(--radius);
+box-shadow:var(--shadow); overflow:hidden;
+}
+.cardHeader{padding:16px 16px 0}
+.cardBody{padding:16px}
+.chip{
+display:inline-block; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.08em;
+padding:6px 10px; border-radius:999px; background:#ffffff16; border:1px solid #ffffff22;
+}
+.meta{color:var(--muted); font-size:13px; margin-top:6px}
+
+/* --- JUEGO --- */
+#gameWrap{background:var(--card); border:1px solid #ffffff22; border-radius:var(--radius); box-shadow:var(--shadow)}
+#hud{display:flex; gap:16px; align-items:center; justify-content:space-between; padding:10px 16px; border-bottom:1px solid #ffffff1a; background:#0e1016}
+#hud span{font-weight:800}
+#game{
+display:block; width:100%; height:auto; background: #11131a;
+border-bottom-left-radius:var(--radius); border-bottom-right-radius:var(--radius);
+}
+.help{color:var(--muted); font-size:14px; padding:10px 16px}
+.kbd{display:inline-block; padding:2px 6px; border:1px solid #ffffff30; border-radius:6px; background:#ffffff10; font-weight:700}
+
+/* Embeds responsivos */
+.embed{position:relative; width:100%; padding-top:56.25%; background:#000; border-bottom:1px solid #ffffff1a}
+.embed iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+
+/* Listas de prensa/videos */
+.list{list-style:none; margin:0; padding:0; display:grid; gap:12px}
+.item{display:flex; gap:12px; align-items:center; border:1px solid #ffffff18; background:#ffffff0e; border-radius:12px; padding:12px}
+.thumb{width:84px; height:56px; background:#000; border-radius:10px; overflow:hidden; border:1px solid #ffffff24}
+.thumb img{width:100%; height:100%; object-fit:cover}
+.item a{font-weight:800}
+.item small{color:var(--muted); display:block; margin-top:2px}
+
+/* Comentarios */
+#comments .comment{border:1px solid #ffffff18; background:#ffffff0e; border-radius:12px; padding:12px}
+#commentForm{display:grid; gap:10px}
+input, textarea{
+width:100%; background:#0f1118; border:1px solid #ffffff25; color:#fff; padding:10px 12px; border-radius:10px; resize:vertical
+}
+textarea{min-height:100px}
+.btn.submit{background:var(--accent); color:#0b0b0f; border:none}
+.empty{color:var(--muted); font-style:italic}
+footer{border-top:1px solid #ffffff1a; color:var(--muted); text-align:center; padding:26px 16px; margin-top:24px}
+</style>
 </head>
-
 <body>
 
-
-
-  <!-- NAV -->
-
-  <nav class="nav" aria-label="Navegación principal">
-
-    <div class="row">
-
-      <div class="brandmark">
-
-        <span class="flag" aria-hidden="true"></span>
-
-        <span>Agustín “El Rayo” Alfaro</span>
-
-      </div>
-
-      <div class="menu">
-
-        <a href="#blog">Blog</a>
-
-        <a href="#entrevistas">Entrevistas</a>
-
-        <a href="#prensa">Prensa</a>
-
-        <a href="#contacto">Contacto</a>
-
-      </div>
-
-    </div>
-
-  </nav>
-
-
-
-  <!-- HERO -->
-
-  <header class="hero" role="banner" aria-label="Portada con pista de carrera">
-
-    <div class="inner">
-
-      <span class="logo-pill"><span class="dot"></span> Piloto Chileno — Open Wheel & Karting</span>
-
-      <h1>Agustín “El Rayo” Alfaro</h1>
-
-      <p class="subtitle">Entrevistas, videos y artículos de prensa. Sigue el camino de Agustín desde el karting hasta los monoplazas eléctricos y su proyección internacional.</p>
-
-      <div class="cta">
-
-        <a class="btn brand" href="https://www.youtube.com/@TU_CANAL_DE_YOUTUBE" target="_blank" rel="noopener">YouTube</a>
-
-        <a class="btn" href="https://www.instagram.com/TU_USUARIO_INSTAGRAM" target="_blank" rel="noopener">Instagram</a>
-
-        <a class="btn" href="#prensa">Ver prensa</a>
-
-      </div>
-
-    </div>
-
-  </header>
-
-
-
-  <main>
-
-
-
-    <!-- DESTACADO: último video -->
-
-    <section id="destacado" class="container">
-
-      <div class="card">
-
-        <div class="embed" aria-label="Video destacado">
-
-          <!-- Reemplaza VIDEO_ID por el ID real de YouTube -->
-
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Video destacado — Agustín Alfaro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-        </div>
-
-        <div class="cardBody">
-
-          <span class="chip">Video destacado</span>
-
-          <h2>Resumen de carrera & entrevistas post-evento</h2>
-
-          <p class="meta">Publicado el <time datetime="2025-10-10">10 de octubre de 2025</time> • Autódromo</p>
-
-          <p>Revive la última fecha con onboard, highlights y las declaraciones de Agustín al finalizar la jornada.</p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- BLOG -->
-
-    <section id="blog" class="container" aria-labelledby="title-blog">
-
-      <h2 id="title-blog">Blog</h2>
-
-      <div class="grid" role="list">
-
-        <!-- Post 1 -->
-
-        <article class="card col-6" role="listitem">
-
-          <div class="cardHeader">
-
-            <span class="chip">Crónica</span>
-
-            <h2>Setup, quali y ritmo de carrera: lo que funcionó</h2>
-
-            <p class="meta">Por Equipo El Rayo • <time datetime="2025-10-05">5 oct 2025</time></p>
-
-          </div>
-
-          <div class="cardBody">
-
-            <p>Cómo se ajustó el kart/monoplaza para extraer décimas clave en clasificación, gestión de neumáticos y estrategia de sobrepaso.</p>
-
-            <p><a class="btn" href="https://TU_ARTICULO_DETALLE.html">Leer más</a></p>
-
-          </div>
-
-        </article>
-
-
-
-        <!-- Post 2 -->
-
-        <article class="card col-6" role="listitem">
-
-          <div class="cardHeader">
-
-            <span class="chip">Análisis</span>
-
-            <h2>Telemetría: dónde ganamos y dónde hay margen</h2>
-
-            <p class="meta">Por Coach de Datos • <time datetime="2025-09-28">28 sep 2025</time></p>
-
-          </div>
-
-          <div class="cardBody">
-
-            <p>Comparativa sector por sector, frenadas, velocidad mínima en curva y tracción en salidas.</p>
-
-            <p><a class="btn" href="https://TU_ARTICULO_DETALLE.html">Leer más</a></p>
-
-          </div>
-
-        </article>
-
-
-
-        <!-- Post 3 -->
-
-        <article class="card col-12" role="listitem">
-
-          <div class="cardHeader">
-
-            <span class="chip">Bitácora</span>
-
-            <h2>Road to Europe: entrenamientos y agenda</h2>
-
-            <p class="meta">Staff • <time datetime="2025-09-15">15 sep 2025</time></p>
-
-          </div>
-
-          <div class="cardBody">
-
-            <p>Plan de trabajo, circuitos objetivo y preparación física/técnica para las próximas fechas en Europa y EE. UU.</p>
-
-            <p><a class="btn" href="https://TU_DOC_GOOGLE_O_POST.html" target="_blank" rel="noopener">Ver agenda</a></p>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ENTREVISTAS / VIDEOS -->
-
-    <section id="entrevistas" class="container" aria-labelledby="title-entrevistas">
-
-      <h2 id="title-entrevistas">Entrevistas & Videos</h2>
-
-      <div class="grid">
-
-        <div class="card col-6">
-
-          <div class="embed" aria-label="Entrevista 1">
-
-            <!-- Reemplaza VIDEO_ID_1 -->
-
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Entrevista — Medio 1" allowfullscreen></iframe>
-
-          </div>
-
-          <div class="cardBody">
-
-            <span class="chip">Entrevista</span>
-
-            <h2>“Objetivo: escalar categorías con consistencia”</h2>
-
-            <p class="meta">Medio 1 • <time datetime="2025-08-22">22 ago 2025</time></p>
-
-            <p>Agustín comenta su método de entrenamiento, metas anuales y foco mental de carrera.</p>
-
-            <a class="btn" href="https://www.youtube.com/watch?v=VIDEO_ID_1" target="_blank" rel="noopener">Ver en YouTube</a>
-
-          </div>
-
-        </div>
-
-
-
-        <div class="card col-6">
-
-          <div class="embed" aria-label="Entrevista 2">
-
-            <!-- Reemplaza VIDEO_ID_2 -->
-
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Entrevista — Medio 2" allowfullscreen></iframe>
-
-          </div>
-
-          <div class="cardBody">
-
-            <span class="chip">Podcast</span>
-
-            <h2>“Del karting a los monoplazas: el salto”</h2>
-
-            <p class="meta">Podcast Racing • <time datetime="2025-07-30">30 jul 2025</time></p>
-
-            <p>Charla en profundidad sobre técnica de manejo, simulador y preparación física.</p>
-
-            <a class="btn" href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank" rel="noopener">Ver en YouTube</a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- PRENSA -->
-
-    <section id="prensa" class="container" aria-labelledby="title-prensa">
-
-      <h2 id="title-prensa">Prensa</h2>
-
-      <div class="card">
-
-        <div class="cardBody">
-
-          <ul class="press-list" role="list">
-
-            <!-- Ítem 1 -->
-
-            <li class="press-item" role="listitem">
-
-              <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=300&auto=format&fit=crop" alt="Miniatura medio de prensa">
-
-              <div>
-
-                <a href="https://TU_LINK_ARTICULO_1" target="_blank" rel="noopener">Medio X: “Agustín Alfaro, promesa del automovilismo chileno”</a>
-
-                <div><small>Publicado el 12 oct 2025 • Entrevista</small></div>
-
-              </div>
-
-            </li>
-
-            <!-- Ítem 2 -->
-
-            <li class="press-item" role="listitem">
-
-              <img src="https://images.unsplash.com/photo-1535057487000-57f8b8f1b60b?q=80&w=300&auto=format&fit=crop" alt="Miniatura nota de prensa">
-
-              <div>
-
-                <a href="https://TU_LINK_ARTICULO_2" target="_blank" rel="noopener">Diario Y: “El Rayo: velocidad, disciplina y futuro eléctrico”</a>
-
-                <div><small>Publicado el 30 sep 2025 • Perfil</small></div>
-
-              </div>
-
-            </li>
-
-            <!-- Ítem 3 -->
-
-            <li class="press-item" role="listitem">
-
-              <img src="https://images.unsplash.com/photo-1518226203301-8e6bd7d7b5d0?q=80&w=300&auto=format&fit=crop" alt="Miniatura entrevista TV">
-
-              <div>
-
-                <a href="https://TU_LINK_ARTICULO_3" target="_blank" rel="noopener">TV Z: “Entrevista en estudio a Agustín Alfaro”</a>
-
-                <div><small>Emitido el 18 ago 2025 • TV</small></div>
-
-              </div>
-
-            </li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
-      <p class="container" style="color:var(--muted); margin-top:10px">¿Tienes una nota o cobertura? Escríbenos para incluirla.</p>
-
-    </section>
-
-
-
-    <!-- CONTACTO -->
-
-    <section id="contacto" class="container" aria-labelledby="title-contacto">
-
-      <h2 id="title-contacto">Contacto</h2>
-
-      <div class="card">
-
-        <div class="cardBody">
-
-          <p>Prensa, auspicios y colaboraciones: <a href="mailto:contacto@TUDOMINIO.cl">contacto@TUDOMINIO.cl</a></p>
-
-          <p>Instagram: <a href="https://www.instagram.com/TU_USUARIO_INSTAGRAM" target="_blank" rel="noopener">@TU_USUARIO_INSTAGRAM</a> • YouTube: <a href="https://www.youtube.com/@TU_CANAL_DE_YOUTUBE" target="_blank" rel="noopener">@TU_CANAL_DE_YOUTUBE</a></p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-  </main>
-
-
-
-  <footer>
-
-    © <span id="year"></span> Agustín “El Rayo” Alfaro — Todos los derechos reservados
-
-  </footer>
-
-
-
-  <script>
-
-    // Año dinámico
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-
-
-    // (Opcional) Si quieres listar posts desde un JSON en el futuro, puedes agregar aquí un fetch
-
-    // y renderizar tarjetas dinámicamente.
-
-  </script>
-
+<!-- NAV -->
+<nav class="nav" aria-label="Navegación principal">
+<div class="row">
+<strong>El Rayo Agustín</strong>
+<div class="menu">
+<a href="#juego">Mini-juego</a>
+<a href="#videos">Videos</a>
+<a href="#prensa">Prensa</a>
+<a href="#fans">Fans</a>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" role="banner" aria-label="Portada">
+<h1 class="title" aria-label="El Rayo Agustín">
+EL RAY<span style="white-space:nowrap;">O&nbsp;AGUSTÍN</span>
+<span class="car" aria-hidden="true">🏎️</span>
+</h1>
+<p class="subtitle">Blog oficial, juego, entrevistas, videos y artículos sobre el piloto chileno <strong>Agustín “El Rayo” Alfaro</strong>.</p>
+<div class="cta">
+<a class="btn brand" target="_blank" rel="noopener" href="https://www.youtube.com/@TU_CANAL">YouTube</a>
+<a class="btn" href="#videos">Ver videos</a>
+<a class="btn" href="#prensa">Ver prensa</a>
+</div>
+</header>
+
+<main class="container">
+
+<!-- MINI JUEGO -->
+<section id="juego" aria-labelledby="title-juego">
+<h2 id="title-juego">Mini-juego: Esquiva con el F1</h2>
+<div id="gameWrap">
+<div id="hud">
+<div>🏁 <span>Score:</span> <strong id="score">0</strong></div>
+<div>⚡ <span>Velocidad:</span> <strong id="speed">1.0x</strong></div>
+<div>❤️ <span>Vidas:</span> <strong id="lives">3</strong></div>
+<button id="restart" class="btn">Reiniciar</button>
+</div>
+<canvas id="game" width="900" height="520" aria-label="Pista de carrera"></canvas>
+<div class="help">
+Controles: <span class="kbd">←</span> <span class="kbd">→</span> para moverse, <span class="kbd">Espacio</span> para pausar/continuar (o toca/arrastra en móvil).
+</div>
+</div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos" aria-labelledby="title-videos" style="margin-top:26px">
+<h2 id="title-videos">Videos (ordenados por fecha)</h2>
+<div class="card">
+<div class="cardBody">
+<ul id="videoList" class="list" role="list"></ul>
+</div>
+</div>
+</section>
+
+<!-- PRENSA -->
+<section id="prensa" aria-labelledby="title-prensa" style="margin-top:26px">
+<h2 id="title-prensa">Prensa (ordenada por fecha)</h2>
+<div class="card">
+<div class="cardBody">
+<ul id="pressList" class="list" role="list"></ul>
+</div>
+</div>
+</section>
+
+<!-- COMENTARIOS DE FANS -->
+<section id="fans" aria-labelledby="title-fans" style="margin-top:26px">
+<h2 id="title-fans">Comentarios de los fans</h2>
+<div class="card">
+<div class="cardBody">
+<form id="commentForm" autocomplete="on">
+<input type="text" id="name" placeholder="Tu nombre" required>
+<textarea id="message" placeholder="Escribe tu mensaje para Agustín…" required></textarea>
+<button type="submit" class="btn submit">Enviar comentario</button>
+</form>
+</div>
+</div>
+
+<div id="comments" style="margin-top:16px" aria-live="polite"></div>
+</section>
+
+</main>
+
+<footer>
+© <span id="year"></span> Agustín “El Rayo” Alfaro — Hecho con ❤️ para la comunidad.
+</footer>
+
+<script>
+// ========= UTILIDADES =========
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+$('#year').textContent = new Date().getFullYear();
+
+// ========= MINI-JUEGO (Canvas) =========
+(function(){
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+
+const W = canvas.width, H = canvas.height;
+const laneCount = 4;
+const laneWidth = W / laneCount;
+
+const state = {
+running: true,
+score: 0,
+speed: 4, // px/frame base
+speedFactor: 1.0, // se incrementa levemente
+lives: 3,
+obstacles: [],
+touchX: null
+};
+
+const player = {
+w: 58, h: 100,
+lane: 1, // 0..3
+color: '#ff3b30',
+get x(){ return this.lane * laneWidth + laneWidth/2 - this.w/2 },
+get y(){ return H - this.h - 18 }
+};
+
+function resetGame(){
+state.running = true;
+state.score = 0;
+state.speed = 4;
+state.speedFactor = 1.0;
+state.lives = 3;
+state.obstacles = [];
+$('#score').textContent = state.score;
+$('#speed').textContent = state.speedFactor.toFixed(1) + 'x';
+$('#lives').textContent = state.lives;
+}
+
+function spawnObstacle(){
+const lane = Math.floor(Math.random()*laneCount);
+const kind = Math.random() < 0.7 ? 'cone' : 'oil';
+const w = 52, h = kind==='cone' ? 60 : 46;
+state.obstacles.push({ lane, y: -h, w, h, kind });
+}
+
+let spawnTimer = 0;
+function update(){
+if(!state.running) return;
+
+// Incremento de dificultad
+state.speedFactor += 0.0009;
+const v = state.speed * state.speedFactor;
+
+// Mover obstáculos
+for(const o of state.obstacles){
+o.y += v;
+}
+// Limpieza
+state.obstacles = state.obstacles.filter(o => o.y < H + 80);
+
+// Spawn
+spawnTimer -= v;
+if (spawnTimer <= 0) {
+spawnObstacle();
+spawnTimer = 140 + Math.random()*80 - (state.speedFactor*8);
+if(spawnTimer < 40) spawnTimer = 40;
+}
+
+// Colisiones
+for(const o of state.obstacles){
+const ox = o.lane * laneWidth + laneWidth/2 - o.w/2;
+if (rectsOverlap(player.x, player.y, player.w, player.h, ox, o.y, o.w, o.h)) {
+// impacto
+state.lives--;
+$('#lives').textContent = state.lives;
+// "empuja" obstáculo fuera para no colisionar múltiples frames
+o.y = H + 200;
+if (state.lives <= 0){
+gameOver();
+return;
+}
+}
+}
+
+// Score
+state.score += Math.floor(1 * state.speedFactor);
+$('#score').textContent = state.score;
+$('#speed').textContent = state.speedFactor.toFixed(1) + 'x';
+}
+
+function rectsOverlap(ax, ay, aw, ah, bx, by, bw, bh){
+return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
+}
+
+function draw(){
+// Pista
+ctx.fillStyle = '#0d0f16';
+ctx.fillRect(0,0,W,H);
+
+// Líneas de carril
+for(let i=1;i<laneCount;i++){
+ctx.strokeStyle = '#ffffff22';
+ctx.setLineDash([16,16]);
+ctx.lineWidth = 3;
+ctx.beginPath();
+ctx.moveTo(i*laneWidth,0);
+ctx.lineTo(i*laneWidth,H);
+ctx.stroke();
+}
+ctx.setLineDash([]);
+
+// Player (F1 estilizado)
+drawCar(player.x, player.y, player.w, player.h, player.color);
+
+// Obstáculos
+for(const o of state.obstacles){
+const ox = o.lane * laneWidth + laneWidth/2 - o.w/2;
+if(o.kind === 'cone'){
+drawCone(ox, o.y, o.w, o.h);
+} else {
+drawOil(ox, o.y, o.w, o.h);
+}
+}
+
+if(!state.running){
+ctx.fillStyle = 'rgba(0,0,0,.55)';
+ctx.fillRect(0,0,W,H);
+ctx.fillStyle = '#fff';
+ctx.font = '700 42px system-ui, sans-serif';
+ctx.textAlign = 'center';
+ctx.fillText('GAME OVER', W/2, H/2 - 10);
+ctx.font = '500 18px system-ui, sans-serif';
+ctx.fillText('Presiona Reiniciar para jugar de nuevo', W/2, H/2 + 26);
+}
+}
+
+function drawCar(x,y,w,h,color){
+// Cuerpo
+ctx.fillStyle = color;
+ctx.fillRect(x+w*0.25, y, w*0.5, h);
+// alerones
+ctx.fillRect(x, y+h*0.12, w, h*0.06);
+ctx.fillRect(x, y+h*0.82, w, h*0.06);
+// cabina
+ctx.fillStyle = '#222a';
+ctx.fillRect(x+w*0.35, y+h*0.3, w*0.3, h*0.22);
+// detalles
+ctx.fillStyle = '#fff';
+ctx.fillRect(x+w*0.46, y+h*0.1, w*0.08, h*0.15);
+ctx.fillRect(x+w*0.46, y+h*0.62, w*0.08, h*0.15);
+}
+function drawCone(x,y,w,h){
+ctx.fillStyle = '#ff8a00';
+ctx.beginPath();
+ctx.moveTo(x+w/2, y);
+ctx.lineTo(x+w, y+h);
+ctx.lineTo(x, y+h);
+ctx.closePath();
+ctx.fill();
+ctx.fillStyle = '#fff';
+ctx.fillRect(x+w*0.2, y+h*0.6, w*0.6, h*0.12);
+}
+function drawOil(x,y,w,h){
+ctx.fillStyle = '#111'; ctx.beginPath();
+ctx.ellipse(x+w/2, y+h/2, w*0.55, h*0.35, 0, 0, Math.PI*2);
+ctx.fill();
+ctx.strokeStyle = '#222'; ctx.lineWidth=2; ctx.stroke();
+}
+
+function gameOver(){ state.running = false }
+
+// Loop
+function loop(){
+update();
+draw();
+requestAnimationFrame(loop);
+}
+loop();
+
+// Controles teclado
+window.addEventListener('keydown', (e)=>{
+if(e.code === 'ArrowLeft'){ player.lane = Math.max(0, player.lane-1) }
+if(e.code === 'ArrowRight'){ player.lane = Math.min(laneCount-1, player.lane+1) }
+if(e.code === 'Space'){ state.running = !state.running }
+});
+
+// Controles táctiles (arrastrar para cambiar carril)
+canvas.addEventListener('touchstart', (e)=>{
+const t = e.touches[0]; state.touchX = t.clientX; e.preventDefault();
+}, {passive:false});
+canvas.addEventListener('touchmove', (e)=>{
+const t = e.touches[0];
+if(state.touchX != null){
+const dx = t.clientX - state.touchX;
+if(Math.abs(dx) > 24){
+if(dx < 0) player.lane = Math.max(0, player.lane-1);
+else player.lane = Math.min(laneCount-1, player.lane+1);
+state.touchX = t.clientX;
+}
+}
+e.preventDefault();
+}, {passive:false});
+canvas.addEventListener('touchend', ()=> state.touchX = null);
+
+// Reinicio
+document.getElementById('restart').addEventListener('click', resetGame);
+
+// Spawn inicial
+for(let i=0;i<6;i++) spawnObstacle();
+})();
+
+// ========= DATOS DE VIDEOS & PRENSA (EDITA AQUÍ) =========
+// Reemplaza por tus entradas reales. Se ordenan por fecha automáticamente (más reciente primero).
+const VIDEOS = [
+// { titulo:'Resumen fecha X', fecha:'2025-10-10', url:'https://www.youtube.com/watch?v=VIDEO_ID', thumb:'https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg' },
+{ titulo:'Onboard & highlights — Fecha Bélgica', fecha:'2025-10-12', url:'https://www.youtube.com/watch?v=wtaqzMdBqZA', thumb:'https://img.youtube.com/vi/wtaqzMdBqZA/hqdefault.jpg' },
+{ titulo:'Entrevista post carrera — Autódromo', fecha:'2025-09-28', url:'https://www.youtube.com/watch?v=VIDEO_ID_2', thumb:'https://img.youtube.com/vi/VIDEO_ID_2/hqdefault.jpg' }
+];
+const PRENSA = [
+{ titulo:'Perfil: “El Rayo, promesa del norte de Chile”', fecha:'2025-10-11', medio:'Diario Y', url:'https://TU_ARTICULO_1', thumb:'https://images.unsplash.com/photo-1535057487000-57f8b8f1b60b?q=80&w=300&auto=format&fit=crop' },
+{ titulo:'Entrevista en TV: “Ritmo, foco y consistencia”', fecha:'2025-09-30', medio:'Canal Z', url:'https://TU_ARTICULO_2', thumb:'https://images.unsplash.com/photo-1518226203301-8e6bd7d7b5d0?q=80&w=300&auto=format&fit=crop' }
+];
+
+// ========= RENDER LISTAS ORDENADAS =========
+function renderList(data, containerSelector, isVideo=true){
+const list = document.querySelector(containerSelector);
+if(!list) return;
+const sorted = [...data].sort((a,b)=> new Date(b.fecha) - new Date(a.fecha));
+if(sorted.length === 0){
+list.innerHTML = `<li class="item empty">No hay elementos aún. Vuelve pronto.</li>`;
+return;
+}
+list.innerHTML = '';
+sorted.forEach(item=>{
+const li = document.createElement('li');
+li.className = 'item';
+li.innerHTML = `
+<div class="thumb">${ item.thumb ? `<img src="${item.thumb}" alt="Miniatura">` : '' }</div>
+<div>
+<a href="${item.url}" target="_blank" rel="noopener">${item.titulo}</a>
+<small>${new Date(item.fecha).toLocaleDateString('es-CL')} ${item.medio ? ' • ' + item.medio : ''}</small>
+</div>
+`;
+list.appendChild(li);
+});
+}
+renderList(VIDEOS, '#videoList', true);
+renderList(PRENSA, '#pressList', false);
+
+// ========= COMENTARIOS (localStorage) =========
+(function(){
+const KEY = 'elrayo_agustin_comments_v1';
+const form = document.getElementById('commentForm');
+const out = document.getElementById('comments');
+
+function getComments(){
+try { return JSON.parse(localStorage.getItem(KEY)) || [] } catch { return [] }
+}
+function setComments(arr){ localStorage.setItem(KEY, JSON.stringify(arr)) }
+function render(){
+const data = getComments().sort((a,b)=> b.ts - a.ts);
+if(data.length===0){ out.innerHTML = `<p class="empty">Aún no hay comentarios. ¡Sé el primero en saludar a Agustín! 🏁</p>`; return; }
+out.innerHTML = '';
+data.forEach(c=>{
+const div = document.createElement('div');
+div.className = 'comment';
+div.innerHTML = `
+<strong>${escapeHtml(c.name)}</strong> <span class="meta">• ${new Date(c.ts).toLocaleString('es-CL')}</span>
+<p style="margin:6px 0 0">${escapeHtml(c.msg)}</p>
+`;
+out.appendChild(div);
+});
+}
+function escapeHtml(s){
+return s.replace(/[&<>"']/g, m=> ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]) );
+}
+form.addEventListener('submit', e=>{
+e.preventDefault();
+const name = document.getElementById('name').value.trim();
+const msg = document.getElementById('message').value.trim();
+if(!name || !msg) return;
+const arr = getComments();
+arr.push({name, msg, ts: Date.now()});
+setComments(arr);
+form.reset();
+render();
+});
+render();
+})();
+</script>
 </body>
-
 </html>
+
+
 
