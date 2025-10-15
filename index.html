@@ -1,87 +1,79 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>EL RAYO AGUSTÍN — Blog, Juego, Videos & Prensa</title>
-<meta name="description" content="Blog oficial de Agustín 'El Rayo' Alfaro: mini-juego, entrevistas, videos, prensa y comentarios de fans.">
-<meta name="theme-color" content="#0c0c0f">
+<meta name="description" content="Sigue el camino de nuestro piloto Chileno Agustín Alfaro: mini-juego, entrevistas, videos, prensa y mensajes de fans." />
+<meta name="theme-color" content="#0c0c0f" />
 <style>
 :root{
---bg:#0b0b0f; --card:#14151b; --muted:#b8bbc7; --text:#f2f4f8;
---brand:#ff3b30; --accent:#27d17f; --max:1100px; --radius:14px;
---shadow:0 12px 30px rgba(0,0,0,.35);
+--bg:#0b0b0f; --text:#f2f4f8; --muted:#b8bbc7; --brand:#ff3b30; --accent:#27d17f;
+--card:#12141a; --glass:#ffffff12; --max:1100px; --radius:14px; --shadow:0 14px 34px rgba(0,0,0,.38);
 }
-*{box-sizing:border-box} html,body{height:100%}
+*{box-sizing:border-box}
+html,body{height:100%}
 body{
 margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial;
-background:
-linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,.9)),
-url('https://images.unsplash.com/photo-1530041686307-2fdee4d1d5a1?q=80&w=1920&auto=format&fit=crop') center/cover fixed no-repeat;
 color:var(--text); line-height:1.55;
+background:
+linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.9)),
+url("https://images.unsplash.com/photo-1530041686307-2fdee4d1d5a1?q=80&w=1920&auto=format&fit=crop") center/cover fixed no-repeat;
 }
 a{color:#fff; text-decoration:none}
 
-/* Nav */
-.nav{position:sticky; top:0; z-index:10; backdrop-filter: blur(8px);
-background:#0b0b0fc0; border-bottom:1px solid #ffffff1a}
+/* NAV */
+.nav{position:sticky; top:0; z-index:20; backdrop-filter:blur(8px); background:#0b0b0fcc; border-bottom:1px solid #ffffff1a}
 .nav .row{max-width:var(--max); margin:0 auto; padding:10px 16px; display:flex; align-items:center; justify-content:space-between}
 .menu{display:flex; gap:16px; flex-wrap:wrap}
-.menu a{opacity:.9; font-weight:600} .menu a:hover{opacity:1}
+.menu a{opacity:.9; font-weight:700} .menu a:hover{opacity:1}
 
-/* Hero */
+/* HERO */
 .hero{min-height:62vh; display:grid; place-items:center; text-align:center; padding: clamp(24px,4vw,48px)}
-.titleWrap{position:relative; display:inline-block}
+.titleWrap{display:inline-block; position:relative}
 .title{
-display:flex; gap:.06em; flex-wrap:wrap; justify-content:center;
-font-size:clamp(36px,8vw,92px); font-weight:900; letter-spacing:-0.02em; line-height:1.02; margin:0;
+font-size:clamp(40px,8.2vw,96px); font-weight:1000; letter-spacing:-.02em; margin:0;
 }
-.title .letter{opacity:0; transform:translateY(6px); transition:opacity .25s ease, transform .25s ease}
-.title .letter.revealed{opacity:1; transform:none}
-.car{
-position:absolute; top:100%; left:0; transform:translateY(10px);
-font-size:clamp(26px,6vw,56px); text-shadow:0 0 18px var(--brand);
-will-change: transform;
-}
-.subtitle{color:var(--muted); max-width:800px; margin:10px auto 18px}
+.carTrack{position:relative; height:1.2em; margin-top:4px}
+.car{position:absolute; left:0; bottom:-.05em; font-size:clamp(26px,6vw,56px); text-shadow:0 0 18px var(--brand)}
+@keyframes car-run{0%{left:0} 50%{left:calc(100% - 1em)} 100%{left:0}}
+.car.animate{animation: car-run 5.8s linear infinite}
+
+.subtitle{color:var(--muted); max-width:820px; margin:10px auto 16px}
 .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
 .btn{
-background:#ffffff10; border:1px solid #ffffff30; padding:12px 16px; border-radius:12px;
-font-weight:700; letter-spacing:.2px; box-shadow:var(--shadow); backdrop-filter: blur(6px)
+display:inline-flex; align-items:center; gap:10px;
+background:var(--glass); border:1px solid #ffffff2a; padding:12px 16px; border-radius:12px;
+font-weight:800; letter-spacing:.2px; box-shadow:var(--shadow); backdrop-filter:blur(6px)
 }
-.btn:hover{background:#ffffff18} .btn.brand{background:var(--brand); border-color:transparent}
+.btn:hover{background:#ffffff20}
+.btn.brand{background:var(--brand); border-color:transparent}
+.icon{width:22px; height:22px; display:inline-block}
 
-/* Layout */
+/* LAYOUT */
 .container{max-width:var(--max); margin:0 auto; padding:26px 16px}
-h2{font-size:clamp(20px,3.2vw,30px); margin:0 0 14px}
-.grid{display:grid; gap:18px; grid-template-columns:repeat(12,1fr)}
-.col-12{grid-column:span 12} .col-6{grid-column:span 6}
-@media (max-width:960px){ .col-6{grid-column:span 12} }
+h2{font-size:clamp(22px,3.2vw,32px); margin:0 0 14px}
 
-/* Cards */
-.card{background:#0f1118cc; border:1px solid #ffffff20; border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
-.cardHeader{padding:16px 16px 0} .cardBody{padding:16px}
+/* CARDS / LISTS */
+.card{background:#0f1118cc; border:1px solid #ffffff20; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
+.cardHeader{padding:16px 16px 0}
+.cardBody{padding:16px}
 .chip{display:inline-block; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; padding:6px 10px; border-radius:999px; background:#ffffff16; border:1px solid #ffffff22}
 .meta{color:var(--muted); font-size:13px; margin-top:6px}
 
-/* Game */
-#gameWrap{background:var(--card); border:1px solid #ffffff22; border-radius:var(--radius); box-shadow:var(--shadow)}
+/* GAME */
+#gameWrap{background:var(--card); border:1px solid #ffffff22; border-radius:var(--radius)}
 #hud{display:flex; gap:16px; align-items:center; justify-content:space-between; padding:10px 16px; border-bottom:1px solid #ffffff1a; background:#0e1016}
 #hud span{font-weight:800}
-#game{display:block; width:100%; height:auto; background:#11131a; border-bottom-left-radius:var(--radius); border-bottom-right-radius:var(--radius)}
+#game{display:block; width:100%; height:auto; background:#0d0f16}
 .help{color:var(--muted); font-size:14px; padding:10px 16px}
 .kbd{display:inline-block; padding:2px 6px; border:1px solid #ffffff30; border-radius:6px; background:#ffffff10; font-weight:700}
 
-/* Lists */
-.groupTitle{margin:18px 0 6px; color:#dcdde2; font-weight:900; letter-spacing:.02em}
-.list{list-style:none; margin:0; padding:0; display:grid; gap:12px}
-.item{display:flex; gap:12px; align-items:center; border:1px solid #ffffff18; background:#ffffff0e; border-radius:12px; padding:12px}
-.thumb{width:84px; height:56px; background:#000; border-radius:10px; overflow:hidden; border:1px solid #ffffff24}
-.thumb img{width:100%; height:100%; object-fit:cover}
-.item a{font-weight:800}
-.item small{color:var(--muted); display:block; margin-top:2px}
+/* VIDEOS */
+.embed{position:relative; width:100%; padding-top:56.25%; background:#000}
+.embed iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
 
-/* Comments */
+/* COMMENTS */
 #comments .comment{border:1px solid #ffffff18; background:#ffffff0e; border-radius:12px; padding:12px}
 #commentForm{display:grid; gap:10px}
 input, textarea{width:100%; background:#0f1118; border:1px solid #ffffff25; color:#fff; padding:10px 12px; border-radius:10px; resize:vertical}
@@ -92,86 +84,88 @@ footer{border-top:1px solid #ffffff1a; color:var(--muted); text-align:center; pa
 </style>
 </head>
 <body>
+<!-- NAV -->
 <nav class="nav" aria-label="Navegación principal">
 <div class="row">
 <strong>El Rayo Agustín</strong>
 <div class="menu">
 <a href="#juego">Mini-juego</a>
 <a href="#videos">Videos</a>
-<a href="#prensa">Prensa</a>
 <a href="#fans">Fans</a>
 </div>
 </div>
 </nav>
 
+<!-- HERO -->
 <header class="hero" role="banner" aria-label="Portada">
 <div class="titleWrap">
-<h1 class="title" id="title"></h1>
-<span class="car" id="car" aria-hidden="true">🏎️</span>
+<h1 class="title">EL RAYO AGUSTÍN</h1>
+<div class="carTrack">
+<span id="car" class="car" aria-hidden="true">🏎️</span>
 </div>
-<p class="subtitle">Blog, juego, entrevistas, videos y artículos sobre el piloto chileno <strong>Agustín “El Rayo” Alfaro</strong>.</p>
+</div>
+<p class="subtitle">Sigue el camino de nuestro piloto Chileno Agustín Alfaro</p>
 <div class="cta">
-<a class="btn brand" target="_blank" rel="noopener" href="https://www.youtube.com/@TU_CANAL">YouTube</a>
-<a class="btn" href="#videos">Ver videos</a>
-<a class="btn" href="#prensa">Ver prensa</a>
+<a class="btn brand" target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCAi1UfkKLYyJWwbBmbmK2mA" aria-label="Canal de YouTube">
+<!-- YouTube SVG -->
+<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.1 3.1 0 0 0-2.2-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.3.5A3.1 3.1 0 0 0 .5 6.2 32 32 0 0 0 0 12a32 32 0 0 0 .5 5.8 3.1 3.1 0 0 0 2.2 2.2c2.1.5 9.3.5 9.3.5s7.2 0 9.3-.5a3.1 3.1 0 0 0 2.2-2.2A32 32 0 0 0 24 12a32 32 0 0 0-.5-5.8zM9.6 15.5V8.5L16 12l-6.4 3.5z"/></svg>
+YouTube
+</a>
+<a class="btn" target="_blank" rel="noopener" href="https://www.instagram.com/agustinalfaro_oficial?igsh=YTF4a2NkMGoxMjBt&utm_source=qr" aria-label="Instagram de Agustín">
+<!-- Instagram SVG -->
+<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.4.5.6.2 1 .5 1.5 1 .4.4.8.9 1 1.5.3.5.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.5 2.4-.2.6-.5 1-1 1.5-.4.4-.9.8-1.5 1-.5.3-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.4-.5-.6-.2-1-.5-1.5-1-.4-.4-.8-.9-1-1.5-.3-.5-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.5-2.4.2-.6.5-1 1-1.5.4-.4.9-.8 1.5-1 .5-.3 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2zm0 2.2c-3.1 0-3.5 0-4.7.1-.9.1-1.4.2-1.7.4-.4.1-.6.3-.9.6-.3.3-.5.5-.6.9-.2.3-.3.8-.4 1.7-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1.9.2 1.4.4 1.7.1.4.3.6.6.9.3.3.5.5.9.6.3.2.8.3 1.7.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c.9-.1 1.4-.2 1.7-.4.4-.1.6-.3.9-.6.3-.3.5-.5.6-.9.2-.3.3-.8.4-1.7.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-.9-.2-1.4-.4-1.7-.1-.4-.3-.6-.6-.9-.3-.3-.5-.5-.9-.6-.3-.2-.8-.3-1.7-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.2a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8zm0 2.2a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4zm5.6-2.5a1 1 0 1 1 0 2.1 1 1 0 0 1 0-2.1z"/></svg>
+Instagram
+</a>
 </div>
 </header>
 
 <main class="container">
 <!-- MINI JUEGO -->
 <section id="juego" aria-labelledby="title-juego">
-<h2 id="title-juego">Mini-juego: Esquiva con el F1</h2>
-<div id="gameWrap">
+<h2 id="title-juego">Mini-juego: Súbete y esquiva bombas</h2>
+<div id="gameWrap" class="card">
 <div id="hud">
 <div>🏁 <span>Score:</span> <strong id="score">0</strong></div>
 <div>⚡ <span>Velocidad:</span> <strong id="speed">1.0x</strong></div>
 <div>❤️ <span>Vidas:</span> <strong id="lives">3</strong></div>
 <button id="restart" class="btn">Reiniciar</button>
 </div>
-<canvas id="game" width="900" height="520" aria-label="Pista de carrera"></canvas>
-<div class="help">Controles: <span class="kbd">←</span> <span class="kbd">→</span> para moverse, <span class="kbd">Espacio</span> pausar/continuar (o toca/arrastra en móvil).</div>
+<canvas id="game" width="1024" height="420" aria-label="Pista de carrera"></canvas>
+<div class="help">
+Secuencia: 👨‍✈️ Piloto con casco → se sube al F1 → 🏎️ corre izquierda→derecha. Controles: <span class="kbd">Espacio / Toque</span> para saltar.
+</div>
 </div>
 </section>
 
 <!-- VIDEOS -->
 <section id="videos" aria-labelledby="title-videos" style="margin-top:26px">
-<h2 id="title-videos">Videos (más reciente primero)</h2>
-
-<!-- Destacado -->
-<div id="videoFeatured" class="card" style="display:none; margin-bottom:16px">
-<div class="cardHeader"><span class="chip">Destacado</span></div>
-<div class="embed" id="featuredEmbed" style="position:relative; width:100%; padding-top:56.25%; background:#000"></div>
-<div class="cardBody">
-<h3 id="featuredTitle" style="margin:8px 0 6px"></h3>
-<p class="meta" id="featuredMeta"></p>
-</div>
-</div>
-
-<!-- Listado -->
+<h2 id="title-videos">Videos (se actualizan automáticamente)</h2>
 <div class="card">
-<div class="cardBody" id="videoGroups"></div>
+<div class="cardHeader"><span class="chip">Subidas del canal</span></div>
+<div class="embed">
+<!-- Playlist de subidas (se mantiene siempre ordenada por más reciente) -->
+<iframe
+title="Subidas recientes — EL RAYO AGUSTÍN"
+src="https://www.youtube.com/embed?listType=playlist&list=UUAi1UfkKLYyJWwbBmbmK2mA"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+</iframe>
 </div>
-</section>
-
-<!-- PRENSA -->
-<section id="prensa" aria-labelledby="title-prensa" style="margin-top:26px">
-<h2 id="title-prensa">Prensa (ordenada por fecha)</h2>
-<div class="card">
 <div class="cardBody">
-<ul id="pressList" class="list" role="list"></ul>
+<p class="meta">Fuente: <a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCAi1UfkKLYyJWwbBmbmK2mA/videos">Canal de YouTube</a>. Cuando subas un nuevo video, aparecerá primero en esta lista.</p>
 </div>
 </div>
 </section>
 
-<!-- COMENTARIOS -->
+<!-- FANS -->
 <section id="fans" aria-labelledby="title-fans" style="margin-top:26px">
-<h2 id="title-fans">Comentarios de los fans</h2>
+<h2 id="title-fans">Déjale un mensaje a El Rayo Agustín</h2>
 <div class="card">
 <div class="cardBody">
 <form id="commentForm" autocomplete="on">
 <input type="text" id="name" placeholder="Tu nombre" required>
 <textarea id="message" placeholder="Escribe tu mensaje para Agustín…" required></textarea>
-<button type="submit" class="btn submit">Enviar comentario</button>
+<button type="submit" class="btn submit">Enviar mensaje</button>
+<p class="meta" style="margin-top:8px">Tu mensaje quedará visible en el blog y además se abrirá un correo a <strong>elrayoagustin1@gmail.com</strong> con tu texto.</p>
 </form>
 </div>
 </div>
@@ -182,250 +176,263 @@ footer{border-top:1px solid #ffffff1a; color:var(--muted); text-align:center; pa
 <footer>© <span id="year"></span> Agustín “El Rayo” Alfaro — Hecho con ❤️ para la comunidad.</footer>
 
 <script>
-/* ======= Utilidades ======= */
-const $ = s => document.querySelector(s);
-$('#year').textContent = new Date().getFullYear();
+/* ===== Año dinámico ===== */
+document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ======= Título “escrito” por el auto (una sola vez) ======= */
+/* ===== Emoji de auto bajo el título ===== */
 (function(){
-const TITLE_TEXT = 'EL RAYO AGUSTÍN';
-const titleEl = $('#title');
-const carEl = $('#car');
-const KEY = 'titlePlayed_v1'; // cambia versión si quieres forzar que se repita
-
-// Construye spans por letra
-TITLE_TEXT.split('').forEach(ch=>{
-const span = document.createElement('span');
-span.className = 'letter';
-span.textContent = ch === ' ' ? ' ' : ch; // space -> nbsp to keep layout
-titleEl.appendChild(span);
-});
-
-const letters = [...titleEl.querySelectorAll('.letter')];
-
-function revealAllStatic(){
-letters.forEach(l=> l.classList.add('revealed'));
-carEl.style.display = 'none';
-}
-
-// Si ya se ejecutó antes, mostrar estático
-if(localStorage.getItem(KEY)){
-revealAllStatic();
-return;
-}
-
-// Animación: el auto recorre el ancho del título y revela letras cuando lo alcanza
-function playOnce(){
-const rectTitle = titleEl.getBoundingClientRect();
-const startX = rectTitle.left;
-const endX = rectTitle.right;
-const total = endX - startX;
-
-// Precalcular centro X de cada letra
-const letterCenters = letters.map(l => {
-const r = l.getBoundingClientRect();
-return r.left + r.width/2;
-});
-
-const DURATION = 4200; // ms
-const startTime = performance.now();
-
-function frame(now){
-const t = Math.min(1, (now - startTime)/DURATION);
-const x = startX + total * t;
-// posicionar auto
-carEl.style.transform = `translate(calc(${x - startX}px), 10px)`;
-
-// revelar letras alcanzadas
-for(let i=0;i<letters.length;i++){
-if(!letters[i].classList.contains('revealed') && x >= letterCenters[i]){
-letters[i].classList.add('revealed');
-}
-}
-
-if(t < 1){
-requestAnimationFrame(frame);
-} else {
-// Final: asegurar todas reveladas y esconder auto
-letters.forEach(l=> l.classList.add('revealed'));
-setTimeout(()=> carEl.style.display='none', 250);
-localStorage.setItem(KEY, '1');
-}
-}
-// Colocar auto al inicio exacto
-const startOffset = 0; // px
-carEl.style.left = '0';
-carEl.style.transform = `translate(${startOffset}px, 10px)`;
-requestAnimationFrame(frame);
-}
-
-// Esperar a que el título tenga layout listo
-window.addEventListener('load', playOnce);
-window.addEventListener('resize', ()=>{ /* no reejecutamos para mantener “solo una vez” */ });
+const car = document.getElementById('car');
+// Arranca animación al cargar
+window.addEventListener('load', ()=> car.classList.add('animate'));
 })();
 
-/* ======= Mini-juego (igual que antes) ======= */
+/* ===== Mini-juego side-scroller: piloto -> sube -> corre y salta bombas ===== */
 (function(){
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 const W = canvas.width, H = canvas.height;
-const laneCount = 4, laneWidth = W / laneCount;
-const state = { running:true, score:0, speed:4, speedFactor:1.0, lives:3, obstacles:[], touchX:null };
-const player = { w:58, h:100, lane:1, color:'#ff3b30',
-get x(){ return this.lane * laneWidth + laneWidth/2 - this.w/2 }, get y(){ return H - this.h - 18 } };
+const GROUND_Y = H - 70;
 
-function resetGame(){ state.running=true; state.score=0; state.speed=4; state.speedFactor=1.0; state.lives=3; state.obstacles=[];
-$('#score').textContent=state.score; $('#speed').textContent=state.speedFactor.toFixed(1)+'x'; $('#lives').textContent=state.lives; }
-function spawnObstacle(){ const lane=Math.floor(Math.random()*laneCount); const kind=Math.random()<0.7?'cone':'oil';
-const w=52, h= kind==='cone'?60:46; state.obstacles.push({lane,y:-h,w,h,kind}); }
-let spawnTimer=0;
+const state = {
+phase: 'walk', // 'walk' -> 'mount' -> 'run'
+running: true,
+score: 0,
+speed: 3.6,
+speedFactor: 1,
+lives: 3,
+obstacles: [],
+t: 0
+};
+
+const pilot = {
+x: 40, y: GROUND_Y - 60, w: 24, h: 60, color:'#eaeaea',
+step: 0
+};
+
+const car = {
+x: 280, y: GROUND_Y - 36, w: 120, h: 36, color:'#ff3b30',
+vx: 0,
+onGround: true,
+vy: 0
+};
+
+function resetGame(){
+state.phase = 'walk';
+state.running = true;
+state.score = 0;
+state.speed = 3.6;
+state.speedFactor = 1;
+state.lives = 3;
+state.obstacles = [];
+pilot.x = 40; pilot.y = GROUND_Y - 60;
+car.x = 280; car.y = GROUND_Y - 36; car.vx = 0; car.vy = 0; car.onGround = true;
+updateHUD();
+}
+
+function updateHUD(){
+document.getElementById('score').textContent = state.score;
+document.getElementById('speed').textContent = state.speedFactor.toFixed(1) + 'x';
+document.getElementById('lives').textContent = state.lives;
+}
+
+function spawnBomb(){
+// Bombas por delante del auto cuando está corriendo
+const gap = 280 + Math.random()*240;
+const lastX = state.obstacles.length ? Math.max(...state.obstacles.map(o=>o.x)) : car.x + 500;
+const x = Math.max(W + 30, lastX + gap);
+state.obstacles.push({ x, y: GROUND_Y - 18, r: 14, type:'bomb' });
+}
+
 function update(){
 if(!state.running) return;
-state.speedFactor += 0.0009; const v = state.speed * state.speedFactor;
-for(const o of state.obstacles){ o.y += v; }
-state.obstacles = state.obstacles.filter(o=> o.y < H+80);
-spawnTimer -= v;
-if(spawnTimer <= 0){ spawnObstacle(); spawnTimer = 140 + Math.random()*80 - (state.speedFactor*8); if(spawnTimer<40) spawnTimer=40; }
+state.t += 1;
+
+// Fases
+if(state.phase === 'walk'){
+// Piloto camina hacia el auto
+pilot.step += 0.2;
+pilot.x += 1.8;
+if(pilot.x + pilot.w >= car.x + car.w*0.15){
+state.phase = 'mount';
+}
+} else if(state.phase === 'mount'){
+// Animación simple de "subirse": piloto desaparece, el auto sube/baja levemente
+if(state.t % 8 === 0) car.y -= 2;
+if(state.t % 8 === 4) car.y += 2;
+if(state.t % 24 === 0){
+state.phase = 'run';
+car.vx = 4.2;
+}
+} else if(state.phase === 'run'){
+// Dificultad progresiva
+state.speedFactor += 0.0008;
+const v = state.speed * state.speedFactor;
+
+// Avance del "mundo": movemos obstáculos hacia la izquierda
+for(const o of state.obstacles){ o.x -= v; }
+state.obstacles = state.obstacles.filter(o=> o.x > -40);
+
+// Spawn bombas
+if(state.obstacles.length < 4 || (state.obstacles.length && state.obstacles[state.obstacles.length-1].x < W*0.65)){
+if(Math.random() < 0.04 * state.speedFactor) spawnBomb();
+}
+
+// Salto / gravedad
+if(!car.onGround){
+car.vy += 0.5; // gravedad
+car.y += car.vy;
+if(car.y >= GROUND_Y - car.h){ car.y = GROUND_Y - car.h; car.vy = 0; car.onGround = true; }
+}
+
+// Colisiones
 for(const o of state.obstacles){
-const ox = o.lane * laneWidth + laneWidth/2 - o.w/2;
-if(rectsOverlap(player.x,player.y,player.w,player.h, ox,o.y,o.w,o.h)){
-state.lives--; $('#lives').textContent = state.lives; o.y = H+200; if(state.lives<=0){ state.running=false; }
+if(o.type==='bomb'){
+const cx = car.x + car.w*0.5, cy = car.y + car.h*0.5;
+const dx = Math.abs(o.x - cx);
+const dy = Math.abs(o.y - cy);
+if(dx < car.w*0.5 + o.r && dy < car.h*0.5 + o.r){
+// impacto
+state.lives--; updateHUD();
+o.x = -999;
+if(state.lives <= 0){ state.running = false; }
 }
 }
-state.score += Math.floor(1*state.speedFactor);
-$('#score').textContent = state.score; $('#speed').textContent = state.speedFactor.toFixed(1)+'x';
 }
-function rectsOverlap(ax,ay,aw,ah,bx,by,bw,bh){ return ax<bx+bw && ax+aw>bx && ay<by+bh && ay+ah>by; }
+
+// Score
+state.score += Math.floor(1 * state.speedFactor);
+updateHUD();
+}
+}
+
 function draw(){
-ctx.fillStyle='#0d0f16'; ctx.fillRect(0,0,W,H);
-for(let i=1;i<laneCount;i++){ ctx.strokeStyle='#ffffff22'; ctx.setLineDash([16,16]); ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(i*laneWidth,0); ctx.lineTo(i*laneWidth,H); ctx.stroke(); }
+// Fondo
+ctx.fillStyle = '#0d0f16';
+ctx.fillRect(0,0,W,H);
+
+// Suelo y líneas
+ctx.fillStyle = '#0b0d13';
+ctx.fillRect(0,GROUND_Y, W, H - GROUND_Y);
+ctx.strokeStyle = '#ffffff22';
+ctx.setLineDash([16,16]); ctx.lineWidth = 3;
+ctx.beginPath(); ctx.moveTo(0, GROUND_Y-20); ctx.lineTo(W, GROUND_Y-20); ctx.stroke();
 ctx.setLineDash([]);
-drawCar(player.x,player.y,player.w,player.h,player.color);
-for(const o of state.obstacles){ const ox=o.lane*laneWidth+laneWidth/2-o.w/2; o.kind==='cone'? drawCone(ox,o.y,o.w,o.h) : drawOil(ox,o.y,o.w,o.h); }
-if(!state.running){ ctx.fillStyle='rgba(0,0,0,.55)'; ctx.fillRect(0,0,W,H); ctx.fillStyle='#fff'; ctx.font='700 42px system-ui,sans-serif'; ctx.textAlign='center';
-ctx.fillText('GAME OVER', W/2, H/2-10); ctx.font='500 18px system-ui,sans-serif'; ctx.fillText('Presiona Reiniciar para jugar de nuevo', W/2, H/2+26); }
+
+// Carrocería
+drawCar(car.x, car.y, car.w, car.h, car.color);
+
+// Fases: piloto
+if(state.phase === 'walk'){
+drawPilot(pilot.x, pilot.y, pilot.w, pilot.h, pilot.step);
+} else if(state.phase === 'mount'){
+// pil desaparece (metafórico)
 }
-function drawCar(x,y,w,h,color){ ctx.fillStyle=color; ctx.fillRect(x+w*0.25,y,w*0.5,h); ctx.fillRect(x,y+h*0.12,w,h*0.06); ctx.fillRect(x,y+h*0.82,w,h*0.06);
-ctx.fillStyle='#222a'; ctx.fillRect(x+w*0.35,y+h*0.3,w*0.3,h*0.22); ctx.fillStyle='#fff'; ctx.fillRect(x+w*0.46,y+h*0.1,w*0.08,h*0.15); ctx.fillRect(x+w*0.46,y+h*0.62,w*0.08,h*0.15); }
-function drawCone(x,y,w,h){ ctx.fillStyle='#ff8a00'; ctx.beginPath(); ctx.moveTo(x+w/2,y); ctx.lineTo(x+w,y+h); ctx.lineTo(x,y+h); ctx.closePath(); ctx.fill(); ctx.fillStyle='#fff'; ctx.fillRect(x+w*0.2,y+h*0.6,w*0.6,h*0.12); }
-function drawOil(x,y,w,h){ ctx.fillStyle='#111'; ctx.beginPath(); ctx.ellipse(x+w/2,y+h/2,w*0.55,h*0.35,0,0,Math.PI*2); ctx.fill(); ctx.strokeStyle='#222'; ctx.lineWidth=2; ctx.stroke(); }
-function loop(){ update(); draw(); requestAnimationFrame(loop); }
+
+// Obstáculos
+ctx.fillStyle = '#ffcf00';
+for(const o of state.obstacles){
+if(o.type==='bomb'){
+drawBomb(o.x, o.y, o.r);
+}
+}
+
+// Game Over overlay
+if(!state.running){
+ctx.fillStyle = 'rgba(0,0,0,.55)';
+ctx.fillRect(0,0,W,H);
+ctx.fillStyle = '#fff';
+ctx.font = '700 42px system-ui, sans-serif';
+ctx.textAlign = 'center';
+ctx.fillText('GAME OVER', W/2, H/2 - 10);
+ctx.font = '500 18px system-ui, sans-serif';
+ctx.fillText('Pulsa Reiniciar para jugar de nuevo', W/2, H/2 + 26);
+}
+}
+
+function drawPilot(x,y,w,h,step){
+// Casco
+ctx.fillStyle = '#e5e9f0';
+ctx.fillRect(x + w*0.1, y, w*0.8, h*0.28);
+ctx.fillStyle = '#1b1f2a';
+ctx.fillRect(x + w*0.2, y + h*0.08, w*0.6, h*0.12);
+// Cuerpo
+ctx.fillStyle = '#b12a2a';
+ctx.fillRect(x + w*0.2, y + h*0.28, w*0.6, h*0.42);
+// Piernas (caminar simple)
+const swing = Math.sin(step)*6;
+ctx.fillStyle = '#d33a3a';
+ctx.fillRect(x + w*0.2 - swing*0.3, y + h*0.7, w*0.26, h*0.3);
+ctx.fillRect(x + w*0.54 + swing*0.3, y + h*0.7, w*0.26, h*0.3);
+}
+
+function drawCar(x,y,w,h,color){
+// base
+ctx.fillStyle = color;
+ctx.fillRect(x+w*0.18, y+h*0.15, w*0.64, h*0.7);
+// alerón delantero
+ctx.fillRect(x, y+h*0.2, w*0.22, h*0.6);
+// alerón trasero
+ctx.fillRect(x+w*0.84, y+h*0.25, w*0.16, h*0.5);
+// cockpit
+ctx.fillStyle = '#222a';
+ctx.fillRect(x+w*0.45, y+h*0.05, w*0.14, h*0.45);
+// ruedas
+ctx.fillStyle = '#111';
+ctx.beginPath(); ctx.arc(x+w*0.25, y+h*0.92, h*0.18, 0, Math.PI*2); ctx.fill();
+ctx.beginPath(); ctx.arc(x+w*0.78, y+h*0.92, h*0.18, 0, Math.PI*2); ctx.fill();
+}
+
+function drawBomb(x,y,r){
+// cuerpo
+ctx.fillStyle = '#2b2b2b';
+ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
+// mecha
+ctx.strokeStyle = '#caa356'; ctx.lineWidth = 3;
+ctx.beginPath(); ctx.moveTo(x+r*0.4, y-r*0.7); ctx.lineTo(x+r*0.1, y-r*1.2); ctx.stroke();
+// chispa
+if((state.t % 20) < 10){
+ctx.fillStyle = '#ffd451';
+ctx.beginPath(); ctx.arc(x+r*0.1, y-r*1.2, 4, 0, Math.PI*2); ctx.fill();
+}
+}
+
+function loop(){
+update();
+draw();
+requestAnimationFrame(loop);
+}
 loop();
-window.addEventListener('keydown', e=>{ if(e.code==='ArrowLeft') player.lane=Math.max(0,player.lane-1); if(e.code==='ArrowRight') player.lane=Math.min(laneCount-1,player.lane+1); if(e.code==='Space') state.running=!state.running; });
-canvas.addEventListener('touchstart', e=>{ const t=e.touches[0]; state.touchX=t.clientX; e.preventDefault(); }, {passive:false});
-canvas.addEventListener('touchmove', e=>{ const t=e.touches[0]; if(state.touchX!=null){ const dx=t.clientX-state.touchX; if(Math.abs(dx)>24){ if(dx<0) player.lane=Math.max(0,player.lane-1); else player.lane=Math.min(laneCount-1,player.lane+1); state.touchX=t.clientX; } } e.preventDefault(); }, {passive:false});
-canvas.addEventListener('touchend', ()=> state.touchX=null);
+
+function jump(){
+if(state.phase !== 'run') return;
+if(car.onGround){
+car.vy = -10.6;
+car.onGround = false;
+}
+}
+
+// Controles
+window.addEventListener('keydown', e=>{
+if(e.code === 'Space'){ e.preventDefault(); jump(); }
+});
+canvas.addEventListener('touchstart', e=>{ jump(); }, {passive:true});
+
 document.getElementById('restart').addEventListener('click', resetGame);
-for(let i=0;i<6;i++) spawnObstacle();
 })();
 
-/* ======= DATA: edita estos arrays ======= */
-const VIDEOS = [
-// Reemplaza con tus videos reales (usa la fecha exacta de publicación)
-{ titulo:'Onboard & highlights — Fecha Bélgica', fecha:'2025-10-12', url:'https://www.youtube.com/watch?v=wtaqzMdBqZA', ytId:'wtaqzMdBqZA' },
-{ titulo:'Entrevista post carrera — Autódromo', fecha:'2025-09-28', url:'https://www.youtube.com/watch?v=VIDEO_ID_2', ytId:'VIDEO_ID_2' },
-{ titulo:'Sprint race — Resumen', fecha:'2025-08-31', url:'https://www.youtube.com/watch?v=VIDEO_ID_3', ytId:'VIDEO_ID_3' }
-];
-const PRENSA = [
-{ titulo:'Perfil: “El Rayo, promesa del norte de Chile”', fecha:'2025-10-11', medio:'Diario Y', url:'https://TU_ARTICULO_1', thumb:'https://images.unsplash.com/photo-1535057487000-57f8b8f1b60b?q=80&w=300&auto=format&fit=crop' },
-{ titulo:'Entrevista en TV: “Ritmo, foco y consistencia”', fecha:'2025-09-30', medio:'Canal Z', url:'https://TU_ARTICULO_2', thumb:'https://images.unsplash.com/photo-1518226203301-8e6bd7d7b5d0?q=80&w=300&auto=format&fit=crop' }
-];
-
-/* ======= Render: Videos ORDENADOS + destacado y agrupación por Año/Mes ======= */
+/* ===== Comentarios: visibles + abrir correo a elrayoagustin1@gmail.com ===== */
 (function(){
-const groupsEl = document.getElementById('videoGroups');
-const featuredCard = document.getElementById('videoFeatured');
-const featuredEmbed = document.getElementById('featuredEmbed');
-const featuredTitle = document.getElementById('featuredTitle');
-const featuredMeta = document.getElementById('featuredMeta');
-
-if(!groupsEl) return;
-// Orden descendente por fecha
-const vids = [...VIDEOS].sort((a,b)=> new Date(b.fecha) - new Date(a.fecha));
-
-// Destacado = primero
-if(vids.length){
-const f = vids[0];
-featuredCard.style.display = 'block';
-featuredTitle.textContent = f.titulo;
-featuredMeta.textContent = new Date(f.fecha).toLocaleDateString('es-CL');
-featuredEmbed.innerHTML = `<iframe src="https://www.youtube.com/embed/${f.ytId}" title="${f.titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute; inset:0; width:100%; height:100%; border:0"></iframe>`;
-}
-
-// Agrupar resto por Año/Mes
-const rest = vids.slice(1);
-if(rest.length===0){
-groupsEl.innerHTML = `<p class="empty">Aún no hay más videos.</p>`;
-return;
-}
-
-const byGroup = {};
-rest.forEach(v=>{
-const d = new Date(v.fecha);
-const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
-if(!byGroup[key]) byGroup[key] = [];
-byGroup[key].push(v);
-});
-
-const orderedKeys = Object.keys(byGroup).sort((a,b)=> b.localeCompare(a));
-groupsEl.innerHTML = '';
-orderedKeys.forEach(key=>{
-const [year, month] = key.split('-');
-const monthName = new Date(Number(year), Number(month)-1, 1).toLocaleString('es-CL', {month:'long'});
-const h = document.createElement('div');
-h.className = 'groupTitle';
-h.textContent = `${monthName.charAt(0).toUpperCase()+monthName.slice(1)} ${year}`;
-groupsEl.appendChild(h);
-
-const ul = document.createElement('ul');
-ul.className = 'list';
-byGroup[key].forEach(v=>{
-const li = document.createElement('li');
-li.className = 'item';
-const thumb = v.ytId ? `https://img.youtube.com/vi/${v.ytId}/hqdefault.jpg` : '';
-li.innerHTML = `
-<div class="thumb">${thumb?`<img src="${thumb}" alt="Miniatura">`:''}</div>
-<div>
-<a href="${v.url}" target="_blank" rel="noopener">${v.titulo}</a>
-<small>${new Date(v.fecha).toLocaleDateString('es-CL')}</small>
-</div>`;
-ul.appendChild(li);
-});
-groupsEl.appendChild(ul);
-});
-})();
-
-/* ======= Render: Prensa (ordenada) ======= */
-(function(){
-const list = document.getElementById('pressList');
-if(!list) return;
-const sorted = [...PRENSA].sort((a,b)=> new Date(b.fecha) - new Date(a.fecha));
-if(sorted.length===0){ list.innerHTML = `<li class="item empty">No hay artículos aún.</li>`; return; }
-list.innerHTML = '';
-sorted.forEach(p=>{
-const li = document.createElement('li');
-li.className = 'item';
-li.innerHTML = `
-<div class="thumb">${p.thumb?`<img src="${p.thumb}" alt="Miniatura">`:''}</div>
-<div>
-<a href="${p.url}" target="_blank" rel="noopener">${p.titulo}</a>
-<small>${new Date(p.fecha).toLocaleDateString('es-CL')}${p.medio?` • ${p.medio}`:''}</small>
-</div>`;
-list.appendChild(li);
-});
-})();
-
-/* ======= Comentarios (localStorage) ======= */
-(function(){
-const KEY='elrayo_agustin_comments_v2';
+const KEY='elrayo_agustin_comments_v3';
 const form = document.getElementById('commentForm');
 const out = document.getElementById('comments');
+
 const get = ()=> JSON.parse(localStorage.getItem(KEY)||'[]');
 const set = d => localStorage.setItem(KEY, JSON.stringify(d));
 const escapeHtml = s => s.replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
 function render(){
 const data = get().sort((a,b)=> b.ts - a.ts);
-if(data.length===0){ out.innerHTML = `<p class="empty">Aún no hay comentarios. ¡Sé el primero en saludar a Agustín! 🏁</p>`; return; }
+if(data.length===0){ out.innerHTML = `<p class="empty">Aún no hay mensajes. ¡Sé el primero en saludar a El Rayo! 🏁</p>`; return; }
 out.innerHTML = '';
 data.forEach(c=>{
 const div = document.createElement('div');
@@ -435,13 +442,20 @@ div.innerHTML = `<strong>${escapeHtml(c.name)}</strong> <span class="meta">• $
 out.appendChild(div);
 });
 }
+
 form.addEventListener('submit', e=>{
 e.preventDefault();
 const name = document.getElementById('name').value.trim();
 const msg = document.getElementById('message').value.trim();
 if(!name || !msg) return;
+// Guardar visible
 const arr = get(); arr.push({name, msg, ts: Date.now()}); set(arr); form.reset(); render();
+// Abrir cliente de correo
+const subject = encodeURIComponent(`Mensaje para EL RAYO AGUSTÍN de ${name}`);
+const body = encodeURIComponent(`${msg}\n\n— Enviado desde el blog de EL RAYO AGUSTÍN`);
+window.location.href = `mailto:elrayoagustin1@gmail.com?subject=${subject}&body=${body}`;
 });
+
 render();
 })();
 </script>
