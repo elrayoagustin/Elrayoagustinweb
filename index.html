@@ -1,107 +1,27 @@
 <!doctype html>
 <html lang="es">
 <head>
-<!-- =========================
-SEO BÁSICO
-========================== -->
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>El Rayo Agustín — Piloto chileno | Agustín Alfaro | Fórmula 1, Fórmula E, Fórmula 4, Karting</title>
-<meta name="description" content="Sigue el camino de nuestro piloto chileno Agustín Alfaro. Blog, mini-juego, videos oficiales de YouTube, prensa y mensajes de fans. Fórmula 1, Fórmula E, Fórmula 4, karting." />
-<link rel="canonical" href="https://tudominio.cl/" /> <!-- TODO: ajusta a tu dominio real con HTTPS -->
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>El Rayo Agustín — Piloto chileno | Agustín Alfaro</title>
+<meta name="description" content="Sigue el camino de nuestro piloto chileno Agustín Alfaro: mini-juego, música, videos y mensajes de fans."/>
+<meta name="theme-color" content="#0c0c0f"/>
 
-<!-- Palabras clave (no decisivo en 2025, pero suma algo) -->
-<meta name="keywords" content="Piloto chileno, Deportista chileno, Agustín, Agustín Alfaro, Fórmula 1, Fórmula E, Fórmula 4, Karting, Deportista, Automovilismo, El Rayo Agustín" />
-<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-<meta name="language" content="es" />
-<link rel="alternate" href="https://tudominio.cl/" hreflang="es-cl" /> <!-- TODO: ajusta si tienes versiones en otros idiomas -->
+<!-- Favicon (auto de carrera) -->
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><text y="48" font-size="48">🏎️</text></svg>'/>
 
-<!-- =========================
-APARIENCIA / “PÁGINA SEGURA”
-(el candado lo da HTTPS en tu hosting; usa un certificado SSL)
-========================== -->
-<meta name="theme-color" content="#0c0c0f" />
-<!-- Content Security Policy básica (mejora seguridad; ajusta si agregas scripts externos) -->
-<meta http-equiv="Content-Security-Policy"
-content="default-src 'self' data: blob: https://www.youtube.com https://www.youtube-nocookie.com; 
-img-src 'self' data: https://*; 
-style-src 'self' 'unsafe-inline'; 
-script-src 'self'; 
-media-src 'self' https://*; 
-connect-src 'self'; 
-frame-ancestors 'self'; 
-frame-src https://www.youtube.com https://www.youtube-nocookie.com;">
-<!-- HTTPS TIP: publica en Netlify, Vercel, GitHub Pages o tu hosting con SSL para ver el candado. -->
+<!-- Seguridad (habilita YouTube en iframes) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; img-src 'self' data: https://*; style-src 'self' 'unsafe-inline'; script-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https://*; connect-src 'self';"/>
 
-<!-- =========================
-FAVICON (LOGO AUTO CARRERA)
-(SVG con emoji: compatibilidad muy amplia)
-========================== -->
-<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><text y="48" font-size="48">🏎️</text></svg>' />
-<link rel="shortcut icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><text y="48" font-size="48">🏎️</text></svg>' />
-<!-- iOS PWA icon (fallback PNG 180x180 opcional) -->
-<!-- <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" /> -->
-
-<!-- =========================
-OPEN GRAPH / TWITTER CARDS
-========================== -->
-<meta property="og:title" content="El Rayo Agustín — Piloto chileno (Agustín Alfaro)" />
-<meta property="og:description" content="Blog, mini-juego, videos oficiales y prensa. Síguelo en su camino por F1, Fórmula E, F4 y el karting." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://tudominio.cl/" /> <!-- TODO -->
-<meta property="og:image" content="https://tudominio.cl/og-image.jpg" /> <!-- (opcional) crea una imagen 1200x630 -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="El Rayo Agustín — Piloto chileno (Agustín Alfaro)" />
-<meta name="twitter:description" content="Sigue su camino: videos, juego y prensa." />
-<meta name="twitter:image" content="https://tudominio.cl/og-image.jpg" /> <!-- (opcional) -->
-
-<!-- =========================
-SCHEMA.ORG (JSON-LD)
-Describe sitio y persona/deportista
-========================== -->
-<script type="application/ld+json">
-{
-"@context":"https://schema.org",
-"@graph":[
-{
-"@type":"WebSite",
-"name":"El Rayo Agustín",
-"url":"https://tudominio.cl/",
-"potentialAction":{
-"@type":"SearchAction",
-"target":"https://tudominio.cl/?q={search_term_string}",
-"query-input":"required name=search_term_string"
-}
-},
-{
-"@type":["Person","Athlete"],
-"name":"Agustín Alfaro",
-"alternateName":"El Rayo Agustín",
-"nationality":"Chile",
-"sport":"Auto racing",
-"description":"Piloto chileno de automovilismo: karting, Fórmula 4, proyección a Fórmula E y F1.",
-"url":"https://tudominio.cl/",
-"sameAs":[
-"https://www.youtube.com/channel/UCAi1UfkKLYyJWwbBmbmK2mA",
-"https://www.instagram.com/agustinalfaro_oficial?igsh=YTF4a2NkMGoxMjBt&utm_source=qr"
-]
-}
-]
-}
-</script>
-
-<!-- =========================
-ESTILOS
-========================== -->
 <style>
 :root{
 --bg:#0b0b0f; --text:#f2f4f8; --muted:#b8bbc7; --brand:#ff3b30; --accent:#27d17f;
---card:#12141a; --glass:#ffffff12; --max:1120px; --radius:14px; --shadow:0 14px 34px rgba(0,0,0,.38);
---titleSizeMax: 96px;
+--card:#12141a; --glass:#ffffff14; --max:1120px; --radius:14px; --shadow:0 14px 34px rgba(0,0,0,.38);
+--titleMax: 96px;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial; color:var(--text); line-height:1.55; background:#000}
+body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial; color:var(--text); background:#000; line-height:1.55}
 a{color:#fff; text-decoration:none}
 
 /* NAV */
@@ -110,53 +30,37 @@ a{color:#fff; text-decoration:none}
 .menu{display:flex; gap:16px; flex-wrap:wrap}
 .menu a{opacity:.9; font-weight:700} .menu a:hover{opacity:1}
 
-/* HERO con imagen + música */
-.hero{position:relative; min-height:64vh; display:grid; place-items:center; text-align:center; overflow:hidden;}
-.heroBg{
-position:absolute; inset:0; background: url("URL_DE_TU_IMAGEN.jpg") center/cover no-repeat; /* TODO: tu imagen */
-transform: scale(1.08);
-animation: kenburns 18s ease-in-out infinite alternate;
-filter: saturate(1.05) contrast(1.08) brightness(.9);
-}
+/* HERO */
+.hero{position:relative; min-height:64vh; display:grid; place-items:center; text-align:center; overflow:hidden}
+.heroBg{position:absolute; inset:0; background:url("https://images.unsplash.com/photo-1530041686307-2fdee4d1d5a1?q=80&w=1920&auto=format&fit=crop") center/cover no-repeat; transform:scale(1.08); animation:kb 18s ease-in-out infinite alternate; filter:saturate(1.05) contrast(1.08) brightness(.9)}
 .heroOverlay{position:absolute; inset:0; background: radial-gradient(80% 70% at 50% 40%, rgba(0,0,0,.25), rgba(0,0,0,.85))}
-@keyframes kenburns{0%{transform:scale(1.08) translateY(0)}100%{transform:scale(1.16) translateY(-2%)}}
-
+@keyframes kb{0%{transform:scale(1.08) translateY(0)}100%{transform:scale(1.16) translateY(-2%)}}
 .heroInner{position:relative; padding: clamp(24px,4vw,48px); max-width:var(--max); width:100%}
-.title{font-size: clamp(40px, 8.2vw, var(--titleSizeMax)); font-weight:1000; letter-spacing:-.02em; margin:0}
+.title{font-size:clamp(40px,8.2vw,var(--titleMax)); font-weight:1000; letter-spacing:-.02em; margin:0}
 .carTrack{position:relative; height:1.3em; margin-top:8px}
-.car{position:absolute; left:-1.1em; bottom:-.05em; font-size:clamp(26px,6vw,56px); text-shadow:0 0 18px var(--brand); animation: car-run 6s linear infinite;}
-@keyframes car-run{0%{transform:translateX(0)}50%{transform:translateX(calc(100% + 1.6em))}100%{transform:translateX(0)}}
-
-.subtitle{
-font-size: clamp(20px, 4.1vw, calc(var(--titleSizeMax) / 2));
-font-weight: 800; color:#f7f7fb; text-shadow: 0 2px 14px rgba(0,0,0,.35);
-margin: 18px auto 16px; line-height: 1.1;
-}
-.fireworks{display:inline-block; animation: pop 1.4s ease-in-out infinite}
-.fireworks:nth-child(2){animation-delay:.3s}
-.fireworks:nth-child(3){animation-delay:.6s}
+.car{position:absolute; left:-1.1em; bottom:-.05em; font-size:clamp(26px,6vw,56px); text-shadow:0 0 18px var(--brand); animation:car 6s linear infinite}
+@keyframes car{0%{transform:translateX(0)}50%{transform:translateX(calc(100% + 1.6em))}100%{transform:translateX(0)}}
+.subtitle{font-size:clamp(20px,4.1vw,calc(var(--titleMax)/2)); font-weight:800; color:#f7f7fb; text-shadow:0 2px 14px rgba(0,0,0,.35); margin:18px auto 16px; line-height:1.1}
+.fw{display:inline-block; animation:pop 1.4s ease-in-out infinite} .fw:nth-child(2){animation-delay:.3s} .fw:nth-child(3){animation-delay:.6s}
 @keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
-
 .cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:10px}
 .btn{display:inline-flex; align-items:center; gap:10px; background:var(--glass); border:1px solid #ffffff2a; padding:12px 16px; border-radius:12px; font-weight:800; letter-spacing:.2px; box-shadow:var(--shadow); backdrop-filter:blur(6px)}
-.btn:hover{background:#ffffff20}
+.btn:hover{background:#ffffff24}
 .btn.youtube{background:#ff0000; border-color:#ff0000}
 .btn.instagram{background:#eee; color:#111}
-.icon{width:22px; height:22px; display:inline-block}
+.icon{width:22px; height:22px}
 
-/* AUDIO control */
-.audioControl{position:absolute; right:16px; bottom:16px; z-index:2; display:flex; gap:8px; align-items:center; background:#00000080; border:1px solid #ffffff40; color:#fff; padding:8px 10px; border-radius:999px; font-size:13px; backdrop-filter: blur(6px);}
-.audioControl button{background:#ffffff18; color:#fff; border:1px solid #ffffff40; border-radius:999px; padding:6px 10px; cursor:pointer; font-weight:700}
-.audioControl button:hover{background:#ffffff28}
+.audioCtl{position:absolute; right:16px; bottom:16px; z-index:5; display:flex; gap:8px; align-items:center; background:#00000080; border:1px solid #ffffff40; color:#fff; padding:8px 10px; border-radius:999px; font-size:13px; backdrop-filter: blur(6px)}
+.audioCtl button{background:#ffffff18; color:#fff; border:1px solid #ffffff40; border-radius:999px; padding:6px 10px; cursor:pointer; font-weight:700}
+.audioCtl button:hover{background:#ffffff28}
 
 /* LAYOUT */
 .container{max-width:var(--max); margin:0 auto; padding:26px 16px}
 h2{font-size:clamp(22px,3.2vw,32px); margin:0 0 14px}
 
-/* CARDS / LISTS */
+/* CARDS */
 .card{background:#0f1118cc; border:1px solid #ffffff20; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
-.cardHeader{padding:16px 16px 0}
-.cardBody{padding:16px}
+.cardHeader{padding:16px 16px 0} .cardBody{padding:16px}
 .chip{display:inline-block; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; padding:6px 10px; border-radius:999px; background:#ffffff16; border:1px solid #ffffff22}
 .meta{color:var(--muted); font-size:13px; margin-top:6px}
 
@@ -175,7 +79,7 @@ h2{font-size:clamp(22px,3.2vw,32px); margin:0 0 14px}
 /* COMMENTS */
 #comments .comment{border:1px solid #ffffff18; background:#ffffff0e; border-radius:12px; padding:12px}
 #commentForm{display:grid; gap:10px}
-input, textarea{width:100%; background:#0f1118; border:1px solid #ffffff25; color:#fff; padding:10px 12px; border-radius:10px; resize:vertical}
+input,textarea{width:100%; background:#0f1118; border:1px solid #ffffff25; color:#fff; padding:10px 12px; border-radius:10px; resize:vertical}
 textarea{min-height:100px}
 .btn.submit{background:var(--accent); color:#0b0b0f; border:none}
 .empty{color:var(--muted); font-style:italic}
@@ -197,24 +101,28 @@ footer{border-top:1px solid #ffffff1a; color:#b8bbc7; text-align:center; padding
 
 <!-- HERO con fondo + música -->
 <header class="hero" role="banner" aria-label="Portada">
-<div class="heroBg" aria-hidden="true"></div> <!-- TODO: pon aquí tu imagen en CSS (arriba) -->
+<div class="heroBg" aria-hidden="true"></div>
 <div class="heroOverlay" aria-hidden="true"></div>
 
-<!-- Música de fondo -->
-<audio id="bgm" src="URL_DE_TU_AUDIO.mp3" preload="auto" loop></audio> <!-- TODO: tu audio -->
-<div class="audioControl" id="audioCtl" style="display:none">
-<span>🎵 Música</span>
-<button id="playAudio">Reproducir</button>
-<button id="pauseAudio">Pausar</button>
+<!-- Reproductor YouTube “audio” (autoplay muted + loop). Botón para activar sonido -->
+<div class="audioCtl" id="audioCtl">
+<span>🎵 Canción</span>
+<button id="unmute">🔊 Activar sonido</button>
+<button id="mute">🔇 Silenciar</button>
 </div>
+<!-- Visible de 1x1 para mejorar autoplay; enablejsapi para controlar volumen/mute -->
+<iframe id="ytAudio" width="1" height="1" style="position:absolute; left:-9999px; top:-9999px;"
+src="https://www.youtube.com/embed/YhX_Woa3kVA?si=T9WUek9QlW-h7Gp5&autoplay=1&mute=1&loop=1&playlist=YhX_Woa3kVA&controls=0&modestbranding=1&playsinline=1&enablejsapi=1"
+title="YouTube audio" allow="autoplay"
+frameborder="0"></iframe>
 
 <div class="heroInner">
 <h1 class="title">EL RAYO AGUSTÍN</h1>
 <div class="carTrack"><span class="car" aria-hidden="true">🏎️</span></div>
 
 <p class="subtitle">
-<span class="fireworks">🎆</span> Sigue el camino de nuestro piloto Chileno Agustín Alfaro
-<span class="fireworks">🎇</span><span class="fireworks">🧨</span>
+<span class="fw">🎆</span> Sigue el camino de nuestro piloto Chileno Agustín Alfaro
+<span class="fw">🎇</span><span class="fw">🧨</span>
 </p>
 
 <div class="cta">
@@ -224,15 +132,8 @@ YouTube
 </a>
 <a class="btn instagram" target="_blank" rel="noopener" href="https://www.instagram.com/agustinalfaro_oficial?igsh=YTF4a2NkMGoxMjBt&utm_source=qr" aria-label="Instagram de Agustín">
 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-<defs>
-<linearGradient id="ig" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stop-color="#f58529"/><stop offset="25%" stop-color="#dd2a7b"/>
-<stop offset="50%" stop-color="#8134af"/><stop offset="75%" stop-color="#515bd4"/>
-<stop offset="100%" stop-color="#515bd4"/>
-</linearGradient>
-</defs>
-<path fill="url(#ig)" d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.4.5.6.2 1 .5 1.5 1 .4.4.8.9 1 1.5.3.5.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.5 2.4-.2.6-.5 1-1 1.5-.4.4-.9.8-1.5 1-.5.3-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.5 0-4.9-.1c-1.2-.1-1.9-.2-2.4-.5-.6-.2-1-.5-1.5-1-.4-.4-.8-.9-1-1.5-.3-.5-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.5-2.4.2-.6.5-1 1-1.5.4-.4.9-.8 1.5-1 .5-.3 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2zm0 5.4a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8zm6.6-3.2a1 1 0 1 1 0 2.1 1 1 0 0 1 0-2.1z"/>
-</svg>
+<defs><linearGradient id="ig" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f58529"/><stop offset="25%" stop-color="#dd2a7b"/><stop offset="50%" stop-color="#8134af"/><stop offset="75%" stop-color="#515bd4"/><stop offset="100%" stop-color="#515bd4"/></linearGradient></defs>
+<path fill="url(#ig)" d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.4.5.6.2 1 .5 1.5 1 .4.4.8.9 1 1.5.3.5.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.5 2.4-.2.6-.5 1-1 1.5-.4.4-.9.8-1.5 1-.5.3-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.5 0-4.9-.1c-1.2-.1-1.9-.2-2.4-.5-.6-.2-1-.5-1.5-1-.4-.4-.8-.9-1-1.5-.3-.5-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.5-2.4.2-.6.5-1 1-1.5.4-.4.9-.8 1.5-1 .5-.3 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2zm0 5.4a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8zm6.6-3.2a1 1 0 1 1 0 2.1 1 1 0 0 1 0-2.1z"/></svg>
 Instagram
 </a>
 </div>
@@ -252,7 +153,7 @@ Instagram
 </div>
 <canvas id="game" width="1100" height="420" aria-label="Pista de carrera"></canvas>
 <div class="help">
-Secuencia: 👨‍✈️ <b>Agustín</b> camina → se sube al F1 → 🏎️ corre izquierda→derecha. Controles: <span class="kbd">Espacio</span> / <span class="kbd">Toque</span>. Esquiva <b>personas</b>.
+Secuencia: 👨‍✈️ <b>Agustín</b> camina → se sube al F1 → 🏎️ corre izquierda→derecha. Controles: <span class="kbd">Espacio</span> o <span class="kbd">Toque</span> para <b>saltar</b>. Esquiva <b>personas</b>.
 </div>
 </div>
 </section>
@@ -293,26 +194,28 @@ allowfullscreen></iframe>
 
 <footer>© <span id="year"></span> Agustín “El Rayo” Alfaro — Hecho con ❤️ para la comunidad.</footer>
 
-<!-- =========================
-SCRIPTS
-========================== -->
 <script>
 /* Año dinámico */
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* Música fondo: autoplay si se puede, con controles si no */
+/* ===== YouTube “audio” control (desmuteo bajo demanda) ===== */
 (function(){
-const audio = document.getElementById('bgm');
-const ctl = document.getElementById('audioCtl');
-const playBtn = document.getElementById('playAudio');
-const pauseBtn = document.getElementById('pauseAudio');
-audio.volume = 0.7;
-audio.play().catch(()=>{}).finally(()=>{ ctl.style.display='flex'; });
-playBtn.addEventListener('click', ()=> audio.play());
-pauseBtn.addEventListener('click', ()=> audio.pause());
+const iframe = document.getElementById('ytAudio');
+const unmute = document.getElementById('unmute');
+const mute = document.getElementById('mute');
+
+function post(cmd){ iframe.contentWindow.postMessage(JSON.stringify({ event:'command', func:cmd }), '*'); }
+
+// Aseguramos que esté reproduciendo y en bucle (ya viene con loop=1&playlist=ID)
+// Desmutear cuando el usuario lo pida (requisito de autoplay en navegadores)
+unmute.addEventListener('click', ()=>{ post('unMute'); post('playVideo'); });
+mute.addEventListener('click', ()=>{ post('mute'); });
+
+// En iOS a veces requiere un tap en la página: al primer interacción, reproducimos si está pausado
+document.addEventListener('click', ()=> post('playVideo'), { once:true });
 })();
 
-/* Mini-juego: “Agustín” camina -> se sube -> corre y salta personas */
+/* ===== Mini-juego: Agustín -> se sube -> corre y salta personas ===== */
 (function(){
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
@@ -322,11 +225,15 @@ const GROUND_Y = H - 70;
 const state = { phase:'walk', running:true, score:0, speed:3.6, speedFactor:1, lives:3, obstacles:[], t:0 };
 const pilot = { label:'Agustín', x:40, y:GROUND_Y-60, w:26, h:60, step:0 };
 const car = { x:280, y:GROUND_Y-36, w:120, h:36, color:'#ff3b30', onGround:true, vy:0 };
-const $score = document.getElementById('score'), $speed = document.getElementById('speed'), $lives = document.getElementById('lives');
+
+const $score = document.getElementById('score');
+const $speed = document.getElementById('speed');
+const $lives = document.getElementById('lives');
 
 function updateHUD(){ $score.textContent=state.score; $speed.textContent=state.speedFactor.toFixed(1)+'x'; $lives.textContent=state.lives; }
 function resetGame(){ state.phase='walk'; state.running=true; state.score=0; state.speed=3.6; state.speedFactor=1; state.lives=3; state.obstacles=[]; state.t=0;
 pilot.x=40; pilot.y=GROUND_Y-60; pilot.step=0; car.x=280; car.y=GROUND_Y-36; car.onGround=true; car.vy=0; updateHUD(); }
+document.getElementById('restart').addEventListener('click', resetGame);
 
 function spawnPerson(){
 const lastX = state.obstacles.length ? Math.max(...state.obstacles.map(o=>o.x)) : W + 200;
@@ -338,14 +245,15 @@ state.obstacles.push({ x, y:GROUND_Y-h, w, h, type:'person', sway: Math.random()
 function update(){
 if(!state.running) return;
 state.t++;
+
 if(state.phase==='walk'){
 pilot.step += 0.2; pilot.x += 1.8;
 if(pilot.x + pilot.w >= car.x + car.w*0.15) state.phase='mount';
-}else if(state.phase==='mount'){
+} else if(state.phase==='mount'){
 if(state.t % 8 === 0) car.y -= 2;
 if(state.t % 8 === 4) car.y += 2;
 if(state.t % 24 === 0) state.phase='run';
-}else{
+} else {
 state.speedFactor += 0.00085; const v = state.speed * state.speedFactor;
 for(const o of state.obstacles){ o.x -= v; if(o.type==='person'){ o.sway += 0.04; } }
 state.obstacles = state.obstacles.filter(o=> o.x > -80);
@@ -366,13 +274,21 @@ state.score += Math.floor(1 * state.speedFactor); updateHUD();
 }
 
 function draw(){
+// Fondo
 ctx.fillStyle = '#0d0f16'; ctx.fillRect(0,0,W,H);
+// Suelo y línea
 ctx.fillStyle = '#0b0d13'; ctx.fillRect(0,GROUND_Y, W, H - GROUND_Y);
 ctx.strokeStyle = '#ffffff22'; ctx.setLineDash([16,16]); ctx.lineWidth = 3;
 ctx.beginPath(); ctx.moveTo(0, GROUND_Y-20); ctx.lineTo(W, GROUND_Y-20); ctx.stroke(); ctx.setLineDash([]);
+
+// Auto y piloto
 drawCar(car.x, car.y, car.w, car.h, car.color);
 if(state.phase==='walk'){ drawPilot(pilot.x, pilot.y, pilot.w, pilot.h, pilot.step, pilot.label); }
+
+// Personas (obstáculos)
 for(const o of state.obstacles){ if(o.type==='person') drawPerson(o.x,o.y,o.w,o.h,o.sway); }
+
+// Game Over
 if(!state.running){
 ctx.fillStyle='rgba(0,0,0,.55)'; ctx.fillRect(0,0,W,H);
 ctx.fillStyle='#fff'; ctx.font='700 42px system-ui,sans-serif'; ctx.textAlign='center';
@@ -383,12 +299,16 @@ ctx.fillText('Pulsa Reiniciar para jugar de nuevo', W/2, H/2 + 26);
 }
 
 function drawPilot(x,y,w,h,step,label){
+// Casco
 ctx.fillStyle='#e5e9f0'; ctx.fillRect(x+w*0.1,y,w*0.8,h*0.28);
 ctx.fillStyle='#1b1f2a'; ctx.fillRect(x+w*0.2,y+h*0.08,w*0.6,h*0.12);
+// Cuerpo rojo
 ctx.fillStyle='#b12a2a'; ctx.fillRect(x+w*0.2,y+h*0.28,w*0.6,h*0.42);
+// Piernas (caminata)
 const swing=Math.sin(step)*6; ctx.fillStyle='#d33a3a';
-ctx.fillRect(x+w*0.2 - swing*0.3, y+h*0.7, w*0.26, h*0.3);
-ctx.fillRect(x+w*0.54 + swing*0.3, y+h*0.7, w*0.26, h*0.3);
+ctx.fillRect(x + w*0.2 - swing*0.3, y + h*0.7, w*0.26, h*0.3);
+ctx.fillRect(x + w*0.54 + swing*0.3, y + h*0.7, w*0.26, h*0.3);
+// Nombre
 ctx.fillStyle='#ffffff'; ctx.font='600 14px system-ui,sans-serif'; ctx.textAlign='center';
 ctx.fillText(label, x + w/2, y - 8);
 }
@@ -401,23 +321,29 @@ ctx.fillStyle='#111'; ctx.beginPath(); ctx.arc(x+w*0.25,y+h*0.92,h*0.18,0,Math.P
 ctx.beginPath(); ctx.arc(x+w*0.78,y+h*0.92,h*0.18,0,Math.PI*2); ctx.fill();
 }
 function drawPerson(x,y,w,h,sway){
+// Cabeza
 ctx.fillStyle='#f2d3b1'; ctx.beginPath(); ctx.arc(x + w/2, y + h*0.13, w*0.35, 0, Math.PI*2); ctx.fill();
+// Cuerpo (camiseta azul)
 ctx.fillStyle='#6aa0ff'; ctx.fillRect(x+w*0.2, y+h*0.24, w*0.6, h*0.42);
+// Piernas con leve balanceo
 const leg=Math.sin(sway)*3; ctx.fillStyle='#445';
 ctx.fillRect(x + w*0.2 - leg*0.2, y + h*0.66, w*0.25, h*0.34);
 ctx.fillRect(x + w*0.55 + leg*0.2, y + h*0.66, w*0.25, h*0.34);
 }
-function loop(){ update(); draw(); requestAnimationFrame(loop); } loop();
-function jump(){ if(state.phase!=='run') return; if(car.onGround){ car.vy=-10.6; car.onGround=false; } }
+
+function loop(){ update(); draw(); requestAnimationFrame(loop); }
+loop();
+
+function jump(){ if(state.phase!=='run') return; if(car.onGround){ car.vy = -10.6; car.onGround = false; } }
 window.addEventListener('keydown', e=>{ if(e.code==='Space'){ e.preventDefault(); jump(); } });
 canvas.addEventListener('touchstart', ()=> jump(), {passive:true});
-document.getElementById('restart').addEventListener('click', resetGame);
 })();
 
-/* Comentarios: visibles + abre email a elrayoagustin1@gmail.com */
+/* ===== Comentarios (visibles + abre email) ===== */
 (function(){
-const KEY='elrayo_agustin_comments_v6';
-const form=document.getElementById('commentForm'), out=document.getElementById('comments');
+const KEY='elrayo_agustin_comments_v7';
+const form=document.getElementById('commentForm');
+const out=document.getElementById('comments');
 const get=()=> JSON.parse(localStorage.getItem(KEY)||'[]');
 const set=d=> localStorage.setItem(KEY, JSON.stringify(d));
 const escapeHtml=s=> s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
