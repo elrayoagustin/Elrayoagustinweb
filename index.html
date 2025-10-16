@@ -8,9 +8,10 @@ SEO / Metadatos
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>El Rayo Agustín — Piloto chileno | Agustín Alfaro</title>
 <meta name="description" content="Sigue el camino de El Rayo Agustín (Agustín Alfaro), piloto chileno de automovilismo. Blog, mini-juego, videos oficiales y mensajes de fans."/>
-<meta name="keywords" content="Piloto, Deportista chileno, Agustín, El rayo, El rayo Agustín, Agustín Alfaro, Deportista, Automovilismo, Fórmula 1, Karting"/>
+<meta name="keywords" content="Piloto, Deportista chileno, Agustín, El rayo, El rayo Agustín, Agustín Alfaro, Deportista chileno, Automovilismo, Fórmula 1, Fórmula E, Fórmula 4, Karting"/>
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
 <link rel="canonical" href="https://tudominio.cl/"/>
+
 <!-- Open Graph / Twitter -->
 <meta property="og:title" content="El Rayo Agustín — Piloto chileno (Agustín Alfaro)"/>
 <meta property="og:description" content="Mini-juego, videos, prensa y comunidad de El Rayo Agustín."/>
@@ -27,36 +28,37 @@ SEO / Metadatos
 {
 "@context":"https://schema.org",
 "@graph":[
-{
-"@type":"WebSite",
-"name":"El Rayo Agustín",
-"url":"https://tudominio.cl/"
-},
-{
-"@type":["Person","Athlete"],
-"name":"Agustín Alfaro",
-"alternateName":"El Rayo Agustín",
-"nationality":"Chile",
-"sport":"Auto racing",
+{"@type":"WebSite","name":"El Rayo Agustín","url":"https://tudominio.cl/"},
+{"@type":["Person","Athlete"],
+"name":"Agustín Alfaro","alternateName":"El Rayo Agustín",
+"nationality":"Chile","sport":"Auto racing",
 "description":"Piloto chileno de automovilismo con experiencia en karting y proyección a monoplazas.",
 "url":"https://tudominio.cl/",
 "sameAs":[
 "https://www.youtube.com/channel/UCAi1UfkKLYyJWwbBmbmK2mA",
 "https://www.instagram.com/agustinalfaro_oficial?igsh=YTF4a2NkMGoxMjBt&utm_source=qr"
-]
-}
+]}
 ]
 }
 </script>
 
-<!-- Seguridad: habilitar iframes de YouTube -->
+<!-- Rendimiento para YouTube -->
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://www.youtube-nocookie.com">
+
+<!-- Seguridad: habilitar scripts inline y iframes de YouTube -->
 <meta http-equiv="Content-Security-Policy"
-content="default-src 'self'; img-src 'self' data: https://*; style-src 'self' 'unsafe-inline'; script-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https://*; connect-src 'self';"/>
+content="default-src 'self';
+img-src 'self' data: https:;
+style-src 'self' 'unsafe-inline';
+script-src 'self' 'unsafe-inline';
+frame-src https://www.youtube.com https://www.youtube-nocookie.com;
+media-src 'self' https:;
+connect-src 'self';">
 
 <!-- Favicon (SVG, sin emoji) -->
 <link rel="icon" type="image/svg+xml"
 href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32"><rect width="64" height="32" fill="black"/><path d="M6 20h10l6-6h16l8 6h6v4H6z" fill="white"/></svg>'/>
-
 <meta name="theme-color" content="#0c0c0f"/>
 
 <!-- =========================
@@ -107,14 +109,14 @@ h2{font-size:clamp(22px,3.2vw,32px); margin:0 0 14px}
 .card{background:#0f1118cc; border:1px solid #ffffff20; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
 .cardHeader{padding:16px 16px 0} .cardBody{padding:16px}
 .chip{display:inline-block; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; padding:6px 10px; border-radius:999px; background:#ffffff16; border:1px solid #ffffff22}
-.meta{color:var(--muted); font-size:13px; margin-top:6px}
+.meta{color:#b8bbc7; font-size:13px; margin-top:6px}
 
 /* GAME */
 #gameWrap{background:var(--card); border:1px solid #ffffff22; border-radius:var(--radius)}
 #hud{display:flex; gap:16px; align-items:center; justify-content:space-between; padding:10px 16px; border-bottom:1px solid #ffffff1a; background:#0e1016}
 #hud span{font-weight:800}
 #game{display:block; width:100%; height:auto; background:#0d0f16}
-.help{color:var(--muted); font-size:14px; padding:10px 16px}
+.help{color:#b8bbc7; font-size:14px; padding:10px 16px}
 .kbd{display:inline-block; padding:2px 6px; border:1px solid #ffffff30; border-radius:6px; background:#ffffff10; font-weight:700}
 
 /* VIDEOS */
@@ -127,7 +129,7 @@ h2{font-size:clamp(22px,3.2vw,32px); margin:0 0 14px}
 input,textarea{width:100%; background:#0f1118; border:1px solid #ffffff25; color:#fff; padding:10px 12px; border-radius:10px; resize:vertical}
 textarea{min-height:100px}
 .btn.submit{background:var(--accent); color:#0b0b0f; border:none}
-.empty{color:var(--muted); font-style:italic}
+.empty{color:#b8bbc7; font-style:italic}
 footer{border-top:1px solid #ffffff1a; color:#b8bbc7; text-align:center; padding:26px 16px; margin-top:24px}
 </style>
 </head>
@@ -149,14 +151,18 @@ footer{border-top:1px solid #ffffff1a; color:#b8bbc7; text-align:center; padding
 <div class="heroBg" aria-hidden="true"></div>
 <div class="heroOverlay" aria-hidden="true"></div>
 
-<!-- Control de música (YouTube embed oculto) -->
+<!-- Controles de música -->
 <div class="audioCtl" id="audioCtl">
 <button id="playMusic">Reproducir música</button>
 <button id="pauseMusic">Pausar</button>
 </div>
-<iframe id="ytAudio" width="1" height="1" style="position:absolute; left:-9999px; top:-9999px;"
-src="https://www.youtube.com/embed/YhX_Woa3kVA?si=T9WUek9QlW-h7Gp5&autoplay=0&mute=1&loop=1&playlist=YhX_Woa3kVA&controls=0&modestbranding=1&playsinline=1&enablejsapi=1"
-title="Audio YouTube" allow="autoplay" frameborder="0"></iframe>
+
+<!-- Iframe YouTube (se configura por JS para incluir origin dinámico) -->
+<iframe id="ytAudio" width="1" height="1"
+style="position:absolute; left:-9999px; top:-9999px;"
+title="Audio YouTube"
+allow="autoplay; encrypted-media; picture-in-picture"
+frameborder="0"></iframe>
 
 <div class="heroInner">
 <h1 class="title">EL RAYO AGUSTÍN</h1>
@@ -233,54 +239,68 @@ allowfullscreen></iframe>
 <footer>© <span id="year"></span> Agustín “El Rayo” Alfaro — Comunidad oficial.</footer>
 
 <!-- =========================
-Scripts
+Scripts (inline habilitados por CSP)
 ========================== -->
 <script>
 // Año dinámico
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// ===== Música de YouTube: Play/Pause =====
+// ====== Música de YouTube: configuración y controles ======
 (function(){
+const VIDEO_ID = 'YhX_Woa3kVA';
 const iframe = document.getElementById('ytAudio');
 const playBtn = document.getElementById('playMusic');
 const pauseBtn = document.getElementById('pauseMusic');
 
-function post(cmd){ iframe.contentWindow.postMessage(JSON.stringify({ event:'command', func:cmd }), '*'); }
+function buildSrc({autoplay=0, mute=1}) {
+const origin = encodeURIComponent(location.origin);
+return `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=${autoplay}&mute=${mute}&loop=1&playlist=${VIDEO_ID}&controls=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=${origin}`;
+}
 
-// Reproduce (desmutea) bajo interacción del usuario
+// 1) Intento de autoplay MUTED (permitido por políticas)
+iframe.src = buildSrc({autoplay:1, mute:1});
+
+// 2) Si el usuario presiona Reproducir -> desmutea y fuerza reproducción (fallback: recargar src)
+function post(cmd){ 
+try{ iframe.contentWindow.postMessage(JSON.stringify({ event:'command', func:cmd }), '*'); }catch(e){}
+}
+
 playBtn.addEventListener('click', ()=>{
-post('playVideo');
-post('unMute');
+// Primero intentamos vía postMessage (algunos navegadores lo aceptan)
+post('playVideo'); post('unMute');
+// Fallback: recargamos el src con autoplay=1 y mute=0 para asegurar reproducción tras gesto del usuario
+setTimeout(()=>{ iframe.src = buildSrc({autoplay:1, mute:0}); }, 120);
 });
+
 pauseBtn.addEventListener('click', ()=>{
-post('mute');
-post('pauseVideo');
+post('mute'); post('pauseVideo');
+// Fallback: dejamos muteado sin autoplay
+setTimeout(()=>{ iframe.src = buildSrc({autoplay:0, mute:1}); }, 120);
 });
+
+// Cualquier primer gesto en la página asegura que el player quede reproduciendo
+const oncePlay = ()=>{ post('playVideo'); document.removeEventListener('pointerdown', oncePlay); };
+document.addEventListener('pointerdown', oncePlay, {once:true});
 })();
 
-// ===== Mini-juego: Auto que salta y esquiva obstáculos =====
+// ====== Mini-juego: Auto que salta y esquiva obstáculos ======
 (function(){
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 const W = canvas.width, H = canvas.height;
 const GROUND_Y = H - 70;
 
-const state = { running:true, score:0, speed:3.8, speedFactor:1, lives:3, obstacles:[], t:0, started:true };
+const state = { running:true, score:0, speed:3.8, speedFactor:1, lives:3, obstacles:[], t:0 };
 const car = { x:120, y:GROUND_Y-34, w:120, h:34, vy:0, onGround:true, color:'#ff3b30' };
 
 const $score = document.getElementById('score');
 const $speed = document.getElementById('speed');
 const $lives = document.getElementById('lives');
 
-function updateHUD(){
-$score.textContent = state.score;
-$speed.textContent = state.speedFactor.toFixed(1) + 'x';
-$lives.textContent = state.lives;
-}
+function updateHUD(){ $score.textContent = state.score; $speed.textContent = state.speedFactor.toFixed(1)+'x'; $lives.textContent = state.lives; }
 function resetGame(){
 state.running = true; state.score = 0; state.speed = 3.8; state.speedFactor = 1; state.lives = 3; state.obstacles = []; state.t = 0;
-car.x = 120; car.y = GROUND_Y - car.h; car.vy = 0; car.onGround = true;
-updateHUD();
+car.x = 120; car.y = GROUND_Y - car.h; car.vy = 0; car.onGround = true; updateHUD();
 }
 document.getElementById('restart').addEventListener('click', resetGame);
 
@@ -288,7 +308,6 @@ function spawnObstacle(){
 const lastX = state.obstacles.length ? Math.max(...state.obstacles.map(o=>o.x)) : W + 300;
 const gap = 260 + Math.random()*280;
 const x = Math.max(W + 40, lastX + gap);
-// Tipo: cono o barrera
 const type = Math.random() < 0.6 ? 'cone' : 'bar';
 const w = type === 'cone' ? 22 : 50;
 const h = type === 'cone' ? 28 : 34;
@@ -301,58 +320,41 @@ state.t++;
 state.speedFactor += 0.0009;
 const v = state.speed * state.speedFactor;
 
-// Obstáculos avanzan
 for(const o of state.obstacles){ o.x -= v; }
 state.obstacles = state.obstacles.filter(o => o.x > -80);
 
-// Generación
 if(state.obstacles.length < 4 || (state.obstacles.length && state.obstacles[state.obstacles.length-1].x < W*0.6)){
 if(Math.random() < 0.05 * state.speedFactor) spawnObstacle();
 }
 
-// Salto y gravedad
 if(!car.onGround){
-car.vy += 0.55;
-car.y += car.vy;
-if(car.y >= GROUND_Y - car.h){
-car.y = GROUND_Y - car.h; car.vy = 0; car.onGround = true;
-}
+car.vy += 0.55; car.y += car.vy;
+if(car.y >= GROUND_Y - car.h){ car.y = GROUND_Y - car.h; car.vy = 0; car.onGround = true; }
 }
 
-// Colisiones AABB
 for(const o of state.obstacles){
-const ax = car.x, ay = car.y, aw = car.w, ah = car.h;
-const bx = o.x, by = o.y, bw = o.w, bh = o.h;
+const ax=car.x, ay=car.y, aw=car.w, ah=car.h, bx=o.x, by=o.y, bw=o.w, bh=o.h;
 if(ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by){
-// impacto
-state.lives--; updateHUD(); o.x = -999;
-if(state.lives <= 0){ state.running = false; }
+state.lives--; updateHUD(); o.x = -999; if(state.lives <= 0){ state.running = false; }
 }
 }
 
-// Puntuación
-state.score += Math.floor(1 * state.speedFactor);
-updateHUD();
+state.score += Math.floor(1 * state.speedFactor); updateHUD();
 }
 
 function draw(){
-// Fondo
 ctx.fillStyle = '#0d0f16'; ctx.fillRect(0,0,W,H);
-// Suelo y líneas
 ctx.fillStyle = '#0b0d13'; ctx.fillRect(0,GROUND_Y, W, H - GROUND_Y);
 ctx.strokeStyle = '#ffffff22'; ctx.setLineDash([18,18]); ctx.lineWidth = 3;
 ctx.beginPath(); ctx.moveTo(0, GROUND_Y-22); ctx.lineTo(W, GROUND_Y-22); ctx.stroke(); ctx.setLineDash([]);
 
-// Auto
 drawCar(car.x, car.y, car.w, car.h, car.color);
 
-// Obstáculos
 for(const o of state.obstacles){
 if(o.type === 'cone') drawCone(o.x, o.y, o.w, o.h);
 else drawBarrier(o.x, o.y, o.w, o.h);
 }
 
-// Game Over
 if(!state.running){
 ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fillRect(0,0,W,H);
 ctx.fillStyle = '#fff'; ctx.font = '700 42px system-ui, sans-serif'; ctx.textAlign = 'center';
@@ -363,15 +365,12 @@ ctx.fillText('Pulsa Reiniciar para jugar de nuevo', W/2, H/2 + 26);
 }
 
 function drawCar(x,y,w,h,color){
-ctx.fillStyle = color; // cuerpo principal
+ctx.fillStyle = color;
 ctx.fillRect(x+w*0.18, y+h*0.15, w*0.64, h*0.7);
-// alerón delantero y trasero
 ctx.fillRect(x, y+h*0.2, w*0.22, h*0.6);
 ctx.fillRect(x+w*0.84, y+h*0.25, w*0.16, h*0.5);
-// cockpit
 ctx.fillStyle = '#222a';
 ctx.fillRect(x+w*0.45, y+h*0.05, w*0.14, h*0.45);
-// ruedas
 ctx.fillStyle = '#111';
 ctx.beginPath(); ctx.arc(x+w*0.25, y+h*0.92, h*0.18, 0, Math.PI*2); ctx.fill();
 ctx.beginPath(); ctx.arc(x+w*0.78, y+h*0.92, h*0.18, 0, Math.PI*2); ctx.fill();
@@ -395,12 +394,12 @@ loop();
 
 function jump(){ if(!state.running) return; if(car.onGround){ car.vy = -11.2; car.onGround = false; } }
 window.addEventListener('keydown', e=>{ if(e.code==='Space' || e.code==='ArrowUp'){ e.preventDefault(); jump(); } });
-canvas.addEventListener('pointerdown', ()=> jump(), {passive:true});
+document.getElementById('game').addEventListener('pointerdown', ()=> jump(), {passive:true});
 })();
 
-// ===== Comentarios (visibles + abre email) =====
+// ====== Comentarios (visibles + abre email) ======
 (function(){
-const KEY='elrayo_agustin_comments_v8';
+const KEY='elrayo_agustin_comments_v9';
 const form=document.getElementById('commentForm');
 const out=document.getElementById('comments');
 const get=()=> JSON.parse(localStorage.getItem(KEY)||'[]');
