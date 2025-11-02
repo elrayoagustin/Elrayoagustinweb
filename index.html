@@ -1,111 +1,87 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <title>Agustín Alfaro — El Rayo Agustín | Piloto chileno</title>
-<meta name="description" content="Sitio de El Rayo Agustín (Agustín Alfaro), piloto chileno de karting y fórmula eléctrica. Fotos, videos, mensajes y mini-juego. Síguelo en Instagram y YouTube." />
-<meta name="keywords" content="Agustín Alfaro, El Rayo Agustín, piloto chileno, karting, fórmula eléctrica, VChamp, motorsport, monoplaza, Chile, automovilismo" />
-<link rel="canonical" href="https://elrayoagustin.cl/" />
-<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-<link rel="preconnect" href="https://www.youtube.com" />
-<link rel="preconnect" href="https://i.ytimg.com" />
+<meta name="description" content="El Rayo Agustín (Agustín Alfaro), piloto chileno de karting y fórmula eléctrica. Mirá sus últimos videos, fotos, mensajes de apoyo y juega el mini-juego F1.">
+<meta name="keywords" content="Agustín Alfaro, El Rayo Agustín, piloto chileno, karting, fórmula eléctrica, VChamp, motorsport, monoplaza, Chile, automovilismo, ERA Racing School">
+<link rel="canonical" href="https://elrayoagustin.cl/"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
 
 <!-- OG/Twitter -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Agustín Alfaro — El Rayo Agustín" />
-<meta property="og:description" content="Piloto chileno. Mira sus últimos videos, fotos y deja tu mensaje de apoyo." />
-<meta property="og:image" content="https://elrayoagustin.cl/assets/photos/agustin_07.jpeg" />
-<meta property="og:url" content="https://elrayoagustin.cl/" />
-<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Agustín Alfaro — El Rayo Agustín"/>
+<meta property="og:description" content="Piloto chileno. Videos, fotos, mensajes y mini-juego F1."/>
+<meta property="og:image" content="https://elrayoagustin.cl/assets/photos/agustin_07.jpeg"/>
+<meta property="og:url" content="https://elrayoagustin.cl/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+
+<link rel="preconnect" href="https://www.youtube.com"/>
+<link rel="preconnect" href="https://i.ytimg.com"/>
 
 <style>
-/* ========== Base tipo Apple (SF / system) ========== */
 :root{
---bg:#0b0b0d;
---surface:#0f0f12;
---surface-2:#141419;
---text:#eeeeef;
---muted:#a9acb2;
---line:#1f2127;
---accent:#1ed1a2; /* verde moderno */
---accent-2:#2fe0f2; /* cian sutil */
+--bg:#0b0c0f;--bg2:#101218;--surface:#141722;
+--text:#eef1f4;--muted:#a6b0bd;--line:#1f2330;
+--accent:#17d3a2;--accent2:#2ed0f4;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
 margin:0;background:var(--bg);color:var(--text);
-font:16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Inter, Roboto, Arial, sans-serif;
--webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+font:16px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Inter,Roboto,Arial,sans-serif;
+-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
-a{color:var(--text);text-decoration:none}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
 
-/* ========== Nav minimal ========== */
-.nav{
-position:sticky;top:0;z-index:100;
-backdrop-filter: saturate(1.4) blur(10px);
-background:rgba(5,5,7,.6);
-border-bottom:1px solid var(--line);
-}
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(8,10,14,.7);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
-.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
-.nav .actions{display:flex;gap:8px;flex-wrap:wrap}
-.btn{
-padding:10px 14px;border-radius:12px;border:1px solid var(--line);
-background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.00));
-}
-.btn.primary{
-background:linear-gradient(135deg,var(--accent),var(--accent-2));
-color:#031611;border:none;font-weight:700;
-}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0))}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#062016;border:none;font-weight:700}
 
-/* ========== Hero ========== */
+/* Hero */
 .hero{
-position:relative;overflow:hidden;
+position:relative;overflow:hidden;color:var(--text);
 background:
-radial-gradient(1000px 500px at 80% -10%, rgba(47,224,242,.18), transparent 60%),
-radial-gradient(800px 400px at 10% 10%, rgba(30,209,162,.18), transparent 60%),
+radial-gradient(900px 420px at 85% -10%, rgba(46,208,244,.18), transparent 60%),
+radial-gradient(800px 420px at 10% 10%, rgba(23,211,162,.18), transparent 60%),
 linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.8)),
 url('assets/photos/agustin_07.jpeg') center/cover no-repeat;
-color:var(--text);
 }
 .hero .inner{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:end;min-height:72vh;padding:72px 0}
 @media (max-width:960px){.hero .inner{grid-template-columns:1fr;min-height:64vh}}
 .hero h1{margin:0 0 10px 0;font-size:56px;font-weight:800;letter-spacing:.2px}
-.hero p{margin:0 0 20px 0;color:#e5f6f2}
+.hero p{margin:0 0 20px 0;color:#e6f5f1}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
-.hero .panel{
-background:rgba(15,15,18,.6);border:1px solid var(--line);
-border-radius:20px;padding:16px;backdrop-filter: blur(10px);
-}
-.hero .panel .meta{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
-.badge{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+.hero .panel{background:rgba(15,17,24,.55);border:1px solid var(--line);border-radius:20px;padding:14px;backdrop-filter:blur(10px)}
+.badge{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05);font-size:13px;color:var(--muted)}
+.stripe{height:6px;background:linear-gradient(90deg,var(--accent) 0 35%,transparent 35% 65%,var(--accent2) 65% 100%)}
 
-/* ========== Sections ========== */
-.section{padding:56px 0;border-top:1px solid var(--line);background:var(--surface)}
-.section.alt{background:var(--surface-2)}
+/* Sections */
+.section{padding:56px 0;border-top:1px solid var(--line);background:var(--bg2)}
+.section.alt{background:var(--surface)}
 h2{margin:0 0 16px 0;font-size:28px;font-weight:800}
-.card{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:18px;padding:16px}
+.card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px;padding:16px}
 .note{font-size:13px;color:var(--muted)}
-.fade-in{animation:fade .6s ease both}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-/* ========== Video rail + player ========== */
+/* Videos */
 .video-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px}
 @media (max-width:1000px){.video-grid{grid-template-columns:1fr}}
 .yt-wrap{position:relative;padding-top:56.25%}
 .yt-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:16px}
-.rail{display:grid;gap:12px}
-.rail .thumb{border-radius:12px;overflow:hidden;border:1px solid var(--line);min-height:120px;background:#0c0c10}
-.rail iframe{width:100%;height:200px;border:0;border-radius:12px}
 
-/* ========== Gallery ========== */
+/* Gallery */
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 @media (max-width:1100px){.gallery{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:730px){.gallery{grid-template-columns:repeat(2,1fr)}}
-.gallery a{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line)}
+.gallery a{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:linear-gradient(180deg,#1b2230,#121620)}
 .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
 .gallery a:hover img{transform:scale(1.06)}
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center}
@@ -113,20 +89,20 @@ h2{margin:0 0 16px 0;font-size:28px;font-weight:800}
 .lightbox img{max-width:92vw;max-height:88vh;border-radius:16px;border:1px solid var(--line)}
 .lightbox .close{position:absolute;top:16px;right:16px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;border-radius:12px;padding:8px 12px;cursor:pointer}
 
-/* ========== Chat ========== */
+/* Chat */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media (max-width:900px){.grid-2{grid-template-columns:1fr}}
-.chat input,.chat textarea{
-width:100%;background:#0f1418;border:1px solid var(--line);color:var(--text);
-padding:12px;border-radius:12px;font:inherit
-}
+.chat input,.chat textarea{width:100%;background:#0f1418;border:1px solid var(--line);color:var(--text);padding:12px;border-radius:12px}
 .msg{background:#0f1418;border:1px solid var(--line);padding:10px 12px;border-radius:12px}
 .msg small{color:var(--muted)}
 
-/* ========== Game ========== */
+/* Game */
 .game-wrap{display:grid;gap:12px}
 canvas#game{background:linear-gradient(180deg,#14181d,#0e1116);border:1px solid var(--line);border-radius:16px}
+
+/* Footer */
 .footer{padding:48px 16px;text-align:center;color:var(--muted)}
+.icon{width:18px;height:18px;vertical-align:-3px}
 </style>
 </head>
 <body>
@@ -139,7 +115,15 @@ canvas#game{background:linear-gradient(180deg,#14181d,#0e1116);border:1px solid 
 <a class="btn" href="#videos">Videos</a>
 <a class="btn" href="#fotos">Fotos</a>
 <a class="btn" href="#chat">Mensajes</a>
-<a class="btn primary" href="https://www.instagram.com/agustinalfaro_oficial" target="_blank" rel="noopener">Instagram @agustinalfaro_oficial</a>
+<a class="btn primary" href="https://www.instagram.com/agustinalfaro_oficial" target="_blank" rel="noopener">
+<!-- Ícono Instagram SVG -->
+<svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="#061711" stroke-opacity=".4"/>
+<path d="M12 8.2a3.8 3.8 0 1 1 0 7.6 3.8 3.8 0 0 1 0-7.6Z" stroke="#061711" stroke-opacity=".4"/>
+<circle cx="17.5" cy="6.5" r="1.2" fill="#061711" fill-opacity=".5"/>
+</svg>
+&nbsp;Instagram @agustinalfaro_oficial
+</a>
 </div>
 </div>
 </nav>
@@ -147,7 +131,7 @@ canvas#game{background:linear-gradient(180deg,#14181d,#0e1116);border:1px solid 
 <!-- HERO -->
 <header class="hero">
 <div class="container inner">
-<div class="fade-in">
+<div>
 <h1>Agustín Alfaro</h1>
 <p>Piloto chileno — karting & fórmula eléctrica. Velocidad, disciplina y corazón. 🇨🇱</p>
 <div class="cta">
@@ -155,19 +139,16 @@ canvas#game{background:linear-gradient(180deg,#14181d,#0e1116);border:1px solid 
 <a class="btn" href="https://youtube.com/@elrayoagustin" target="_blank" rel="noopener">Canal de YouTube</a>
 </div>
 <div class="panel" style="margin-top:14px">
-<div class="meta">
 <span class="badge">Monoplaza eléctrico</span>
 <span class="badge">Karting 🇨🇱</span>
 <span class="badge">Disciplina & foco</span>
 </div>
 </div>
-</div>
-<div class="fade-in">
-<div class="card">
-<div class="yt-wrap" id="hero-video"></div>
+<div>
+<div class="card"><div class="yt-wrap" id="hero-video"></div></div>
 </div>
 </div>
-</div>
+<div class="stripe"></div>
 </header>
 
 <!-- VIDEOS -->
@@ -175,15 +156,13 @@ canvas#game{background:linear-gradient(180deg,#14181d,#0e1116);border:1px solid 
 <div class="container">
 <h2>Videos</h2>
 <div class="video-grid">
+<div class="card"><div class="yt-wrap" id="main-player"></div></div>
 <div class="card">
-<div class="yt-wrap" id="main-player"></div>
-</div>
-<div class="rail">
-<div class="card"><div class="yt-wrap" id="rail-1"></div></div>
-<div class="card"><div class="yt-wrap" id="rail-2"></div></div>
+<div class="yt-wrap" id="rail-1"></div>
+<div class="yt-wrap" id="rail-2" style="margin-top:12px"></div>
 </div>
 </div>
-<p class="note" style="margin-top:8px">La reproducción automática inicia en silencio por políticas de los navegadores. Activa el sonido desde el reproductor.</p>
+<p class="note" style="margin-top:8px">Autoplay inicia en silencio por políticas del navegador; activa sonido en el reproductor.</p>
 </div>
 </section>
 
@@ -191,18 +170,8 @@ canvas#game{background:linear-gradient(180deg,#14181d,#0e1116);border:1px solid 
 <section class="section" id="fotos">
 <div class="container">
 <h2>Fotos</h2>
-<div class="gallery">
-<!-- Sube tus imágenes a /assets/photos/ con estos nombres o cambia las rutas -->
-<a href="assets/photos/agustin_01.jpeg"><img src="assets/photos/agustin_01.jpeg" alt="Agustín cockpit 1"></a>
-<a href="assets/photos/agustin_02.jpeg"><img src="assets/photos/agustin_02.jpeg" alt="Pits 2"></a>
-<a href="assets/photos/agustin_03.jpeg"><img src="assets/photos/agustin_03.jpeg" alt="Pulgar arriba 3"></a>
-<a href="assets/photos/agustin_04.jpeg"><img src="assets/photos/agustin_04.jpeg" alt="Pits 4"></a>
-<a href="assets/photos/agustin_05.jpeg"><img src="assets/photos/agustin_05.jpeg" alt="Pits 5"></a>
-<a href="assets/photos/agustin_06.jpeg"><img src="assets/photos/agustin_06.jpeg" alt="Cockpit 6"></a>
-<a href="assets/photos/agustin_07.jpeg"><img src="assets/photos/agustin_07.jpeg" alt="Cockpit 7"></a>
-<a href="assets/photos/agustin_08.jpeg"><img src="assets/photos/agustin_08.jpeg" alt="Casco 8"></a>
-<a href="assets/photos/agustin_09.jpeg"><img src="assets/photos/agustin_09.jpeg" alt="Pilotos 9"></a>
-<a href="assets/photos/agustin_10.jpeg"><img src="assets/photos/agustin_10.jpeg" alt="Bandera Chile 10"></a>
+<div class="gallery" id="gallery">
+<!-- Se cargan abajo por JS para poner placeholder si falta alguna -->
 </div>
 </div>
 <div class="lightbox" id="lightbox"><button class="close">Cerrar</button><img src="" alt=""></div>
@@ -215,10 +184,10 @@ canvas#game{background:linear-gradient(180deg,#14181d,#0e1116);border:1px solid 
 <div class="grid-2">
 <div class="card">
 <form id="chat-form" class="chat" autocomplete="off">
-<input id="chat-name" placeholder="Tu nombre (opcional)" />
+<input id="chat-name" placeholder="Tu nombre (opcional)"/>
 <textarea id="chat-text" placeholder="Escribe tu mensaje para Agustín…"></textarea>
 <button class="btn primary" type="submit">Enviar mensaje</button>
-<p class="note">Los mensajes se guardan en tu navegador (localStorage) y aparecen al instante.</p>
+<p class="note">Los mensajes se guardan localmente (no se envían a servidores).</p>
 </form>
 </div>
 <div class="card" id="chat-list" aria-live="polite"></div>
@@ -240,64 +209,73 @@ canvas#game{background:linear-gradient(180deg,#14181d,#0e1116);border:1px solid 
 <footer class="footer">© 2025 El Rayo Agustín — Sitio de fans. Hecho con ❤️ en Chile.</footer>
 
 <script>
-/* Utilidades */
-const $=(s,c=document)=>c.querySelector(s); const $$=(s,c=document)=>Array.from(c.querySelectorAll(s));
+/* ===== YouTube: autoplay mute con handle @elrayoagustin =====
+Si luego tienes el ID de la playlist de "uploads" (empieza con UU…),
+reemplaza listType/list por: listType='playlist' & list='UUxxxxxxxx…'
+*/
+function makeYT(el, opts={}){
+const params = new URLSearchParams({
+listType:'user_uploads', list:'elrayoagustin',
+autoplay:'1', mute:'1', loop:'1', playsinline:'1', rel:'0'
+});
+if (opts.index!=null) params.set('index', String(opts.index));
+const ifr = document.createElement('iframe');
+ifr.src = 'https://www.youtube.com/embed?' + params.toString();
+ifr.allow = 'autoplay; encrypted-media; picture-in-picture';
+ifr.title = 'El Rayo Agustín — Videos';
+el.appendChild(ifr);
+}
+makeYT(document.getElementById('hero-video'), {index:0});
+makeYT(document.getElementById('main-player'), {index:0});
+makeYT(document.getElementById('rail-1'), {index:1});
+makeYT(document.getElementById('rail-2'), {index:2});
+
+/* ===== Galería: asegura que SIEMPRE se vea algo ===== */
+const gallery = document.getElementById('gallery');
+const photoNames = [
+'agustin_01.jpeg','agustin_02.jpeg','agustin_03.jpeg','agustin_04.jpeg','agustin_05.jpeg',
+'agustin_06.jpeg','agustin_07.jpeg','agustin_08.jpeg','agustin_09.jpeg','agustin_10.jpeg'
+];
+const PLACEHOLDER_SVG =
+'data:image/svg+xml;utf8,' +
+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+<defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#182033"/><stop offset="1" stop-color="#0f141f"/></linearGradient></defs>
+<rect width="100%" height="100%" fill="url(#g)"/>
+<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#9fb0bd" font-family="system-ui,Arial" font-size="22">
+Foto pendiente</text></svg>`);
+function addTile(src, alt){
+const a=document.createElement('a'); a.href=src;
+const img=document.createElement('img'); img.alt=alt; img.loading='lazy'; img.decoding='async'; img.src=src;
+img.onerror=()=>{ img.src=PLACEHOLDER_SVG; a.href=PLACEHOLDER_SVG; };
+a.appendChild(img); gallery.appendChild(a);
+}
+photoNames.forEach((n,i)=> addTile('assets/photos/'+n, 'Foto '+(i+1)+' de Agustín'));
 
 /* Lightbox */
 (function(){
-const lb=$('#lightbox'); if(!lb) return;
+const lb=document.getElementById('lightbox'); if(!lb) return;
 lb.addEventListener('click',()=>lb.classList.remove('open'));
-$$('.gallery a').forEach(a=>{
-a.addEventListener('click',e=>{
-e.preventDefault();
-lb.querySelector('img').src=a.href; lb.classList.add('open');
-});
+gallery.addEventListener('click',e=>{
+const a=e.target.closest('a'); if(!a) return;
+e.preventDefault(); lb.querySelector('img').src=a.href; lb.classList.add('open');
 });
 })();
 
-/* ====== YouTube (autoplay mute) ======
-Truco: usamos listType=user_uploads&list=elrayoagustin (nombre de usuario del canal).
-Si luego tienes el ID de la playlist UU... reemplaza en makeYT() el 'listUser'.
-*/
-function makeYT(el, opts={}){
-const q = new URLSearchParams({
-listType: 'user_uploads',
-list: 'elrayoagustin', // <-- aquí va el usuario del canal
-autoplay: '1',
-mute: '1',
-loop: '1',
-playsinline: '1',
-rel: '0'
-});
-if (opts.index) q.set('index', String(opts.index));
-el.innerHTML='';
-const ifr=document.createElement('iframe');
-ifr.src='https://www.youtube.com/embed?'+q.toString();
-ifr.allow='autoplay; encrypted-media; picture-in-picture';
-ifr.title='El Rayo Agustín — Videos';
-el.appendChild(ifr);
-}
-makeYT($('#hero-video'), {index:0});
-makeYT($('#main-player'), {index:0});
-makeYT($('#rail-1'), {index:1});
-makeYT($('#rail-2'), {index:2});
-
-/* ====== Chat (localStorage) ====== */
+/* ===== Chat local ===== */
 const CHAT_KEY='elrayo_chat_msgs_v1';
-const chatForm=$('#chat-form'), chatList=$('#chat-list');
-function loadMsgs(){try{return JSON.parse(localStorage.getItem(CHAT_KEY)||'[]')}catch(e){return[]}}
-function saveMsgs(a){localStorage.setItem(CHAT_KEY, JSON.stringify(a.slice(0,150)))}
+const chatForm=document.getElementById('chat-form'), chatList=document.getElementById('chat-list');
+function loadMsgs(){try{return JSON.parse(localStorage.getItem(CHAT_KEY)||'[]')}catch{ return [] }}
+function saveMsgs(a){ localStorage.setItem(CHAT_KEY, JSON.stringify(a.slice(0,150))) }
 function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function renderMsgs(){const arr=loadMsgs();chatList.innerHTML='';arr.forEach(m=>{const d=document.createElement('div');d.className='msg';d.innerHTML=\`<strong>\${esc(m.name||'Anónimo')}</strong> <small>· \${new Date(m.ts).toLocaleString()}</small><br>\${esc(m.text)}\`;chatList.appendChild(d);});}
-if(chatForm){chatForm.addEventListener('submit',e=>{e.preventDefault();const name=$('#chat-name').value.trim();const text=$('#chat-text').value.trim();if(!text)return;const a=loadMsgs();a.unshift({name,text,ts:Date.now()});saveMsgs(a);$('#chat-text').value='';renderMsgs();});renderMsgs();}
+function renderMsgs(){ chatList.innerHTML=''; loadMsgs().forEach(m=>{ const d=document.createElement('div'); d.className='msg'; d.innerHTML=`<strong>${esc(m.name||'Anónimo')}</strong> <small>· ${new Date(m.ts).toLocaleString()}</small><br>${esc(m.text)}`; chatList.appendChild(d); }); }
+if(chatForm){ chatForm.addEventListener('submit',e=>{ e.preventDefault(); const name=document.getElementById('chat-name').value.trim(); const text=document.getElementById('chat-text').value.trim(); if(!text) return; const a=loadMsgs(); a.unshift({name,text,ts:Date.now()}); saveMsgs(a); document.getElementById('chat-text').value=''; renderMsgs(); }); renderMsgs(); }
 
-/* ====== Mini-juego (auto F1) ====== */
+/* ===== Mini-juego (F1) ===== */
 (function game(){
-const canvas=$('#game'); if(!canvas) return; const ctx=canvas.getContext('2d');
-let W=canvas.width, H=canvas.height;
-const lanes=3, laneW=()=>W/lanes;
-const player={lane:1, y:H-110, w:laneW()*0.58, h:80, alive:true, score:0};
-let speed=3; const obst=[]; let running=false;
+const cvs=document.getElementById('game'); if(!cvs) return; const ctx=cvs.getContext('2d');
+let W=cvs.width,H=cvs.height; const lanes=3, laneW=()=>W/lanes;
+const player={lane:1,y:H-110,w:laneW()*0.58,h:80,alive:true,score:0};
+let speed=3; const obs=[]; let running=false;
 
 function drawTrack(){
 ctx.fillStyle='#0e1116'; ctx.fillRect(0,0,W,H);
@@ -305,78 +283,56 @@ ctx.strokeStyle='rgba(255,255,255,.12)'; ctx.setLineDash([12,16]); ctx.lineWidth
 for(let i=1;i<lanes;i++){ ctx.beginPath(); ctx.moveTo(laneW()*i,0); ctx.lineTo(laneW()*i,H); ctx.stroke(); }
 ctx.setLineDash([]);
 }
-function drawF1(x,y,w,h,color='#1ed1a2'){
+function drawF1(x,y,w,h){
 // ruedas
-const rH=h*0.22, rW=w*0.18;
-ctx.fillStyle='#000'; ctx.fillRect(x- rW*0.7, y+8, rW, rH); // del izq
-ctx.fillRect(x+w- rW*0.3, y+8, rW, rH); // del der
-ctx.fillRect(x- rW*0.7, y+h-rH-8, rW, rH); // tras izq
-ctx.fillRect(x+w- rW*0.3, y+h-rH-8, rW, rH); // tras der
+const rH=h*0.22,rW=w*0.18;
+ctx.fillStyle='#000'; ctx.fillRect(x-rW*0.7,y+8,rW,rH);
+ctx.fillRect(x+w-rW*0.3,y+8,rW,rH);
+ctx.fillRect(x-rW*0.7,y+h-rH-8,rW,rH);
+ctx.fillRect(x+w-rW*0.3,y+h-rH-8,rW,rH);
 // ala delantera
-ctx.fillStyle='#2fe0f2';
-ctx.fillRect(x- w*0.15, y-8, w*1.3, 10);
+ctx.fillStyle='#2ed0f4'; ctx.fillRect(x-w*0.15,y-8,w*1.3,10);
 // chasis
-ctx.fillStyle=color;
+ctx.fillStyle='#17d3a2';
 ctx.beginPath();
-ctx.moveTo(x+w*0.5, y-6); // nariz
-ctx.lineTo(x+w*0.80, y+h*0.30);
-ctx.lineTo(x+w*0.80, y+h*0.70);
-ctx.lineTo(x+w*0.5, y+h+6); // cola
-ctx.lineTo(x+w*0.20, y+h*0.70);
-ctx.lineTo(x+w*0.20, y+h*0.30);
+ctx.moveTo(x+w*0.5,y-6);
+ctx.lineTo(x+w*0.80,y+h*0.30);
+ctx.lineTo(x+w*0.80,y+h*0.70);
+ctx.lineTo(x+w*0.5,y+h+6);
+ctx.lineTo(x+w*0.20,y+h*0.70);
+ctx.lineTo(x+w*0.20,y+h*0.30);
 ctx.closePath(); ctx.fill();
 // cabina + halo
-ctx.fillStyle='#0a1314';
-ctx.fillRect(x+w*0.36, y+h*0.35, w*0.28, h*0.22);
-ctx.fillStyle='#12b486';
-ctx.fillRect(x+w*0.49, y+h*0.15, w*0.02, h*0.40); // halo central
+ctx.fillStyle='#0a1314'; ctx.fillRect(x+w*0.36,y+h*0.35,w*0.28,h*0.22);
+ctx.fillStyle='#12b486'; ctx.fillRect(x+w*0.49,y+h*0.15,w*0.02,h*0.40);
 // alerón trasero
-ctx.fillStyle='#2fe0f2';
-ctx.fillRect(x+w*0.20, y+h-4, w*0.60, 8);
+ctx.fillStyle='#2ed0f4'; ctx.fillRect(x+w*0.20,y+h-4,w*0.60,8);
 }
-function drawObst(x,y,w,h){
-// “peatón” esquemático
-ctx.fillStyle='#ff7f11'; ctx.fillRect(x, y, w, h);
-ctx.fillStyle='#111'; ctx.fillRect(x+w/2-6, y-10, 12, 12);
-}
-
-function spawn(){ const lane=Math.floor(Math.random()*lanes); obst.push({lane, y:-60, w: laneW()*0.38, h: 56}); }
+function drawObs(x,y,w,h){ ctx.fillStyle='#ff7f11'; ctx.fillRect(x,y,w,h); ctx.fillStyle='#111'; ctx.fillRect(x+w/2-6,y-10,12,12); }
+function spawn(){ const lane=Math.floor(Math.random()*lanes); obs.push({lane,y:-60,w:laneW()*0.38,h:56}); }
 
 function update(){
-if(!running)return;
-obst.forEach(o=>o.y+=speed);
-while(obst.length && obst[0].y>H+80) obst.shift();
-// choque
-const px = player.lane*laneW()+laneW()/2 - player.w/2;
-obst.forEach(o=>{
-const ox = o.lane*laneW()+laneW()/2 - o.w/2;
-if (ox < px+player.w && ox+o.w > px && o.y < player.y+player.h && o.y+o.h > player.y){ running=false; player.alive=false; }
+if(!running) return;
+obs.forEach(o=>o.y+=speed);
+while(obs.length && obs[0].y>H+80) obs.shift();
+const px=player.lane*laneW()+laneW()/2 - player.w/2;
+obs.forEach(o=>{ const ox=o.lane*laneW()+laneW()/2 - o.w/2;
+if(ox<px+player.w && ox+o.w>px && o.y<player.y+player.h && o.y+o.h>player.y){ running=false; player.alive=false; }
 });
 player.score++; if(player.score%220===0) speed+=0.5;
 }
 function render(){
 drawTrack();
-// dibujar jugador
-const px = player.lane*laneW()+laneW()/2 - player.w/2;
-drawF1(px, player.y, player.w, player.h);
-// obst
-obst.forEach(o=>{
-const ox = o.lane*laneW()+laneW()/2 - o.w/2;
-drawObst(ox, o.y, o.w, o.h);
-});
-// HUD
-ctx.fillStyle='#fff'; ctx.font='14px -apple-system,system-ui'; ctx.fillText('Puntos: '+player.score, 12, 18);
-if(!running){
-ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(0,0,W,H);
-ctx.fillStyle='#fff'; ctx.textAlign='center';
-ctx.fillText(player.alive?'Toca/clic para jugar':'¡Choque! Toca para reiniciar', W/2, H/2);
-ctx.textAlign='start';
+const px=player.lane*laneW()+laneW()/2 - player.w/2; drawF1(px,player.y,player.w,player.h);
+obs.forEach(o=>{ const ox=o.lane*laneW()+laneW()/2 - o.w/2; drawObs(ox,o.y,o.w,o.h); });
+ctx.fillStyle='#fff'; ctx.font='14px system-ui'; ctx.fillText('Puntos: '+player.score,12,18);
+if(!running){ ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(0,0,W,H); ctx.fillStyle='#fff'; ctx.textAlign='center';
+ctx.fillText(player.alive?'Toca/clic para jugar':'¡Choque! Toca para reiniciar', W/2, H/2); ctx.textAlign='start'; }
 }
-}
-function reset(){ player.lane=1; player.y=H-110; player.w=laneW()*0.58; player.h=80; player.alive=true; player.score=0; obst.length=0; speed=3; }
+function reset(){ player.lane=1; player.y=H-110; player.w=laneW()*0.58; player.h=80; player.alive=true; player.score=0; obs.length=0; speed=3; }
 
-canvas.addEventListener('click', ()=>{ if(!running){ reset(); running=true; }});
-window.addEventListener('keydown', e=>{ if(!running) return; if(e.key==='ArrowLeft') player.lane=Math.max(0,player.lane-1); if(e.key==='ArrowRight') player.lane=Math.min(lanes-1,player.lane+1); });
+cvs.addEventListener('click',()=>{ if(!running){ reset(); running=true; }});
+window.addEventListener('keydown',e=>{ if(!running) return; if(e.key==='ArrowLeft') player.lane=Math.max(0,player.lane-1); if(e.key==='ArrowRight') player.lane=Math.min(lanes-1,player.lane+1); });
 setInterval(()=>{ if(running) spawn(); }, 800);
 (function loop(){ if(running) update(); render(); requestAnimationFrame(loop); })();
 })();
