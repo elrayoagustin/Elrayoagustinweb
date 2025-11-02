@@ -1,391 +1,397 @@
 <!doctype html>
 <html lang="es">
 <head>
+<!-- =========================
+SEO / Metadatos
+========================== -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Lector de Texto y PDF — Solución lectura manual</title>
-<style>
-:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;--ok:#34d399;--warn:#f59e0b;--err:#f87171}
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,sans-serif}
-header{padding:22px 16px;text-align:center;border-bottom:1px solid #1f2937}
-header h1{margin:0;font-size:20px}
-main{max-width:1000px;margin:0 auto;padding:16px;display:grid;gap:16px}
-.card{background:#111827;border:1px solid #1f2937;border-radius:12px;padding:16px}
-.row{display:grid;gap:12px}
-.grid-2{grid-template-columns:1fr 1fr}
-label{font-size:13px;color:var(--muted)}
-textarea{width:100%;min-height:200px;resize:vertical;background:#0b1220;color:var(--text);border:1px solid #293244;border-radius:8px;padding:12px;line-height:1.5}
-input[type="file"],select{width:100%}
-select{background:#0b1220;color:var(--text);border:1px solid #293244;border-radius:8px;padding:10px}
-.controls{display:flex;flex-wrap:wrap;gap:8px}
-button{appearance:none;border:1px solid #1f2937;background:#0b1220;color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer}
-button.primary{background:#0ea5e9;color:#001018;border:none;font-weight:600}
-button:disabled{opacity:.5;cursor:not-allowed}
-.kv{background:#0b1220;border:1px dashed #293244;border-radius:10px;padding:10px;font-size:13px;color:var(--muted)}
-.kvs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.meter{height:8px;border-radius:999px;background:#0b1220;border:1px solid #293244;overflow:hidden}
-.meter > i{display:block;height:100%;width:0;background:linear-gradient(90deg,#22d3ee,#34d399)}
-.small{font-size:12px;color:var(--muted)}
-.ok{color:var(--ok)} .warn{color:var(--warn)} .err{color:var(--err)}
-footer{padding:20px;text-align:center;color:var(--muted);font-size:12px}
-.badge{display:inline-block;padding:3px 8px;border-radius:999px;font-size:12px;background:#0b1220;border:1px solid #293244}
-</style>
+<title>El Rayo Agustín — Piloto chileno | Karting & Fórmula Eléctrica</title>
+<meta name="description" content="Sitio oficial de fans de El Rayo Agustín (Agustín Alfaro), piloto chileno. Noticias, fotos, videos, mini-juego y mensajes de apoyo. Actualmente compite en categorías de karting y fórmula eléctrica.">
+<meta name="keywords" content="El Rayo Agustín, Agustín Alfaro, piloto chileno, karting Chile, fórmula eléctrica, VChamp, ERA Racing School, automovilismo chileno, piloto joven, motorsport, carreras, monoplaza, racing">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+<link rel="canonical" href="https://elrayoagustin.cl/" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="El Rayo Agustín — Piloto chileno" />
+<meta property="og:description" content="Fotos, videos, blog, mini-juego y mensajes de apoyo. Síguelo en Instagram y YouTube." />
+<meta property="og:url" content="https://elrayoagustin.cl/" />
+<meta property="og:image" content="https://elrayoagustin.cl/assets/photos/agustin_07.jpeg" />
+<meta property="og:site_name" content="El Rayo Agustín" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="El Rayo Agustín — Piloto chileno" />
+<meta name="twitter:description" content="Piloto chileno de karting y fórmula eléctrica. Galería, videos y mini-juego." />
+<meta name="twitter:image" content="https://elrayoagustin.cl/assets/photos/agustin_07.jpeg" />
+
+<!-- JSON-LD (Schema.org) -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Person",
+"name": "Agustín Alfaro",
+"alternateName": ["El Rayo Agustín"],
+"url": "https://elrayoagustin.cl/",
+"nationality": "CL",
+"jobTitle": "Piloto de automovilismo",
+"sport": "Motorsport",
+"image": "https://elrayoagustin.cl/assets/photos/agustin_07.jpeg",
+"sameAs": [
+"https://www.instagram.com/agustinalfaro_oficial",
+"https://youtube.com/@elrayoagustin"
+]
+}
+</script>
+
+<!-- Preconnect para mejorar carga de YouTube e imágenes -->
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://i.ytimg.com">
+
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<header>
-<h1>🗣️ Lector — Texto manual y PDF (local, gratis)</h1>
-<div class="small">Web Speech API (TTS local) + PDF.js. Nada se sube a servidores.</div>
+<!-- NAV -->
+<nav class="nav">
+<div class="container wrap">
+<div class="brand"><span class="dot"></span><span>EL RAYO AGUSTÍN</span></div>
+<div class="actions">
+<a class="btn" href="#videos">Videos</a>
+<a class="btn" href="#galeria">Fotos</a>
+<a class="btn" href="#chat">Chat</a>
+<a class="btn primary" href="https://www.instagram.com/agustinalfaro_oficial?utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+<div class="container">
+<h1>Agustín Alfaro</h1>
+<p>Piloto chileno — karting & fórmula eléctrica. Velocidad, disciplina y corazón. 🇨🇱</p>
+<div class="badges">
+<span class="badge">Piloto chileno</span>
+<a class="badge" href="https://youtube.com/@elrayoagustin?si=gyNKwtLTEGwGiuJk" target="_blank" rel="noopener">YouTube oficial</a>
+<a class="badge" href="https://www.fernandoalonso.com/" target="_blank" rel="noopener">Inspirado en F1</a>
+</div>
+</div>
+<div class="stripe"></div>
 </header>
 
-<main>
-<!-- Entrada -->
-<section class="card">
-<h2 style="margin-top:0">1) Escribe/pega tu texto (prioridad)</h2>
-<label for="textInput">Texto</label>
-<textarea id="textInput" placeholder="Pega aquí el texto y presiona ▶️ Probar voz o ▶️ Leer"></textarea>
-<div class="kvs" style="margin-top:12px">
-<div class="kv"><b>Estado:</b> <span id="status">Listo</span></div>
-<div class="kv"><b>Soporte voz:</b> <span id="support">—</span></div>
-<div class="kv"><b>Longitud (caracteres):</b> <span id="len">0</span></div>
-</div>
-</section>
-
-<!-- PDF opcional -->
-<section class="card">
-<h2 style="margin-top:0">2) (Opcional) Subir PDF / TXT</h2>
-<div class="row grid-2">
-<div>
-<label>Archivo (.pdf o .txt)</label>
-<input id="fileInput" type="file" accept=".pdf,.txt" />
-<div class="small">Si el PDF es escaneado (imagen), no tiene texto. Puedo añadir OCR si lo necesitas.</div>
-</div>
-<div>
-<label>Texto extraído</label>
-<textarea id="extracted" placeholder="Aquí aparecerá el texto del PDF/TXT…"></textarea>
+<!-- VIDEOS -->
+<section class="section alt" id="videos">
+<div class="container">
+<h2>🎥 Videos</h2>
+<div class="card">
+<p class="note">
+Reproductor automático del canal. Para que siempre muestre <strong>las últimas subidas</strong>, define
+<code>window.YT_UPLOADS_PLAYLIST</code> (ID que empieza con <b>UU…</b>) en el bloque de abajo.
+</p>
+<div class="yt-wrap" id="yt-player"></div>
 </div>
 </div>
 </section>
 
-<!-- Voces y parámetros -->
-<section class="card">
-<h2 style="margin-top:0">3) Voz y parámetros</h2>
-<div class="row grid-2">
-<div>
-<label>Voz</label>
-<select id="voiceSelect"></select>
-<div class="small">Sugerido: voces <b>es-ES</b> o <b>es-*</b> para español.</div>
+<!-- GALERÍA -->
+<section class="section" id="galeria">
+<div class="container">
+<h2>📸 Blog de Fotos</h2>
+<div class="gallery">
+<a href="assets/photos/agustin_01.jpeg"><img src="assets/photos/agustin_01.jpeg" alt="Agustín en monoplaza 1"></a>
+<a href="assets/photos/agustin_02.jpeg"><img src="assets/photos/agustin_02.jpeg" alt="Agustín en pits 2"></a>
+<a href="assets/photos/agustin_03.jpeg"><img src="assets/photos/agustin_03.jpeg" alt="Pulgar arriba 3"></a>
+<a href="assets/photos/agustin_04.jpeg"><img src="assets/photos/agustin_04.jpeg" alt="Ajustando casco 4"></a>
+<a href="assets/photos/agustin_05.jpeg"><img src="assets/photos/agustin_05.jpeg" alt="Vista lateral pits 5"></a>
+<a href="assets/photos/agustin_06.jpeg"><img src="assets/photos/agustin_06.jpeg" alt="Pits 6"></a>
+<a href="assets/photos/agustin_07.jpeg"><img src="assets/photos/agustin_07.jpeg" alt="En cockpit 7"></a>
+<a href="assets/photos/agustin_08.jpeg"><img src="assets/photos/agustin_08.jpeg" alt="Con casco en manos 8"></a>
+<a href="assets/photos/agustin_09.jpeg"><img src="assets/photos/agustin_09.jpeg" alt="Pilotos alineados 9"></a>
+<a href="assets/photos/agustin_10.jpeg"><img src="assets/photos/agustin_10.jpeg" alt="Bandera de Chile 10"></a>
 </div>
-<div>
-<label>Velocidad</label>
-<input id="rate" type="range" min="0.5" max="2" step="0.1" value="1" />
-<div class="meter"><i id="rateBar"></i></div>
 </div>
+<div class="lightbox"><button class="close">Cerrar</button><img src="" alt=""></div>
+</section>
+
+<!-- CHAT -->
+<section class="section alt" id="chat">
+<div class="container">
+<h2>💬 Mensajes de apoyo</h2>
+<div class="grid cols-2">
+<div class="card">
+<form id="chat-form" class="chat" autocomplete="off">
+<div class="row"><input id="chat-name" placeholder="Tu nombre (opcional)"></div>
+<div class="row"><textarea id="chat-text" placeholder="Escribe tu mensaje para Agustín…"></textarea></div>
+<div class="row"><button class="btn primary" type="submit">Enviar mensaje</button></div>
+<p class="note">Los mensajes se guardan en tu navegador (localStorage) y aparecen al instante.</p>
+</form>
 </div>
-<div class="row grid-2">
-<div>
-<label>Tono</label>
-<input id="pitch" type="range" min="0" max="2" step="0.1" value="1" />
-<div class="meter"><i id="pitchBar"></i></div>
-</div>
-<div>
-<label>Volumen</label>
-<input id="volume" type="range" min="0" max="1" step="0.1" value="1" />
-<div class="meter"><i id="volumeBar"></i></div>
+<div class="card" id="chat-list" aria-live="polite"></div>
 </div>
 </div>
 </section>
 
-<!-- Controles -->
-<section class="card">
-<h2 style="margin-top:0">4) Controles</h2>
-<div class="controls">
-<button id="testBtn" class="primary" disabled>▶️ Probar voz</button>
-<button id="speakBtn" class="primary" disabled>▶️ Leer texto</button>
-<button id="pauseBtn" disabled>⏸️ Pausar</button>
-<button id="resumeBtn" disabled>▶️ Reanudar</button>
-<button id="stopBtn" disabled>⏹️ Detener</button>
-<button id="clearBtn">🧹 Limpiar</button>
+<!-- JUEGO -->
+<section class="section" id="juego">
+<div class="container">
+<h2>🎮 Mini-juego: Esquiva</h2>
+<div class="game-wrap card">
+<canvas id="game" width="800" height="420"></canvas>
+<div class="controls-row"><span class="note">Controles: clic para iniciar · ← → para mover</span></div>
 </div>
-<div class="small" style="margin-top:8px">
-Requiere clic del usuario para iniciar audio (políticas del navegador).
 </div>
 </section>
 
-<!-- Progreso -->
-<section class="card">
-<h2 style="margin-top:0">Progreso</h2>
-<div class="meter"><i id="progressBar"></i></div>
-<div class="small" style="margin-top:6px">
-<span id="progressText">0%</span> — <span id="chunkInfo">0 / 0</span> fragmentos
-</div>
-</section>
-</main>
-
-<footer>
-Hecho para Raúl — versión foco: lectura de TEXTO MANUAL. PDF opcional.
+<footer class="footer">
+© 2025 El Rayo Agustín — Sitio de fans. Hecho con ❤️ en Chile.
 </footer>
 
-<!-- PDF.js (solo si quieres usar PDF) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha512-KiWzZfa7qv3Zj1mE2AQfCMyJOQ7NlXQK1yXQ2p6mQ2nKq35aSgQbY0ciV9ewVR5Xk+U9VujwQcZ1B1v+0s0y5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'</script>
-
+<!-- Configura aquí el ID de la playlist de subidas del canal (UUxxxxxxxx…) -->
 <script>
-// ========= Utilidades/UI =========
-const $ = s => document.querySelector(s);
-const UI = {
-status: $('#status'), support: $('#support'), len: $('#len'),
-textInput: $('#textInput'), extracted: $('#extracted'),
-voiceSelect: $('#voiceSelect'),
-rate: $('#rate'), pitch: $('#pitch'), volume: $('#volume'),
-rateBar: $('#rateBar'), pitchBar: $('#pitchBar'), volumeBar: $('#volumeBar'),
-testBtn: $('#testBtn'), speakBtn: $('#speakBtn'),
-pauseBtn: $('#pauseBtn'), resumeBtn: $('#resumeBtn'), stopBtn: $('#stopBtn'), clearBtn: $('#clearBtn'),
-progressBar: $('#progressBar'), progressText: $('#progressText'), chunkInfo: $('#chunkInfo'),
-fileInput: $('#fileInput')
-};
-const state = { voices: [], chunks: [], index: 0, speaking: false, paused: false, utter: null };
-
-const setStatus = (msg, cls='') => { UI.status.textContent = msg; UI.status.className = cls; };
-const setSupport = (msg) => UI.support.textContent = msg;
-const setButtons = () => {
-const hasSpeech = ('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window);
-const hasText = getSanitizedText(UI.textInput.value).length > 0;
-UI.testBtn.disabled = !hasSpeech;
-UI.speakBtn.disabled = !hasSpeech || !hasText;
-UI.pauseBtn.disabled = !(state.speaking && !speechSynthesis.paused);
-UI.resumeBtn.disabled= !(speechSynthesis.paused);
-UI.stopBtn.disabled = !state.speaking;
-};
-const updateLen = () => UI.len.textContent = getSanitizedText(UI.textInput.value).length;
-const updateMeters = () => {
-UI.rateBar.style.width = ((UI.rate.value-0.5)/1.5*100)+'%';
-UI.pitchBar.style.width = (UI.pitch.value/2*100)+'%';
-UI.volumeBar.style.width = (UI.volume.value*100)+'%';
-};
-updateMeters();
-UI.rate.addEventListener('input', updateMeters);
-UI.pitch.addEventListener('input', updateMeters);
-UI.volume.addEventListener('input', updateMeters);
-
-// ========= Limpieza de texto (arregla el “no reconoce caracteres”) =========
-function getSanitizedText(raw){
-if (!raw) return '';
-// Normaliza tildes/ñ, elimina controles no imprimibles excepto \n \t \r
-let t = raw.normalize('NFC').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g,'');
-// Quita espacios no separables raros
-t = t.replace(/\u00A0/g,' ');
-// Recorta excesos sin perder saltos importantes
-t = t.replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
-return t;
-}
-
-function onTextChanged(){
-const clean = getSanitizedText(UI.textInput.value);
-if (UI.textInput.value !== clean) {
-// No sobreescribo mientras escribes; sólo actualizo métricas
-}
-updateLen();
-setButtons();
-}
-UI.textInput.addEventListener('input', onTextChanged);
-onTextChanged();
-
-// ========= Detección de soporte de voz =========
-function checkSpeechSupport(){
-const ok = ('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window);
-setSupport(ok ? '✅ Disponible' : '❌ No disponible (usa Chrome/Edge/Safari)');
-setButtons();
-}
-checkSpeechSupport();
-
-// ========= Voces =========
-function loadVoices(){
-const list = speechSynthesis.getVoices().sort((a,b)=>a.lang.localeCompare(b.lang));
-state.voices = list;
-UI.voiceSelect.innerHTML = '';
-list.forEach((v,i)=>{
-const o = document.createElement('option');
-o.value = i; o.textContent = `${v.name} — ${v.lang}${v.default?' (default)':''}`;
-UI.voiceSelect.appendChild(o);
-});
-const esIdx = list.findIndex(v=>/^es(-|_)/i.test(v.lang));
-UI.voiceSelect.value = esIdx >= 0 ? esIdx : 0;
-}
-loadVoices();
-if (typeof speechSynthesis !== 'undefined') {
-speechSynthesis.onvoiceschanged = loadVoices;
-}
-
-// ========= División en fragmentos =========
-function chunkText(text, maxLen=1500){
-const paras = text.split(/\n{2,}/);
-const chunks = [];
-let cur = '';
-const push = () => { if (cur.trim()) { chunks.push(cur.trim()); cur=''; } };
-
-for (const p of paras){
-if ((cur+'\n\n'+p).length <= maxLen) {
-cur = cur ? cur+'\n\n'+p : p;
-} else {
-const sents = p.split(/(?<=[\.\?\!…:;])\s+/);
-for (const s of sents){
-if ((cur+' '+s).length <= maxLen) {
-cur = cur ? cur+' '+s : s;
-} else {
-push();
-if (s.length <= maxLen) cur = s;
-else {
-for (let i=0;i<s.length;i+=maxLen) chunks.push(s.slice(i,i+maxLen));
-cur = '';
-}
-}
-}
-}
-}
-push();
-return chunks;
-}
-
-function updateProgress(){
-const total = state.chunks.length || 1;
-const pct = Math.round((state.index/total)*100);
-UI.progressBar.style.width = pct + '%';
-UI.progressText.textContent = pct + '%';
-UI.chunkInfo.textContent = `${Math.min(state.index,total)} / ${total}`;
-setButtons();
-}
-
-// ========= Lectura =========
-function speakNext(){
-if (state.index >= state.chunks.length){
-setStatus('Lectura finalizada ✅','ok');
-state.speaking = false;
-updateProgress();
-return;
-}
-const utter = new SpeechSynthesisUtterance(state.chunks[state.index]);
-state.utter = utter;
-
-const v = state.voices[+UI.voiceSelect.value] || state.voices[0];
-if (v) utter.voice = v;
-utter.rate = +UI.rate.value;
-utter.pitch = +UI.pitch.value;
-utter.volume = +UI.volume.value;
-
-utter.onstart = ()=>{
-state.speaking = true;
-setStatus(`Leyendo ${state.index+1}/${state.chunks.length}…`);
-updateProgress();
-};
-utter.onend = ()=>{
-state.index++;
-updateProgress();
-speakNext();
-};
-utter.onerror = (e)=>{
-console.error(e);
-setStatus('Error durante la lectura. Revisa voz/permiso del navegador.','err');
-state.speaking = false;
-updateProgress();
-};
-speechSynthesis.speak(utter);
-setButtons();
-}
-
-UI.testBtn.addEventListener('click', ()=>{
-if (!('speechSynthesis' in window)) { setStatus('Sin soporte de voz.','err'); return; }
-speechSynthesis.cancel();
-const u = new SpeechSynthesisUtterance('Hola, esta es una prueba de voz. Si me escuchas, la síntesis funciona.');
-const v = state.voices[+UI.voiceSelect.value] || state.voices[0];
-if (v) u.voice = v;
-u.rate = +UI.rate.value; u.pitch = +UI.pitch.value; u.volume = +UI.volume.value;
-u.onstart=()=>{ state.speaking=true; setStatus('Prueba de voz…'); setButtons(); };
-u.onend=()=>{ state.speaking=false; setStatus('Listo'); setButtons(); };
-speechSynthesis.speak(u);
-});
-
-UI.speakBtn.addEventListener('click', ()=>{
-const t = getSanitizedText(UI.textInput.value);
-if (!t) { setStatus('No hay texto limpio para leer.','warn'); return; }
-speechSynthesis.cancel();
-state.chunks = chunkText(t, 1500);
-state.index = 0;
-updateProgress();
-setStatus('Iniciando lectura…');
-speakNext();
-});
-
-UI.pauseBtn.addEventListener('click', ()=>{
-if (speechSynthesis.speaking && !speechSynthesis.paused) {
-speechSynthesis.pause();
-state.paused = true;
-setStatus('Pausado ⏸️');
-setButtons();
-}
-});
-UI.resumeBtn.addEventListener('click', ()=>{
-if (speechSynthesis.paused) {
-speechSynthesis.resume();
-state.paused = false;
-setStatus('Reanudando ▶️');
-setButtons();
-}
-});
-UI.stopBtn.addEventListener('click', ()=>{
-speechSynthesis.cancel();
-state.speaking = false;
-setStatus('Detenido ⏹️');
-updateProgress();
-});
-UI.clearBtn.addEventListener('click', ()=>{
-speechSynthesis.cancel();
-UI.textInput.value = '';
-UI.extracted.value = '';
-state.chunks = []; state.index = 0; state.speaking = false;
-updateLen(); updateProgress(); setStatus('Listo');
-});
-
-// ========= PDF opcional =========
-UI.fileInput.addEventListener('change', async (e)=>{
-const f = e.target.files?.[0]; if (!f) return;
-const ext = (f.name.split('.').pop()||'').toLowerCase();
-setStatus('Procesando archivo…');
-try{
-if (ext==='txt'){
-const txt = await f.text();
-UI.extracted.value = txt;
-setStatus('TXT cargado ✅','ok');
-} else if (ext==='pdf'){
-const buf = await f.arrayBuffer();
-const text = await extractTextFromPDF(buf);
-UI.extracted.value = text.trim();
-setStatus('PDF extraído ✅','ok');
-} else {
-setStatus('Formato no soportado (usa .pdf o .txt).','warn');
-}
-}catch(err){
-console.error(err);
-setStatus('No se pudo extraer texto (PDF escaneado o error).','err');
-}
-});
-
-async function extractTextFromPDF(arrayBuffer){
-const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-let out = '';
-for (let p=1; p<=pdf.numPages; p++){
-const page = await pdf.getPage(p);
-const content = await page.getTextContent();
-const strings = content.items.map(it => (typeof it.str==='string') ? it.str : (it?.chars?.map(c=>c?.unicode||'').join('')||''));
-out += strings.join(' ') + '\n\n';
-}
-if (!out.trim()) throw new Error('PDF sin texto (escaneado).');
-return getSanitizedText(out);
-}
-
-// Inicial
-updateProgress(); setButtons();
+// window.YT_UPLOADS_PLAYLIST = 'UUxxxxxxxxxxxxxxxxxxxx';
 </script>
+
+<script src="app.js"></script>
 </body>
 </html>
+root{
+--bg:#0a0f14;
+--bg2:#0e1621;
+--text:#f5f7fa;
+--muted:#a5b4c3;
+--accent:#00e0ff; /* cian eléctrico */
+--accent2:#ff7f11; /* naranja racing */
+--card:#111b26;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+a{color:var(--accent);text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1100px;margin:0 auto;padding:0 16px}
+
+.nav{position:sticky;top:0;z-index:100;background:linear-gradient(180deg,var(--bg2),rgba(14,22,33,.85));backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--accent2);box-shadow:0 0 12px var(--accent2)}
+.nav a.btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.12)}
+.nav a.btn.primary{background:linear-gradient(135deg,var(--accent),#54ecff);color:#00222a;border:none;font-weight:700}
+
+.hero{position:relative;overflow:hidden;background:
+linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.6)),
+url('assets/photos/agustin_07.jpeg') center/cover no-repeat;color:white}
+.hero .container{padding:80px 16px}
+.hero h1{font-size:38px;margin:0 0 8px 0}
+.hero p{margin:0 0 16px 0;color:#e6f6ff}
+.badges{display:flex;gap:10px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-size:14px}
+.stripe{height:6px;background:linear-gradient(90deg,var(--accent2) 0 35%,transparent 35% 65%,var(--accent) 65% 100%)}
+
+.section{padding:48px 0;border-top:1px solid rgba(255,255,255,.06);background:var(--bg)}
+.section.alt{background:var(--bg2)}
+h2{margin:0 0 18px 0;font-size:28px}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px}
+.grid{display:grid;gap:16px}
+.grid.cols-2{grid-template-columns:1fr 1fr}
+@media (max-width:800px){.grid.cols-2{grid-template-columns:1fr} .hero h1{font-size:30px}}
+.btn{appearance:none;border:1px solid rgba(255,255,255,.18);background:#0b1620;color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--accent),#54ecff);color:#00222a;border:none;font-weight:700}
+.btn.ghost{background:transparent}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media (max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+.gallery a{position:relative;overflow:hidden;border-radius:10px;border:1px solid rgba(255,255,255,.08)}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+.gallery a:hover img{transform:scale(1.06)}
+
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:88vh;border-radius:8px;border:1px solid rgba(255,255,255,.2)}
+.lightbox .close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:8px 12px;cursor:pointer}
+
+.yt-wrap{position:relative;padding-top:56.25%}
+.yt-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
+.note{font-size:13px;color:var(--muted)}
+
+.chat{display:flex;flex-direction:column;gap:8px}
+.chat .row{display:flex;gap:8px}
+.chat input,.chat textarea{width:100%;background:#0b1620;border:1px solid rgba(255,255,255,.12);color:var(--text);padding:10px;border-radius:10px}
+.msg{background:#0b1620;border:1px solid rgba(255,255,255,.08);padding:10px 12px;border-radius:10px}
+.msg small{color:var(--muted)}
+
+.game-wrap{display:grid;gap:12px}
+canvas#game{background:linear-gradient(180deg,#222831,#11151a);border:1px solid rgba(255,255,255,.1);border-radius:12px}
+.controls-row{display:flex;gap:8px;flex-wrap:wrap}
+
+.footer{padding:40px 16px;text-align:center;color:var(--muted)}
 
 
+/* =======================
+Utilidades
+======================= */
+const $ = (s, c=document)=>c.querySelector(s);
+const $$ = (s, c=document)=>Array.from(c.querySelectorAll(s));
+
+/* Scroll suave */
+$$('a[href^="#"]').forEach(a=>a.addEventListener('click', e=>{
+const id = a.getAttribute('href').slice(1);
+const el = document.getElementById(id);
+if (el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+}));
+
+/* =======================
+Lightbox galería
+======================= */
+const lb = $('.lightbox');
+if (lb){
+lb.addEventListener('click', ()=>lb.classList.remove('open'));
+$$('.gallery a').forEach(a=>{
+a.addEventListener('click', e=>{
+e.preventDefault();
+const img = lb.querySelector('img');
+img.src = a.href;
+lb.classList.add('open');
+});
+});
+}
+
+/* =======================
+YouTube embed
+- Si defines window.YT_UPLOADS_PLAYLIST con el ID UU... de subidas del canal,
+se mostrará esa playlist con autoplay (mute).
+- Si no, usa un embed genérico de videos.
+======================= */
+(function initYouTube(){
+const wrap = $('#yt-player');
+if (!wrap) return;
+const playlist = window.YT_UPLOADS_PLAYLIST || "";
+let src;
+if (playlist){
+src = `https://www.youtube.com/embed?listType=playlist&list=${playlist}&autoplay=1&mute=1&loop=1&playsinline=1`;
+} else {
+// fallback simple (cargará la página de lista de reproducción; el usuario puede navegar)
+src = "https://www.youtube.com/embed/videoseries?list=PL&autoplay=1&mute=1";
+}
+const iframe = document.createElement('iframe');
+iframe.src = src;
+iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+iframe.title = "El Rayo Agustín — Videos";
+wrap.appendChild(iframe);
+})();
+
+/* =======================
+Chat (localStorage)
+======================= */
+const chatForm = $('#chat-form');
+const chatList = $('#chat-list');
+const CHAT_KEY = 'elrayo_chat_msgs_v1';
+
+function loadMsgs(){
+try{ return JSON.parse(localStorage.getItem(CHAT_KEY) || '[]'); }
+catch(e){ return []; }
+}
+function saveMsgs(arr){
+localStorage.setItem(CHAT_KEY, JSON.stringify(arr.slice(0,150))); // límite de 150 msg
+}
+function escapeHtml(s){ return s.replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+function renderMsgs(){
+const msgs = loadMsgs();
+chatList.innerHTML = '';
+msgs.forEach(m=>{
+const div = document.createElement('div');
+div.className = 'msg';
+div.innerHTML = `<strong>${escapeHtml(m.name || 'Anónimo')}</strong> <small>· ${new Date(m.ts).toLocaleString()}</small><br>${escapeHtml(m.text)}`;
+chatList.appendChild(div);
+});
+}
+if (chatForm){
+chatForm.addEventListener('submit', e=>{
+e.preventDefault();
+const name = $('#chat-name').value.trim();
+const text = $('#chat-text').value.trim();
+if (!text) return;
+const arr = loadMsgs();
+arr.unshift({name, text, ts: Date.now()});
+saveMsgs(arr);
+$('#chat-text').value='';
+renderMsgs();
+});
+renderMsgs();
+}
+
+/* =======================
+Mini-juego: Fórmula esquiva
+======================= */
+(function game(){
+const canvas = $('#game'); if (!canvas) return;
+const ctx = canvas.getContext('2d');
+let W=canvas.width, H=canvas.height;
+const lanes = 3;
+const laneW = ()=> W/lanes;
+const player = { lane:1, y: H-90, w: laneW()*0.6, h: 60, color:'#00e0ff', alive:true, score:0 };
+let speed = 3;
+const obst = []; // peatones/obstáculos
+let running = false;
+
+function reset(){
+player.lane=1; player.y=H-90; player.alive=true; player.score=0; speed=3; obst.length=0;
+}
+function spawn(){
+const lane = Math.floor(Math.random()*lanes);
+obst.push({ lane, y:-40, w: laneW()*0.5, h: 40, color:'#ff7f11' });
+}
+function drawTrack(){
+ctx.fillStyle = '#0d1117'; ctx.fillRect(0,0,W,H);
+ctx.strokeStyle='rgba(255,255,255,.15)'; ctx.setLineDash([10,14]); ctx.lineWidth=3;
+for(let i=1;i<lanes;i++){ ctx.beginPath(); ctx.moveTo(laneW()*i,0); ctx.lineTo(laneW()*i,H); ctx.stroke(); }
+ctx.setLineDash([]);
+}
+function drawCar(){
+const x = player.lane*laneW() + laneW()/2 - player.w/2;
+ctx.fillStyle = player.color; ctx.fillRect(x, player.y, player.w, player.h);
+ctx.fillStyle = '#001018'; ctx.fillRect(x+player.w*0.15, player.y+10, player.w*0.7, player.h*0.35);
+}
+function drawObstacles(){
+obst.forEach(o=>{
+const x = o.lane*laneW() + laneW()/2 - o.w/2;
+ctx.fillStyle = o.color; ctx.fillRect(x, o.y, o.w, o.h);
+ctx.fillStyle='#111'; ctx.fillRect(x+o.w/2-6, o.y-8, 12, 12); // “cabeza”
+});
+}
+function update(){
+if (!running) return;
+obst.forEach(o=>o.y+=speed);
+// quitar fuera de pantalla
+while(obst.length && obst[0].y>H+60) obst.shift();
+// colisión
+obst.forEach(o=>{
+const px = player.lane*laneW() + laneW()/2 - player.w/2;
+const ox = o.lane*laneW() + laneW()/2 - o.w/2;
+if (ox < px+player.w && ox+o.w > px && o.y < player.y+player.h && o.y+o.h > player.y){
+player.alive=false; running=false;
+}
+});
+// puntaje y dificultad creciente
+player.score += 1;
+if (player.score % 200 === 0) speed += 0.5;
+}
+function render(){
+drawTrack(); drawCar(); drawObstacles();
+ctx.fillStyle='white'; ctx.font='14px system-ui'; ctx.fillText('Puntos: '+player.score, 10, 18);
+if (!running){
+ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(0,0,W,H);
+ctx.fillStyle='white'; ctx.textAlign='center';
+ctx.fillText(player.alive?'Click para jugar':'¡Choque! Click para reiniciar', W/2, H/2);
+ctx.textAlign='start';
+}
+}
+function loop(){ if (running) update(); render(); requestAnimationFrame(loop); }
+
+canvas.addEventListener('click', ()=>{ if (!running){ reset(); running=true; } });
+window.addEventListener('keydown', e=>{
+if (!running) return;
+if (e.key==='ArrowLeft') player.lane = Math.max(0, player.lane-1);
+if (e.key==='ArrowRight') player.lane = Math.min(lanes-1, player.lane+1);
+});
+setInterval(()=>{ if (running) spawn(); }, 800);
+loop();
+})();
