@@ -3,55 +3,137 @@
 <head>
 <!-- =========================
 SEO / Metadatos
-========================== -->
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+========================= -->
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <title>El Rayo Agustín — Piloto chileno | Karting & Fórmula Eléctrica</title>
-<meta name="description" content="Sitio oficial de fans de El Rayo Agustín (Agustín Alfaro), piloto chileno. Noticias, fotos, videos, mini-juego y mensajes de apoyo. Actualmente compite en categorías de karting y fórmula eléctrica.">
-<meta name="keywords" content="El Rayo Agustín, Agustín Alfaro, piloto chileno, karting Chile, fórmula eléctrica, VChamp, ERA Racing School, automovilismo chileno, piloto joven, motorsport, carreras, monoplaza, racing">
-<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-<link rel="canonical" href="https://elrayoagustin.cl/" />
+<meta name="description" content="Sitio de El Rayo Agustín (Agustín Alfaro), piloto chileno de karting y fórmula eléctrica. Noticias, fotos, videos, mini-juego y mensajes de apoyo.">
+<meta name="keywords" content="El Rayo Agustín, Agustín Alfaro, piloto chileno, karting Chile, fórmula eléctrica, VChamp, ERA Racing School, automovilismo chileno, monoplaza, motorsport, carreras, fórmula, F4 eléctrica">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<link rel="canonical" href="https://elrayoagustin.cl/"/>
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="El Rayo Agustín — Piloto chileno" />
-<meta property="og:description" content="Fotos, videos, blog, mini-juego y mensajes de apoyo. Síguelo en Instagram y YouTube." />
-<meta property="og:url" content="https://elrayoagustin.cl/" />
-<meta property="og:image" content="https://elrayoagustin.cl/assets/photos/agustin_07.jpeg" />
-<meta property="og:site_name" content="El Rayo Agustín" />
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="El Rayo Agustín — Piloto chileno"/>
+<meta property="og:description" content="Fotos, videos, blog, mini-juego y mensajes de apoyo. Síguelo en Instagram y YouTube."/>
+<meta property="og:url" content="https://elrayoagustin.cl/"/>
+<meta property="og:image" content="https://elrayoagustin.cl/assets/photos/agustin_07.jpeg"/>
 
 <!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="El Rayo Agustín — Piloto chileno" />
-<meta name="twitter:description" content="Piloto chileno de karting y fórmula eléctrica. Galería, videos y mini-juego." />
-<meta name="twitter:image" content="https://elrayoagustin.cl/assets/photos/agustin_07.jpeg" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="El Rayo Agustín — Piloto chileno"/>
+<meta name="twitter:description" content="Piloto chileno de karting y fórmula eléctrica. Galería, videos y mini-juego."/>
+<meta name="twitter:image" content="https://elrayoagustin.cl/assets/photos/agustin_07.jpeg"/>
 
-<!-- JSON-LD (Schema.org) -->
+<!-- JSON-LD -->
 <script type="application/ld+json">
 {
-"@context": "https://schema.org",
-"@type": "Person",
-"name": "Agustín Alfaro",
-"alternateName": ["El Rayo Agustín"],
-"url": "https://elrayoagustin.cl/",
-"nationality": "CL",
-"jobTitle": "Piloto de automovilismo",
-"sport": "Motorsport",
-"image": "https://elrayoagustin.cl/assets/photos/agustin_07.jpeg",
-"sameAs": [
+"@context":"https://schema.org",
+"@type":"Person",
+"name":"Agustín Alfaro",
+"alternateName":["El Rayo Agustín"],
+"url":"https://elrayoagustin.cl/",
+"nationality":"CL",
+"jobTitle":"Piloto de automovilismo",
+"sport":"Motorsport",
+"image":"https://elrayoagustin.cl/assets/photos/agustin_07.jpeg",
+"sameAs":[
 "https://www.instagram.com/agustinalfaro_oficial",
 "https://youtube.com/@elrayoagustin"
 ]
 }
 </script>
 
-<!-- Preconnect para mejorar carga de YouTube e imágenes -->
-<link rel="preconnect" href="https://www.youtube.com">
-<link rel="preconnect" href="https://i.ytimg.com">
+<!-- Fuentes -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://www.youtube.com"><link rel="preconnect" href="https://i.ytimg.com">
 
-<link rel="stylesheet" href="styles.css" />
+<style>
+/* ===== Reset & Base ===== */
+*{box-sizing:border-box} html,body{height:100%}
+:root{
+--bg:#0b1113; /* fondo dark */
+--bg2:#0f171a; /* secciones alternas */
+--card:#10191c; /* cards */
+--text:#eef4f6; /* texto principal */
+--muted:#9fb0b7; /* texto secundario */
+--accent:#0cd186; /* verde racing */
+--accent2:#ff7f11; /* acento naranjo */
+--line:rgba(255,255,255,.08);
+}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial}
+a{color:var(--accent);text-decoration:none}
+img{display:block;max-width:100%}
+.container{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* ===== Nav ===== */
+.nav{position:sticky;top:0;z-index:100;background:rgba(11,17,19,.85);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.brand{display:flex;align-items:center;gap:10px;font:800 18px Outfit,Inter,sans-serif;letter-spacing:.4px}
+.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px var(--accent)}
+.nav a.btn{padding:10px 14px;border-radius:12px;border:1px solid var(--line);color:var(--text)}
+.nav a.btn.primary{background:linear-gradient(135deg,var(--accent),#4df2b7);color:#062418;border:none;font-weight:700}
+
+/* ===== Hero ===== */
+.hero{position:relative;min-height:72vh;display:grid;align-items:end;overflow:hidden;
+background:
+linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.65)),
+url('assets/photos/agustin_07.jpeg') center/cover no-repeat}
+.hero .inner{padding:72px 0}
+.hero h1{margin:0 0 8px 0;font:800 52px Outfit,Inter,sans-serif;letter-spacing:.5px}
+.hero p{margin:0 0 18px 0;color:#d9ece7;font:400 18px Inter}
+.badges{display:flex;gap:10px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font:600 13px Inter}
+.stripe{height:6px;background:linear-gradient(90deg,var(--accent) 0 35%,transparent 35% 65%,var(--accent2) 65% 100%)}
+
+/* ===== Sections ===== */
+.section{padding:56px 0;border-top:1px solid var(--line);background:var(--bg)}
+.section.alt{background:var(--bg2)}
+h2{font:800 28px Outfit,Inter,sans-serif;margin:0 0 16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.grid{display:grid;gap:16px}
+.grid.cols-2{grid-template-columns:1fr 1fr}
+@media (max-width:900px){.grid.cols-2{grid-template-columns:1fr}}
+.note{font-size:13px;color:var(--muted)}
+.btn{appearance:none;border:1px solid var(--line);background:#0c1518;color:var(--text);padding:10px 14px;border-radius:12px;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--accent),#4df2b7);color:#062418;border:none;font-weight:700}
+
+/* ===== Gallery ===== */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:1000px){.gallery{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:700px){.gallery{grid-template-columns:repeat(2,1fr)}}
+.gallery a{position:relative;overflow:hidden;border-radius:12px;border:1px solid var(--line)}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.gallery a:hover img{transform:scale(1.06)}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:88vh;border-radius:12px;border:1px solid var(--line)}
+.lightbox .close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.1);border:1px solid var(--line);border-radius:12px;padding:8px 12px;cursor:pointer;color:#fff}
+
+/* ===== YouTube ===== */
+.yt-wrap{position:relative;padding-top:56.25%}
+.yt-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px}
+
+/* ===== Chat ===== */
+.chat{display:flex;flex-direction:column;gap:8px}
+.chat .row{display:flex;gap:8px}
+.chat input,.chat textarea{width:100%;background:#0c1518;border:1px solid var(--line);color:var(--text);padding:12px;border-radius:12px}
+.msg{background:#0c1518;border:1px solid var(--line);padding:10px 12px;border-radius:12px}
+.msg small{color:var(--muted)}
+
+/* ===== Game ===== */
+.game-wrap{display:grid;gap:12px}
+canvas#game{background:linear-gradient(180deg,#182226,#0e1315);border:1px solid var(--line);border-radius:14px}
+.controls-row{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ===== Footer ===== */
+.footer{padding:44px 16px;text-align:center;color:var(--muted)}
+</style>
 </head>
 <body>
+
 <!-- NAV -->
 <nav class="nav">
 <div class="container wrap">
@@ -66,14 +148,14 @@ SEO / Metadatos
 </nav>
 
 <!-- HERO -->
-<header class="hero">
-<div class="container">
+<header class="hero" role="banner">
+<div class="container inner">
 <h1>Agustín Alfaro</h1>
 <p>Piloto chileno — karting & fórmula eléctrica. Velocidad, disciplina y corazón. 🇨🇱</p>
 <div class="badges">
 <span class="badge">Piloto chileno</span>
 <a class="badge" href="https://youtube.com/@elrayoagustin?si=gyNKwtLTEGwGiuJk" target="_blank" rel="noopener">YouTube oficial</a>
-<a class="badge" href="https://www.fernandoalonso.com/" target="_blank" rel="noopener">Inspirado en F1</a>
+<a class="badge" href="https://www.fernandoalonso.com/" target="_blank" rel="noopener">Inspiración F1</a>
 </div>
 </div>
 <div class="stripe"></div>
@@ -85,8 +167,7 @@ SEO / Metadatos
 <h2>🎥 Videos</h2>
 <div class="card">
 <p class="note">
-Reproductor automático del canal. Para que siempre muestre <strong>las últimas subidas</strong>, define
-<code>window.YT_UPLOADS_PLAYLIST</code> (ID que empieza con <b>UU…</b>) en el bloque de abajo.
+Para que muestre <strong>las últimas subidas</strong> de @elrayoagustin, pega el ID de la playlist de “uploads” (empieza con <b>UU…</b>) en el script al final.
 </p>
 <div class="yt-wrap" id="yt-player"></div>
 </div>
@@ -98,6 +179,7 @@ Reproductor automático del canal. Para que siempre muestre <strong>las últimas
 <div class="container">
 <h2>📸 Blog de Fotos</h2>
 <div class="gallery">
+<!-- Asegúrate de subir estas imágenes a /assets/photos/ con estos nombres -->
 <a href="assets/photos/agustin_01.jpeg"><img src="assets/photos/agustin_01.jpeg" alt="Agustín en monoplaza 1"></a>
 <a href="assets/photos/agustin_02.jpeg"><img src="assets/photos/agustin_02.jpeg" alt="Agustín en pits 2"></a>
 <a href="assets/photos/agustin_03.jpeg"><img src="assets/photos/agustin_03.jpeg" alt="Pulgar arriba 3"></a>
@@ -110,7 +192,7 @@ Reproductor automático del canal. Para que siempre muestre <strong>las últimas
 <a href="assets/photos/agustin_10.jpeg"><img src="assets/photos/agustin_10.jpeg" alt="Bandera de Chile 10"></a>
 </div>
 </div>
-<div class="lightbox"><button class="close">Cerrar</button><img src="" alt=""></div>
+<div class="lightbox" id="lightbox"><button class="close">Cerrar</button><img src="" alt=""></div>
 </section>
 
 <!-- CHAT -->
@@ -146,85 +228,7 @@ Reproductor automático del canal. Para que siempre muestre <strong>las últimas
 © 2025 El Rayo Agustín — Sitio de fans. Hecho con ❤️ en Chile.
 </footer>
 
-<!-- Configura aquí el ID de la playlist de subidas del canal (UUxxxxxxxx…) -->
 <script>
-// window.YT_UPLOADS_PLAYLIST = 'UUxxxxxxxxxxxxxxxxxxxx';
-</script>
-
-<script src="app.js"></script>
-</body>
-</html>
-root{
---bg:#0a0f14;
---bg2:#0e1621;
---text:#f5f7fa;
---muted:#a5b4c3;
---accent:#00e0ff; /* cian eléctrico */
---accent2:#ff7f11; /* naranja racing */
---card:#111b26;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
-a{color:var(--accent);text-decoration:none}
-img{max-width:100%;display:block}
-.container{max-width:1100px;margin:0 auto;padding:0 16px}
-
-.nav{position:sticky;top:0;z-index:100;background:linear-gradient(180deg,var(--bg2),rgba(14,22,33,.85));backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
-.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--accent2);box-shadow:0 0 12px var(--accent2)}
-.nav a.btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.12)}
-.nav a.btn.primary{background:linear-gradient(135deg,var(--accent),#54ecff);color:#00222a;border:none;font-weight:700}
-
-.hero{position:relative;overflow:hidden;background:
-linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.6)),
-url('assets/photos/agustin_07.jpeg') center/cover no-repeat;color:white}
-.hero .container{padding:80px 16px}
-.hero h1{font-size:38px;margin:0 0 8px 0}
-.hero p{margin:0 0 16px 0;color:#e6f6ff}
-.badges{display:flex;gap:10px;flex-wrap:wrap}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-size:14px}
-.stripe{height:6px;background:linear-gradient(90deg,var(--accent2) 0 35%,transparent 35% 65%,var(--accent) 65% 100%)}
-
-.section{padding:48px 0;border-top:1px solid rgba(255,255,255,.06);background:var(--bg)}
-.section.alt{background:var(--bg2)}
-h2{margin:0 0 18px 0;font-size:28px}
-.card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px}
-.grid{display:grid;gap:16px}
-.grid.cols-2{grid-template-columns:1fr 1fr}
-@media (max-width:800px){.grid.cols-2{grid-template-columns:1fr} .hero h1{font-size:30px}}
-.btn{appearance:none;border:1px solid rgba(255,255,255,.18);background:#0b1620;color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer}
-.btn.primary{background:linear-gradient(135deg,var(--accent),#54ecff);color:#00222a;border:none;font-weight:700}
-.btn.ghost{background:transparent}
-
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-@media (max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
-.gallery a{position:relative;overflow:hidden;border-radius:10px;border:1px solid rgba(255,255,255,.08)}
-.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
-.gallery a:hover img{transform:scale(1.06)}
-
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center}
-.lightbox.open{display:flex}
-.lightbox img{max-width:92vw;max-height:88vh;border-radius:8px;border:1px solid rgba(255,255,255,.2)}
-.lightbox .close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:8px 12px;cursor:pointer}
-
-.yt-wrap{position:relative;padding-top:56.25%}
-.yt-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
-.note{font-size:13px;color:var(--muted)}
-
-.chat{display:flex;flex-direction:column;gap:8px}
-.chat .row{display:flex;gap:8px}
-.chat input,.chat textarea{width:100%;background:#0b1620;border:1px solid rgba(255,255,255,.12);color:var(--text);padding:10px;border-radius:10px}
-.msg{background:#0b1620;border:1px solid rgba(255,255,255,.08);padding:10px 12px;border-radius:10px}
-.msg small{color:var(--muted)}
-
-.game-wrap{display:grid;gap:12px}
-canvas#game{background:linear-gradient(180deg,#222831,#11151a);border:1px solid rgba(255,255,255,.1);border-radius:12px}
-.controls-row{display:flex;gap:8px;flex-wrap:wrap}
-
-.footer{padding:40px 16px;text-align:center;color:var(--muted)}
-
-
 /* =======================
 Utilidades
 ======================= */
@@ -239,36 +243,18 @@ if (el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
 }));
 
 /* =======================
-Lightbox galería
-======================= */
-const lb = $('.lightbox');
-if (lb){
-lb.addEventListener('click', ()=>lb.classList.remove('open'));
-$$('.gallery a').forEach(a=>{
-a.addEventListener('click', e=>{
-e.preventDefault();
-const img = lb.querySelector('img');
-img.src = a.href;
-lb.classList.add('open');
-});
-});
-}
-
-/* =======================
 YouTube embed
-- Si defines window.YT_UPLOADS_PLAYLIST con el ID UU... de subidas del canal,
-se mostrará esa playlist con autoplay (mute).
-- Si no, usa un embed genérico de videos.
 ======================= */
+/* Pega aquí el ID de la playlist de subidas (formato UUxxxxxxxx...) */
+window.YT_UPLOADS_PLAYLIST = ""; // <-- pon el UU... aquí
 (function initYouTube(){
-const wrap = $('#yt-player');
-if (!wrap) return;
+const wrap = $('#yt-player'); if (!wrap) return;
 const playlist = window.YT_UPLOADS_PLAYLIST || "";
 let src;
 if (playlist){
 src = `https://www.youtube.com/embed?listType=playlist&list=${playlist}&autoplay=1&mute=1&loop=1&playsinline=1`;
 } else {
-// fallback simple (cargará la página de lista de reproducción; el usuario puede navegar)
+// fallback genérico (no garantiza "últimos uploads")
 src = "https://www.youtube.com/embed/videoseries?list=PL&autoplay=1&mute=1";
 }
 const iframe = document.createElement('iframe');
@@ -279,41 +265,48 @@ wrap.appendChild(iframe);
 })();
 
 /* =======================
+Lightbox galería
+======================= */
+(function(){
+const lb = $('#lightbox'); if(!lb) return;
+lb.addEventListener('click', ()=>lb.classList.remove('open'));
+$$('.gallery a').forEach(a=>{
+a.addEventListener('click', e=>{
+e.preventDefault();
+const img = lb.querySelector('img');
+img.src = a.getAttribute('href');
+lb.classList.add('open');
+});
+});
+})();
+
+/* =======================
 Chat (localStorage)
 ======================= */
 const chatForm = $('#chat-form');
 const chatList = $('#chat-list');
 const CHAT_KEY = 'elrayo_chat_msgs_v1';
 
-function loadMsgs(){
-try{ return JSON.parse(localStorage.getItem(CHAT_KEY) || '[]'); }
-catch(e){ return []; }
-}
-function saveMsgs(arr){
-localStorage.setItem(CHAT_KEY, JSON.stringify(arr.slice(0,150))); // límite de 150 msg
-}
-function escapeHtml(s){ return s.replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+function loadMsgs(){ try{ return JSON.parse(localStorage.getItem(CHAT_KEY)||'[]'); }catch(e){ return []; } }
+function saveMsgs(arr){ localStorage.setItem(CHAT_KEY, JSON.stringify(arr.slice(0,150))); }
+function escapeHtml(s){ return s.replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;' }[c])); }
 function renderMsgs(){
-const msgs = loadMsgs();
-chatList.innerHTML = '';
+const msgs = loadMsgs(); chatList.innerHTML='';
 msgs.forEach(m=>{
-const div = document.createElement('div');
-div.className = 'msg';
-div.innerHTML = `<strong>${escapeHtml(m.name || 'Anónimo')}</strong> <small>· ${new Date(m.ts).toLocaleString()}</small><br>${escapeHtml(m.text)}`;
+const div=document.createElement('div');
+div.className='msg';
+div.innerHTML=`<strong>${escapeHtml(m.name||'Anónimo')}</strong> <small>· ${new Date(m.ts).toLocaleString()}</small><br>${escapeHtml(m.text)}`;
 chatList.appendChild(div);
 });
 }
 if (chatForm){
 chatForm.addEventListener('submit', e=>{
 e.preventDefault();
-const name = $('#chat-name').value.trim();
-const text = $('#chat-text').value.trim();
-if (!text) return;
-const arr = loadMsgs();
-arr.unshift({name, text, ts: Date.now()});
-saveMsgs(arr);
-$('#chat-text').value='';
-renderMsgs();
+const name=$('#chat-name').value.trim();
+const text=$('#chat-text').value.trim();
+if(!text) return;
+const arr=loadMsgs(); arr.unshift({name,text,ts:Date.now()});
+saveMsgs(arr); $('#chat-text').value=''; renderMsgs();
 });
 renderMsgs();
 }
@@ -322,76 +315,62 @@ renderMsgs();
 Mini-juego: Fórmula esquiva
 ======================= */
 (function game(){
-const canvas = $('#game'); if (!canvas) return;
-const ctx = canvas.getContext('2d');
+const canvas=$('#game'); if(!canvas) return;
+const ctx=canvas.getContext('2d');
 let W=canvas.width, H=canvas.height;
-const lanes = 3;
-const laneW = ()=> W/lanes;
-const player = { lane:1, y: H-90, w: laneW()*0.6, h: 60, color:'#00e0ff', alive:true, score:0 };
-let speed = 3;
-const obst = []; // peatones/obstáculos
-let running = false;
+const lanes=3, laneW=()=>W/lanes;
+const player={ lane:1, y:H-90, w:laneW()*0.6, h:60, color:'#0cd186', alive:true, score:0 };
+let speed=3; const obst=[]; let running=false;
 
-function reset(){
-player.lane=1; player.y=H-90; player.alive=true; player.score=0; speed=3; obst.length=0;
-}
-function spawn(){
-const lane = Math.floor(Math.random()*lanes);
-obst.push({ lane, y:-40, w: laneW()*0.5, h: 40, color:'#ff7f11' });
-}
+function reset(){ player.lane=1; player.y=H-90; player.alive=true; player.score=0; speed=3; obst.length=0; }
+function spawn(){ const lane=Math.floor(Math.random()*lanes); obst.push({lane, y:-40, w:laneW()*0.5, h:40, color:'#ff7f11'}); }
 function drawTrack(){
-ctx.fillStyle = '#0d1117'; ctx.fillRect(0,0,W,H);
-ctx.strokeStyle='rgba(255,255,255,.15)'; ctx.setLineDash([10,14]); ctx.lineWidth=3;
+ctx.fillStyle='#0e1315'; ctx.fillRect(0,0,W,H);
+ctx.strokeStyle='rgba(255,255,255,.14)'; ctx.setLineDash([10,14]); ctx.lineWidth=3;
 for(let i=1;i<lanes;i++){ ctx.beginPath(); ctx.moveTo(laneW()*i,0); ctx.lineTo(laneW()*i,H); ctx.stroke(); }
 ctx.setLineDash([]);
 }
 function drawCar(){
-const x = player.lane*laneW() + laneW()/2 - player.w/2;
-ctx.fillStyle = player.color; ctx.fillRect(x, player.y, player.w, player.h);
-ctx.fillStyle = '#001018'; ctx.fillRect(x+player.w*0.15, player.y+10, player.w*0.7, player.h*0.35);
+const x=player.lane*laneW()+laneW()/2 - player.w/2;
+ctx.fillStyle=player.color; ctx.fillRect(x,player.y,player.w,player.h);
+ctx.fillStyle='#031b13'; ctx.fillRect(x+player.w*0.15, player.y+10, player.w*0.7, player.h*0.35);
 }
 function drawObstacles(){
 obst.forEach(o=>{
-const x = o.lane*laneW() + laneW()/2 - o.w/2;
-ctx.fillStyle = o.color; ctx.fillRect(x, o.y, o.w, o.h);
-ctx.fillStyle='#111'; ctx.fillRect(x+o.w/2-6, o.y-8, 12, 12); // “cabeza”
+const x=o.lane*laneW()+laneW()/2 - o.w/2;
+ctx.fillStyle=o.color; ctx.fillRect(x,o.y,o.w,o.h);
+ctx.fillStyle='#111'; ctx.fillRect(x+o.w/2-6, o.y-8, 12, 12);
 });
 }
 function update(){
-if (!running) return;
+if(!running) return;
 obst.forEach(o=>o.y+=speed);
-// quitar fuera de pantalla
 while(obst.length && obst[0].y>H+60) obst.shift();
-// colisión
 obst.forEach(o=>{
-const px = player.lane*laneW() + laneW()/2 - player.w/2;
-const ox = o.lane*laneW() + laneW()/2 - o.w/2;
-if (ox < px+player.w && ox+o.w > px && o.y < player.y+player.h && o.y+o.h > player.y){
-player.alive=false; running=false;
-}
+const px=player.lane*laneW()+laneW()/2 - player.w/2;
+const ox=o.lane*laneW()+laneW()/2 - o.w/2;
+if(ox < px+player.w && ox+o.w > px && o.y < player.y+player.h && o.y+o.h > player.y){ player.alive=false; running=false; }
 });
-// puntaje y dificultad creciente
-player.score += 1;
-if (player.score % 200 === 0) speed += 0.5;
+player.score+=1; if(player.score%220===0) speed+=0.5;
 }
 function render(){
 drawTrack(); drawCar(); drawObstacles();
-ctx.fillStyle='white'; ctx.font='14px system-ui'; ctx.fillText('Puntos: '+player.score, 10, 18);
-if (!running){
-ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(0,0,W,H);
-ctx.fillStyle='white'; ctx.textAlign='center';
-ctx.fillText(player.alive?'Click para jugar':'¡Choque! Click para reiniciar', W/2, H/2);
+ctx.fillStyle='#fff'; ctx.font='14px system-ui'; ctx.fillText('Puntos: '+player.score,10,18);
+if(!running){ ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(0,0,W,H);
+ctx.fillStyle='#fff'; ctx.textAlign='center';
+ctx.fillText(player.alive?'Toca/clic para jugar':'¡Choque! Toca para reiniciar', W/2, H/2);
 ctx.textAlign='start';
 }
 }
-function loop(){ if (running) update(); render(); requestAnimationFrame(loop); }
-
-canvas.addEventListener('click', ()=>{ if (!running){ reset(); running=true; } });
-window.addEventListener('keydown', e=>{
-if (!running) return;
-if (e.key==='ArrowLeft') player.lane = Math.max(0, player.lane-1);
-if (e.key==='ArrowRight') player.lane = Math.min(lanes-1, player.lane+1);
+function loop(){ if(running) update(); render(); requestAnimationFrame(loop); }
+canvas.addEventListener('click', ()=>{ if(!running){ reset(); running=true; }});
+window.addEventListener('keydown', e=>{ if(!running) return;
+if(e.key==='ArrowLeft') player.lane=Math.max(0,player.lane-1);
+if(e.key==='ArrowRight') player.lane=Math.min(lanes-1,player.lane+1);
 });
-setInterval(()=>{ if (running) spawn(); }, 800);
+setInterval(()=>{ if(running) spawn(); }, 800);
 loop();
 })();
+</script>
+</body>
+</html>
