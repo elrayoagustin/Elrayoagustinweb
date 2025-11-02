@@ -1,30 +1,28 @@
 <!doctype html>
-<html lang="es-CL">
+<html lang="es">
 <head>
-<<<<<<< HEAD
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Lector de Texto y PDF — Gratis (Web Speech API + PDF.js)</title>
 <style>
 :root { --bg:#0f172a; --panel:#111827; --accent:#22d3ee; --text:#e5e7eb; --muted:#94a3b8; --ok:#34d399; --warn:#f59e0b; --err:#f87171; }
 *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,sans-serif}
-header{padding:24px 16px;text-align:center;border-bottom:1px solid #1f2937}
+header{padding:22px 16px;text-align:center;border-bottom:1px solid #1f2937}
 header h1{margin:0;font-size:20px}
 main{max-width:1000px;margin:0 auto;padding:16px;display:grid;gap:16px}
 .card{background:var(--panel);border:1px solid #1f2937;border-radius:12px;padding:16px}
 .row{display:grid;gap:12px}
 .grid-2{grid-template-columns:1fr 1fr}
 label{font-size:13px;color:var(--muted)}
-textarea{width:100%;min-height:180px;resize:vertical;background:#0b1220;color:var(--text);border:1px solid #293244;border-radius:8px;padding:12px;line-height:1.5}
-input[type="file"],input[type="url"],select,input[type="range"]{width:100%}
-input[type="url"],select{background:#0b1220;color:var(--text);border:1px solid #293244;border-radius:8px;padding:10px}
+textarea{width:100%;min-height:200px;resize:vertical;background:#0b1220;color:var(--text);border:1px solid #293244;border-radius:8px;padding:12px;line-height:1.5}
+input[type="file"],select{width:100%}
+select{background:#0b1220;color:var(--text);border:1px solid #293244;border-radius:8px;padding:10px}
 .controls{display:flex;flex-wrap:wrap;gap:8px}
 button{appearance:none;border:1px solid #1f2937;background:#0b1220;color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer}
 button.primary{background:linear-gradient(135deg,#0ea5e9,#22d3ee);color:#001018;border:none;font-weight:600}
-button.ghost{background:transparent}
 button:disabled{opacity:.5;cursor:not-allowed}
-.kvs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .kv{background:#0b1220;border:1px dashed #293244;border-radius:10px;padding:10px;font-size:13px;color:var(--muted)}
+.kvs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .meter{height:8px;border-radius:999px;background:#0b1220;border:1px solid #293244;overflow:hidden}
 .meter > i{display:block;height:100%;width:0;background:linear-gradient(90deg,#22d3ee,#34d399)}
 .small{font-size:12px;color:var(--muted)}
@@ -36,7 +34,7 @@ footer{padding:20px;text-align:center;color:var(--muted);font-size:12px}
 <body>
 <header>
 <h1>🗣️ Lector de Texto y PDF — 100% Gratis, local en tu navegador</h1>
-<div class="small">Funciona con <span class="badge">Web Speech API</span> + <span class="badge">PDF.js</span>. No sube tus archivos a ningún servidor.</div>
+<div class="small">Funciona con <span class="badge">Web Speech API</span> + <span class="badge">PDF.js</span>. No sube archivos a ningún servidor.</div>
 </header>
 
 <main>
@@ -50,17 +48,9 @@ footer{padding:20px;text-align:center;color:var(--muted);font-size:12px}
 <div class="small">Los PDFs se procesan localmente con PDF.js. Los TXT se abren directo.</div>
 </div>
 <div>
-<label>Pegar URL (opcional)</label>
-<input id="urlInput" type="url" placeholder="https://ejemplo.com/articulo" />
-<div class="controls">
-<button id="fetchUrlBtn">Obtener y cargar texto</button>
-</div>
-<div class="small">Si el sitio bloquea CORS, el navegador no permitirá traer el texto automáticamente.</div>
-</div>
-</div>
-<div style="margin-top:12px">
-<label>O escribe/pega el texto directamente</label>
+<label>Escribe o pega texto</label>
 <textarea id="textInput" placeholder="Pega aquí el texto que quieres escuchar..."></textarea>
+</div>
 </div>
 <div class="kvs" style="margin-top:12px">
 <div class="kv"><b>Estado:</b> <span id="status">Listo</span></div>
@@ -76,17 +66,17 @@ footer{padding:20px;text-align:center;color:var(--muted);font-size:12px}
 <div>
 <label>Voz disponible en tu navegador</label>
 <select id="voiceSelect"></select>
-<div class="small">Sugerencia: elige una voz <b>es-ES</b> o <b>es-LA</b> para español natural.</div>
+<div class="small">Elige una voz <b>es-ES</b> o <b>es-LA</b> para español natural.</div>
 </div>
 <div>
-<label>Velocidad (rate)</label>
+<label>Velocidad</label>
 <input id="rate" type="range" min="0.5" max="2" step="0.1" value="1" />
 <div class="meter"><i id="rateBar"></i></div>
 </div>
 </div>
 <div class="row grid-2">
 <div>
-<label>Tono (pitch)</label>
+<label>Tono</label>
 <input id="pitch" type="range" min="0" max="2" step="0.1" value="1" />
 <div class="meter"><i id="pitchBar"></i></div>
 </div>
@@ -98,18 +88,18 @@ footer{padding:20px;text-align:center;color:var(--muted);font-size:12px}
 </div>
 </section>
 
-<!-- Controles de lectura -->
+<!-- Controles -->
 <section class="card">
 <h2 style="margin-top:0">3) Controles</h2>
 <div class="controls">
 <button id="speakBtn" class="primary">▶️ Leer</button>
 <button id="pauseBtn">⏸️ Pausar</button>
 <button id="resumeBtn">▶️ Reanudar</button>
-<button id="stopBtn" class="ghost">⏹️ Detener</button>
-<button id="clearBtn" class="ghost">🧹 Limpiar</button>
+<button id="stopBtn">⏹️ Detener</button>
+<button id="clearBtn">🧹 Limpiar</button>
 </div>
 <div class="small" style="margin-top:8px">
-Pro tip: el texto se divide automáticamente en “trozos” para evitar cortes. Puedes pausar y reanudar cuando quieras.
+El texto se divide en fragmentos para evitar cortes. Puedes pausar y reanudar cuando quieras.
 </div>
 </section>
 
@@ -125,287 +115,24 @@ Pro tip: el texto se divide automáticamente en “trozos” para evitar cortes.
 </main>
 
 <footer>
-Hecho para Raúl — uso libre. Requiere un navegador con soporte de <b>speechSynthesis</b>. PDF.js vía CDN.
+Hecho para Raúl — uso libre. Requiere un navegador con soporte de <b>speechSynthesis</b>. PDF.js por CDN.
 </footer>
-=======
-<!-- =========================
-SEO / Metadatos
-========================== -->
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>El Rayo Agustín — Piloto chileno | Agustín Alfaro</title>
-<meta name="description" content="Sigue el camino de Agustín Alfaro (El Rayo Agustín), piloto chileno de automovilismo. Mini-juego, videos oficiales y mensajes de fans."/>
-<meta name="keywords" content="deportista, chileno, auto, Agustín, Agustín Alfaro, piloto, automovilismo, karting, monoplazas, Chile"/>
-<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
-<link rel="canonical" href="https://tudominio.cl/"/>
 
-<!-- Open Graph / Twitter -->
-<meta property="og:title" content="El Rayo Agustín — Piloto chileno (Agustín Alfaro)"/>
-<meta property="og:description" content="Mini-juego, videos, prensa y comunidad de El Rayo Agustín."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://tudominio.cl/"/>
-<meta property="og:image" content="https://tudominio.cl/og-image.jpg"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="El Rayo Agustín — Piloto chileno (Agustín Alfaro)"/>
-<meta name="twitter:description" content="Mini-juego, videos y comunidad."/>
-<meta name="twitter:image" content="https://tudominio.cl/og-image.jpg"/>
-
-<!-- Schema.org (sitio + persona) -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {
-      "@type":"WebSite",
-      "name":"El Rayo Agustín",
-      "url":"https://tudominio.cl/",
-      "inLanguage":"es-CL",
-      "potentialAction":{
-        "@type":"SearchAction",
-        "target":"https://tudominio.cl/?q={search_term_string}",
-        "query-input":"required name=search_term_string"
-      }
-    },
-    {
-      "@type":["Person","Athlete"],
-      "name":"Agustín Alfaro",
-      "alternateName":"El Rayo Agustín",
-      "nationality":"Chile",
-      "sport":"Auto racing",
-      "description":"Piloto chileno de automovilismo con experiencia en karting y proyección a monoplazas.",
-      "url":"https://tudominio.cl/",
-      "sameAs":[
-        "https://www.youtube.com/channel/UCAi1UfkKLYyJWwbBmbmK2mA",
-        "https://www.instagram.com/agustinalfaro_oficial"
-      ]
-    }
-  ]
-}
-</script>
-
-<!-- Rendimiento para YouTube -->
-<link rel="preconnect" href="https://www.youtube.com">
-<link rel="preconnect" href="https://www.youtube-nocookie.com">
-
-<!-- Seguridad (CSP): corregida y endurecida -->
-<meta http-equiv="Content-Security-Policy" content="
-  default-src 'self';
-  upgrade-insecure-requests;
-  block-all-mixed-content;
-  img-src 'self' data: https:;
-  media-src 'self' https:;
-  style-src 'self' 'unsafe-inline';
-  script-src 'self' 'unsafe-inline';
-  frame-src https://www.youtube.com https://www.youtube-nocookie.com;
-  connect-src 'self';
-"/>
-
-<!-- Favicon (SVG) -->
-<link rel="icon" type="image/svg+xml"
-href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32" aria-label="Favicon El Rayo Agustín"><rect width="64" height="32" fill="black"/><path d="M6 20h10l6-6h16l8 6h6v4H6z" fill="white"/></svg>'/>
-<meta name="theme-color" content="#0c0c0f"/>
-
-<!-- =========================
-Estilos
-========================== -->
-<style>
-:root{
-  --bg:#0b0b0f; --text:#f2f4f8; --muted:#b8bbc7; --brand:#ff3b30; --accent:#27d17f;
-  --card:#12141a; --glass:#ffffff14; --max:1120px; --radius:14px; --shadow:0 14px 34px rgba(0,0,0,.38);
-  --titleMax: 92px; --navH: 56px;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-html{scroll-behavior:smooth}
-body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial; color:var(--text); background:#000; line-height:1.55}
-a{color:#fff; text-decoration:none}
-
-/* NAV */
-.nav{position:sticky; top:0; z-index:30; backdrop-filter:blur(8px); background:#0b0b0fcc; border-bottom:1px solid #ffffff1a}
-.nav .row{max-width:var(--max); height:var(--navH); margin:0 auto; padding:0 16px; display:flex; align-items:center; justify-content:space-between}
-.menu{display:flex; gap:16px; flex-wrap:wrap}
-.menu a{opacity:.9; font-weight:700} .menu a:hover{opacity:1}
-:target{scroll-margin-top:calc(var(--navH)+12px)}
-
-/* HERO */
-.hero{position:relative; min-height:64vh; display:grid; place-items:center; text-align:center; overflow:hidden}
-.heroBg{position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1530041686307-2fdee4d1d5a1?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat; transform:scale(1.08); animation:kb 18s ease-in-out infinite alternate; filter:saturate(1.05) contrast(1.08) brightness(.9)}
-.heroOverlay{position:absolute; inset:0; background: radial-gradient(80% 70% at 50% 40%, rgba(0,0,0,.25), rgba(0,0,0,.85))}
-@keyframes kb{0%{transform:scale(1.08) translateY(0)}100%{transform:scale(1.16) translateY(-2%)}}
-.heroInner{position:relative; padding: clamp(24px,4vw,48px); max-width:var(--max); width:100%}
-.title{font-size:clamp(40px,8.2vw,var(--titleMax)); font-weight:1000; letter-spacing:-.02em; margin:0}
-.subtitle{font-size:clamp(20px,4.1vw,calc(var(--titleMax)/2)); font-weight:800; color:#f7f7fb; text-shadow:0 2px 14px rgba(0,0,0,.35); margin:18px auto 16px; line-height:1.1}
-
-/* CTA */
-.cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:12px}
-.btn{display:inline-flex; align-items:center; gap:10px; background:var(--glass); border:1px solid #ffffff2a; padding:12px 16px; border-radius:12px; font-weight:800; letter-spacing:.2px; box-shadow:var(--shadow); backdrop-filter:blur(6px); cursor:pointer}
-.btn:hover{background:#ffffff24}
-.btn.youtube{background:#ff0000; border-color:#ff0000}
-.btn.instagram{background:#eee; color:#111}
-.icon{width:22px; height:22px}
-
-/* Audio control (sin emojis) */
-.audioCtl{position:absolute; right:16px; bottom:16px; z-index:5; display:flex; gap:8px; align-items:center; background:#00000080; border:1px solid #ffffff40; color:#fff; padding:8px 10px; border-radius:999px; font-size:13px; backdrop-filter: blur(6px)}
-.audioCtl button{background:#ffffff18; color:#fff; border:1px solid #ffffff40; border-radius:999px; padding:6px 10px; cursor:pointer; font-weight:700}
-.audioCtl button:hover{background:#ffffff28}
-
-/* LAYOUT */
-.container{max-width:var(--max); margin:0 auto; padding:26px 16px}
-h2{font-size:clamp(22px,3.2vw,32px); margin:0 0 14px}
-
-/* CARDS */
-.card{background:#0f1118cc; border:1px solid #ffffff20; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
-.cardHeader{padding:16px 16px 0} .cardBody{padding:16px}
-.chip{display:inline-block; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; padding:6px 10px; border-radius:999px; background:#ffffff16; border:1px solid #ffffff22}
-.meta{color:#b8bbc7; font-size:13px; margin-top:6px}
-
-/* GAME */
-#gameWrap{background:var(--card); border:1px solid #ffffff22; border-radius:var(--radius)}
-#hud{display:flex; gap:16px; align-items:center; justify-content:space-between; padding:10px 16px; border-bottom:1px solid #ffffff1a; background:#0e1016}
-#hud span{font-weight:800}
-#game{display:block; width:100%; height:420px; background:#0d0f16}
-.help{color:#b8bbc7; font-size:14px; padding:10px 16px}
-.kbd{display:inline-block; padding:2px 6px; border:1px solid #ffffff30; border-radius:6px; background:#ffffff10; font-weight:700}
-
-/* VIDEOS */
-.embed{position:relative; width:100%; padding-top:56.25%; background:#000}
-.embed iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
-
-/* COMMENTS */
-#comments .comment{border:1px solid #ffffff18; background:#ffffff0e; border-radius:12px; padding:12px}
-#commentForm{display:grid; gap:10px}
-input,textarea{width:100%; background:#0f1118; border:1px solid #ffffff25; color:#fff; padding:10px 12px; border-radius:10px; resize:vertical}
-textarea{min-height:100px}
-.btn.submit{background:var(--accent); color:#0b0b0f; border:none}
-.empty{color:#b8bbc7; font-style:italic}
-footer{border-top:1px solid #ffffff1a; color:#b8bbc7; text-align:center; padding:26px 16px; margin-top:24px}
-</style>
-</head>
-<body>
-<!-- NAV -->
-<nav class="nav" aria-label="Navegación principal">
-  <div class="row">
-    <strong>El Rayo Agustín</strong>
-    <div class="menu" role="navigation">
-      <a href="#juego">Mini-juego</a>
-      <a href="#videos">Videos</a>
-      <a href="#fans">Fans</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO + música -->
-<header class="hero" role="banner" aria-label="Portada">
-  <div class="heroBg" aria-hidden="true"></div>
-  <div class="heroOverlay" aria-hidden="true"></div>
-
-  <!-- Config de audio: usa MP3 si defines data-mp3, si no usa YouTube con data-yt-id -->
-  <div id="audioConfig" data-mp3="" data-yt-id="wtaqzMdBqZA"></div>
-
-  <div class="audioCtl" id="audioCtl" aria-label="Controles de audio">
-    <button id="playMusic" type="button">Activar sonido</button>
-    <button id="pauseMusic" type="button">Silenciar</button>
-  </div>
-
-  <!-- Opcional: iframe para YouTube Audio (se gestiona por JS solo si no hay MP3) -->
-  <iframe id="ytAudio" width="1" height="1" loading="lazy"
-          style="position:absolute; left:-9999px; top:-9999px;"
-          title="Audio YouTube"
-          allow="autoplay; encrypted-media; picture-in-picture"
-          frameborder="0"></iframe>
-
-  <!-- <audio> directo para MP3 si se provee -->
-  <audio id="mp3Audio" preload="auto" loop playsinline></audio>
-
-  <div class="heroInner">
-    <h1 class="title">EL RAYO AGUSTÍN</h1>
-    <p class="subtitle">Sigue el camino del piloto chileno Agustín Alfaro</p>
-
-    <div class="cta">
-      <a class="btn youtube" target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCAi1UfkKLYyJWwbBmbmK2mA" aria-label="Canal de YouTube">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.1 3.1 0 0 0-2.2-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.3.5A3.1 3.1 0 0 0 .5 6.2 32 32 0 0 0 0 12a32 32 0 0 0 .5 5.8 3.1 3.1 0 0 0 2.2 2.2c2.1.5 9.3.5 9.3.5s7.2 0 9.3-.5a3.1 3.1 0 0 0 2.2-2.2A32 32 0 0 0 24 12a32 32 0 0 0-.5-5.8zM9.6 15.5V8.5L16 12l-6.4 3.5z"/></svg>
-        YouTube
-      </a>
-      <a class="btn instagram" target="_blank" rel="noopener" href="https://www.instagram.com/agustinalfaro_oficial" aria-label="Instagram de Agustín">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <defs><linearGradient id="ig" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f58529"/><stop offset="25%" stop-color="#dd2a7b"/><stop offset="50%" stop-color="#8134af"/><stop offset="75%" stop-color="#515bd4"/><stop offset="100%" stop-color="#515bd4"/></linearGradient></defs>
-          <path fill="url(#ig)" d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.4.5.6.2 1 .5 1.5 1 .4.4.8.9 1 1.5.3.5.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.5 2.4-.2.6-.5 1-1 1.5-.4.4-.9.8-1.5 1-.5.3-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.5 0-4.9-.1c-1.2-.1-1.9-.2-2.4-.5-.6-.2-1-.5-1.5-1-.4-.4-.8-.9-1-1.5-.3-.5-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.5-2.4.2-.6.5-1 1-1.5.4-.4.9-.8 1.5-1 .5-.3 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2zm0 5.4a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8zm6.6-3.2a1 1 0 1 1 0 2.1 1 1 0 0 1 0-2.1z"/>
-        </svg>
-        Instagram
-      </a>
-    </div>
-  </div>
-</header>
-
-<main class="container">
-  <!-- MINI-JUEGO -->
-  <section id="juego" aria-labelledby="title-juego">
-    <h2 id="title-juego">Mini-juego: Conduce y esquiva obstáculos</h2>
-    <div id="gameWrap" class="card">
-      <div id="hud">
-        <div><span>Score:</span> <strong id="score">0</strong></div>
-        <div><span>Velocidad:</span> <strong id="speed">1.0x</strong></div>
-        <div><span>Vidas:</span> <strong id="lives">3</strong></div>
-        <button id="restart" class="btn" type="button">Reiniciar</button>
-      </div>
-      <canvas id="game" width="1100" height="420" aria-label="Pista de carrera"></canvas>
-      <div class="help">
-        Controles: barra espaciadora o toque/clic para saltar. Evita conos y barreras. Si pierdes todas las vidas, pulsa Reiniciar.
-      </div>
-    </div>
-  </section>
-
-  <!-- VIDEOS -->
-  <section id="videos" aria-labelledby="title-videos" style="margin-top:26px">
-    <h2 id="title-videos">Videos (se actualizan automáticamente)</h2>
-    <div class="card">
-      <div class="cardHeader"><span class="chip">Subidas del canal</span></div>
-      <div class="embed">
-        <!-- Usa la playlist de subidas del canal (UU + ID del canal) -->
-        <iframe title="Subidas recientes — EL RAYO AGUSTÍN"
-                loading="lazy"
-                src="https://www.youtube.com/embed/videoseries?list=UUAi1UfkKLYyJWwbBmbmK2mA&rel=0&modestbranding=1"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-      </div>
-      <div class="cardBody">
-        <p class="meta">Fuente: <a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCAi1UfkKLYyJWwbBmbmK2mA/videos" aria-label="Canal de YouTube de Agustín">Canal de YouTube</a>. Al subir un nuevo video, aparece primero.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FANS -->
-  <section id="fans" aria-labelledby="title-fans" style="margin-top:26px">
-    <h2 id="title-fans">Déjale un mensaje a El Rayo Agustín</h2>
-    <div class="card">
-      <div class="cardBody">
-        <form id="commentForm" autocomplete="on">
-          <input type="text" id="name" placeholder="Tu nombre" required aria-label="Nombre">
-          <textarea id="message" placeholder="Escribe tu mensaje para Agustín…" required aria-label="Mensaje"></textarea>
-          <button type="submit" class="btn submit">Enviar mensaje</button>
-          <p class="meta" style="margin-top:8px">Tu mensaje quedará visible en el blog y además se abrirá un correo a <strong>elrayoagustin1@gmail.com</strong> con tu texto.</p>
-        </form>
-      </div>
-    </div>
-    <div id="comments" style="margin-top:16px" aria-live="polite"></div>
-  </section>
-</main>
-
-<footer>©️ <span id="year"></span> Agustín “El Rayo” Alfaro — Comunidad oficial.</footer>
->>>>>>> 42259d297b086acdbb2e0c6bbf43e562e4eb32ec
-
-<!-- PDF.js (para extraer texto de PDFs localmente en el navegador) -->
+<!-- PDF.js (núcleo y worker) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha512-KiWzZfa7qv3Zj1mE2AQfCMyJOQ7NlXQK1yXQ2p6mQ2nKq35aSgQbY0ciV9ewVR5Xk+U9VujwQcZ1B1v+0s0y5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-<<<<<<< HEAD
-// ------------------ Utilidades ------------------
-const $ = sel => document.querySelector(sel);
-const $$ = sel => Array.from(document.querySelectorAll(sel));
-const state = {
-chunks: [], index: 0, speaking: false, voices: [], langPreferred: 'es-ES',
-utterance: null, paused: false
-};
+// *** IMPORTANTE: configurar worker de PDF.js ***
+// Debe apuntar a la MISMA versión del CDN para evitar errores de "worker".
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+</script>
 
+<script>
+// ---------- Utilidades y estado ----------
+const $ = s => document.querySelector(s);
+const state = {
+chunks: [], index: 0, voices: [], utter: null,
+paused: false
+};
 const UI = {
 status: $('#status'), lenHint: $('#lenHint'), langHint: $('#langHint'),
 voiceSelect: $('#voiceSelect'),
@@ -415,201 +142,168 @@ progressBar: $('#progressBar'), progressText: $('#progressText'), chunkInfo: $('
 supportInfo: $('#supportInfo')
 };
 
-function setStatus(text, cls='') {
-UI.status.textContent = text;
-UI.status.className = cls;
-}
-function updateLen() {
-UI.lenHint.textContent = ($('#textInput').value||'').length;
-}
-function updateMeters() {
+function setStatus(t, cls=''){ UI.status.textContent = t; UI.status.className = cls; }
+function updateLen(){ UI.lenHint.textContent = ($('#textInput').value || '').length; }
+function updateMeters(){
 UI.rateBar.style.width = ((UI.rate.value-0.5)/1.5*100)+'%';
 UI.pitchBar.style.width = (UI.pitch.value/2*100)+'%';
 UI.volumeBar.style.width = (UI.volume.value*100)+'%';
 }
 updateMeters();
+UI.rate.addEventListener('input', updateMeters);
+UI.pitch.addEventListener('input', updateMeters);
+UI.volume.addEventListener('input', updateMeters);
 
-// ------------------ Soporte Web Speech ------------------
-function checkSupport() {
-const hasSpeech = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
-UI.supportInfo.innerHTML = hasSpeech
-? '✅ Web Speech API disponible en este navegador.'
-: '❌ Este navegador no soporta Web Speech API. Prueba con Chrome, Edge o Safari.';
+// ---------- Soporte Web Speech ----------
+function checkSupport(){
+const ok = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+UI.supportInfo.innerHTML = ok
+? '✅ Web Speech API disponible.'
+: '❌ Este navegador no soporta Web Speech API. Usa Chrome/Edge/Safari.';
 }
 checkSupport();
 
-function loadVoices() {
-state.voices = speechSynthesis.getVoices().sort((a,b)=>a.lang.localeCompare(b.lang));
+function loadVoices(){
+const vs = speechSynthesis.getVoices();
+state.voices = vs.sort((a,b)=>a.lang.localeCompare(b.lang));
 UI.voiceSelect.innerHTML = '';
 state.voices.forEach((v,i)=>{
 const opt = document.createElement('option');
-opt.value = i;
-opt.textContent = `${v.name} — ${v.lang}${v.default?' (default)':''}`;
+opt.value = i; opt.textContent = `${v.name} — ${v.lang}${v.default?' (default)':''}`;
 UI.voiceSelect.appendChild(opt);
 });
-// Selección sugerida (es-ES o similar)
-const idx = state.voices.findIndex(v => /^es(-|_)/i.test(v.lang));
-UI.voiceSelect.value = idx >= 0 ? idx : 0;
-UI.langHint.textContent = idx>=0 ? state.voices[idx].lang : (state.voices[0]?.lang || '—');
+const esIdx = state.voices.findIndex(v=>/^es(-|_)/i.test(v.lang));
+UI.voiceSelect.value = esIdx >= 0 ? esIdx : 0;
+UI.langHint.textContent = esIdx>=0 ? state.voices[esIdx].lang : (state.voices[0]?.lang || '—');
 }
 loadVoices();
-// Algunos navegadores cargan voces async:
 if (typeof speechSynthesis !== 'undefined') {
 speechSynthesis.onvoiceschanged = loadVoices;
 }
 
-// ------------------ Carga de archivos ------------------
+// ---------- Carga de archivos ----------
 $('#fileInput').addEventListener('change', async (e)=>{
 const file = e.target.files?.[0];
-if (!file) return;
-const ext = file.name.toLowerCase().split('.').pop();
+if(!file) return;
+const ext = (file.name.split('.').pop() || '').toLowerCase();
 setStatus('Procesando archivo…');
-try {
-if (ext === 'txt') {
+try{
+if(ext === 'txt'){
 const text = await file.text();
 $('#textInput').value = text;
+setStatus('TXT cargado ✅','ok');
 updateLen();
-setStatus('TXT cargado con éxito ✅','ok');
-} else if (ext === 'pdf') {
+} else if(ext === 'pdf'){
 const buf = await file.arrayBuffer();
 const text = await extractTextFromPDF(buf);
 $('#textInput').value = text.trim();
+setStatus('PDF extraído ✅','ok');
 updateLen();
-setStatus('PDF extraído con éxito ✅','ok');
 } else {
 setStatus('Formato no soportado. Usa PDF o TXT.','warn');
 }
-} catch (err) {
+}catch(err){
 console.error(err);
-setStatus('Error al leer el archivo.','err');
+setStatus('Error al leer el archivo. Revisa el PDF.','err');
 }
 });
 
-async function extractTextFromPDF(arrayBuffer) {
-const pdf = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
+async function extractTextFromPDF(arrayBuffer){
+// Manejo de errores/contraseñas/corrupción
+const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+const pdf = await loadingTask.promise;
 let out = '';
-for (let p=1; p<=pdf.numPages; p++){
+for(let p=1; p<=pdf.numPages; p++){
 const page = await pdf.getPage(p);
 const content = await page.getTextContent();
-const strings = content.items.map(it=> ('str' in it) ? it.str : (it?.chars?.map(c=>c?.unicode||'').join('')||''));
+const strings = content.items.map(it=>{
+if (typeof it.str === 'string') return it.str;
+if (it?.chars) return it.chars.map(c=>c?.unicode||'').join('');
+return '';
+});
 out += strings.join(' ') + '\n\n';
+}
+if(!out.trim()){
+throw new Error('No se pudo extraer texto (PDF escaneado/imagen).');
 }
 return out;
 }
 
-// ------------------ URL fetch ------------------
-$('#fetchUrlBtn').addEventListener('click', async ()=>{
-const url = $('#urlInput').value.trim();
-if (!url) { setStatus('Ingresa una URL.','warn'); return; }
-setStatus('Descargando texto de la URL…');
-try {
-const res = await fetch(url, {mode:'cors'});
-const html = await res.text();
-// Extracción simple de texto visible (muy básica, sin dependencias)
-const tmp = document.createElement('div');
-tmp.innerHTML = html;
-// Eliminar scripts/estilos
-tmp.querySelectorAll('script,style,noscript').forEach(n=>n.remove());
-const text = tmp.innerText.replace(/\n{3,}/g, '\n\n').trim();
-$('#textInput').value = text;
-updateLen();
-setStatus('Texto obtenido de la URL ✅','ok');
-} catch (err) {
-console.error(err);
-setStatus('La web no permite CORS o la URL falló. Pega el texto manualmente.','err');
-}
-});
-
-// ------------------ División en trozos ------------------
-function chunkText(text, maxLen = 1800) {
-// Web Speech puede cortar frases largas; dividimos inteligente por párrafos y puntos.
+// ---------- División en fragmentos ----------
+function chunkText(text, maxLen=1800){
 const paras = text.split(/\n{2,}/);
 const chunks = [];
-let current = '';
-
-function pushCurrent(){ if (current.trim()) { chunks.push(current.trim()); current=''; } }
+let current='';
+const push=()=>{ if(current.trim()) {chunks.push(current.trim()); current='';} };
 
 paras.forEach(p=>{
-if ((current + '\n\n' + p).length <= maxLen) {
-current = current ? current + '\n\n' + p : p;
-} else {
-// Subdividir por frases
+if((current+'\n\n'+p).length<=maxLen){
+current = current ? current+'\n\n'+p : p;
+}else{
 const sentences = p.split(/(?<=[\.\?\!…])\s+/);
 sentences.forEach(s=>{
-if ((current + ' ' + s).length <= maxLen) {
-current = current ? current + ' ' + s : s;
-} else {
-pushCurrent();
-if (s.length <= maxLen) {
-current = s;
-} else {
-// Corte duro si una "frase" es enorme
-for (let i=0; i<s.length; i+=maxLen) {
-chunks.push(s.slice(i, i+maxLen));
-}
-current = '';
+if((current+' '+s).length<=maxLen){
+current = current ? current+' '+s : s;
+}else{
+push();
+if(s.length<=maxLen){ current=s; }
+else{
+for(let i=0;i<s.length;i+=maxLen) chunks.push(s.slice(i,i+maxLen));
+current='';
 }
 }
 });
 }
 });
-pushCurrent();
+push();
 return chunks;
 }
 
-// ------------------ Lectura ------------------
-function speakNext() {
-if (state.index >= state.chunks.length) {
+// ---------- Lectura ----------
+function updateProgress(){
+const total = state.chunks.length || 1;
+const pct = Math.round((state.index/total)*100);
+UI.progressBar.style.width = pct+'%';
+UI.progressText.textContent = pct+'%';
+UI.chunkInfo.textContent = `${Math.min(state.index,total)} / ${total}`;
+}
+
+function speakNext(){
+if(state.index >= state.chunks.length){
 setStatus('Lectura finalizada ✅','ok');
-state.speaking = false;
 updateProgress();
 return;
 }
 const utter = new SpeechSynthesisUtterance(state.chunks[state.index]);
-state.utterance = utter;
-
-// Voz y parámetros
+state.utter = utter;
 const v = state.voices[+UI.voiceSelect.value] || state.voices[0];
-if (v) utter.voice = v;
+if(v) utter.voice = v;
 utter.rate = +UI.rate.value;
 utter.pitch = +UI.pitch.value;
 utter.volume = +UI.volume.value;
 
-// Eventos
-utter.onstart = ()=> {
-state.speaking = true;
+utter.onstart = ()=>{
 setStatus(`Leyendo fragmento ${state.index+1} de ${state.chunks.length}…`);
 updateProgress();
 };
-utter.onend = ()=> {
+utter.onend = ()=>{
 state.index++;
 updateProgress();
-// Continuar con el siguiente
 speakNext();
 };
-utter.onerror = (e)=> {
+utter.onerror = (e)=>{
 console.error(e);
 setStatus('Error durante la lectura.','err');
-state.speaking = false;
 };
-
 speechSynthesis.speak(utter);
 }
 
-function updateProgress() {
-const total = state.chunks.length || 1;
-const pct = Math.round((state.index/total)*100);
-UI.progressBar.style.width = pct + '%';
-UI.progressText.textContent = pct + '%';
-UI.chunkInfo.textContent = `${Math.min(state.index,total)} / ${total}`;
-}
-
 $('#speakBtn').addEventListener('click', ()=>{
-const text = ($('#textInput').value || '').trim();
-if (!text) { setStatus('No hay texto para leer.','warn'); return; }
-if (!('speechSynthesis' in window)) { setStatus('Este navegador no soporta Web Speech.','err'); return; }
+const text = ($('#textInput').value||'').trim();
+if(!text){ setStatus('No hay texto para leer.','warn'); return; }
+if(!('speechSynthesis' in window)){ setStatus('Sin soporte Web Speech.','err'); return; }
 
-// Parar lo anterior si quedaba algo
+// Reiniciar sesión anterior
 speechSynthesis.cancel();
 state.chunks = chunkText(text, 1800);
 state.index = 0;
@@ -619,307 +313,29 @@ speakNext();
 });
 
 $('#pauseBtn').addEventListener('click', ()=>{
-if (speechSynthesis.speaking && !speechSynthesis.paused) {
+if (speechSynthesis.speaking && !speechSynthesis.paused){
 speechSynthesis.pause();
-state.paused = true;
 setStatus('Pausado ⏸️');
 }
 });
-
 $('#resumeBtn').addEventListener('click', ()=>{
-if (speechSynthesis.paused) {
+if (speechSynthesis.paused){
 speechSynthesis.resume();
-state.paused = false;
 setStatus('Reanudando ▶️');
 }
 });
-
 $('#stopBtn').addEventListener('click', ()=>{
 speechSynthesis.cancel();
-state.speaking = false;
 setStatus('Detenido ⏹️');
 updateProgress();
 });
-
 $('#clearBtn').addEventListener('click', ()=>{
 speechSynthesis.cancel();
 $('#textInput').value = '';
-updateLen();
-state.chunks = []; state.index = 0;
-updateProgress();
+updateLen(); state.chunks=[]; state.index=0; updateProgress();
 setStatus('Listo');
 });
-
 $('#textInput').addEventListener('input', updateLen);
-=======
-/* Año dinámico */
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* ========================
-   AUDIO: MP3 preferente; si no hay, usa YouTube
-   - Autoplay: inicia en silencio (requisito de navegador).
-   - Primer gesto del usuario: activa sonido inmediato.
-======================== */
-(function(){
-  const cfgEl = document.getElementById('audioConfig');
-  const mp3Url = (cfgEl.getAttribute('data-mp3') || '').trim();
-  const ytId   = (cfgEl.getAttribute('data-yt-id') || '').trim();
-  const playBtn  = document.getElementById('playMusic');
-  const pauseBtn = document.getElementById('pauseMusic');
-  const mp3El = document.getElementById('mp3Audio');
-  const ytIframe = document.getElementById('ytAudio');
-
-  let usingMP3 = false;
-
-  function enableButtons(enabled){
-    playBtn.disabled = !enabled; pauseBtn.disabled = !enabled;
-  }
-
-  // Intenta MP3 primero (mejor control para autoplay)
-  if (mp3Url) {
-    usingMP3 = true;
-    mp3El.src = mp3Url;
-    mp3El.muted = true;   // necesario para autoplay
-    mp3El.autoplay = true;
-    mp3El.loop = true;
-    mp3El.play().catch(()=>{}); // algunos navegadores requieren catch
-  } else if (ytId) {
-    usingMP3 = false;
-    function buildSrc({autoplay=1, mute=1}) {
-      const origin = encodeURIComponent(location.origin);
-      return ⁠ https://www.youtube-nocookie.com/embed/${ytId}?autoplay=${autoplay}&mute=${mute}&loop=1&playlist=${ytId}&controls=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=${origin} ⁠;
-    }
-    // Autoplay permitido si está en silencio
-    ytIframe.src = buildSrc({autoplay:1, mute:1});
-  }
-
-  function postYT(cmd){
-    try{ ytIframe.contentWindow.postMessage(JSON.stringify({ event:'command', func:cmd }), '*'); }catch(e){}
-  }
-
-  playBtn.addEventListener('click', ()=>{
-    if (usingMP3) {
-      mp3El.muted = false;
-      mp3El.play().catch(()=>{ /* si falla, el usuario deberá interactuar de nuevo */ });
-    } else {
-      // activar sonido en YouTube tras gesto de usuario
-      postYT('unMute'); postYT('playVideo');
-      // Backup: recarga con mute=0 para forzar estado
-      setTimeout(()=>{
-        const origin = encodeURIComponent(location.origin);
-        ytIframe.src = ⁠ https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&mute=0&loop=1&playlist=${ytId}&controls=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=${origin} ⁠;
-      }, 120);
-    }
-  });
-
-  pauseBtn.addEventListener('click', ()=>{
-    if (usingMP3) {
-      mp3El.muted = true;
-      mp3El.pause();
-    } else {
-      postYT('mute'); postYT('pauseVideo');
-    }
-  });
-
-  // Asegura inicio en el primer gesto (sobre todo iOS)
-  const ensurePlayOnce = ()=>{
-    if (usingMP3) {
-      mp3El.play().catch(()=>{});
-    } else {
-      postYT('playVideo');
-    }
-    document.removeEventListener('pointerdown', ensurePlayOnce);
-  };
-  document.addEventListener('pointerdown', ensurePlayOnce, { once:true });
-
-  // Habilita botones
-  enableButtons(true);
-})();
-
-/* ========================
-   MINI-JUEGO: runner con delta-time y escalado responsivo
-======================== */
-(function(){
-  const canvas = document.getElementById('game');
-  const ctx = canvas.getContext('2d');
-
-  const LOGICAL_W = 1100, LOGICAL_H = 420;
-  function fitCanvas(){
-    const cssW = canvas.clientWidth;
-    const cssH = canvas.clientHeight;
-    const dpr = Math.max(1, window.devicePixelRatio || 1);
-    canvas.width  = Math.round(cssW * dpr);
-    canvas.height = Math.round(cssH * dpr);
-    ctx.setTransform(canvas.width/(LOGICAL_W*dpr), 0, 0, canvas.height/(LOGICAL_H*dpr), 0, 0);
-  }
-  window.addEventListener('resize', fitCanvas, {passive:true});
-  fitCanvas();
-
-  const W = LOGICAL_W, H = LOGICAL_H;
-  const GROUND_Y = H - 70;
-
-  const state = { running:true, score:0, speed:380, speedFactor:1, lives:3, obstacles:[] };
-  const car = { x:120, y:GROUND_Y-34, w:120, h:34, vy:0, onGround:true, color:'#ff3b30' };
-
-  const $score = document.getElementById('score');
-  const $speed = document.getElementById('speed');
-  const $lives = document.getElementById('lives');
-
-  function updateHUD(){ $score.textContent = state.score; $speed.textContent = state.speedFactor.toFixed(1)+'x'; $lives.textContent = state.lives; }
-  function resetGame(){
-    state.running = true; state.score = 0; state.speed = 380; state.speedFactor = 1; state.lives = 3; state.obstacles = [];
-    car.x = 120; car.y = GROUND_Y - car.h; car.vy = 0; car.onGround = true; updateHUD();
-  }
-  document.getElementById('restart').addEventListener('click', resetGame);
-
-  function spawnObstacle(){
-    const lastX = state.obstacles.length ? Math.max(...state.obstacles.map(o=>o.x)) : W + 300;
-    const gap = 260 + Math.random()*280;
-    const x = Math.max(W + 40, lastX + gap);
-    const type = Math.random() < 0.6 ? 'cone' : 'bar';
-    const w = type === 'cone' ? 22 : 50;
-    const h = type === 'cone' ? 28 : 34;
-    state.obstacles.push({ type, x, y:GROUND_Y - h, w, h });
-  }
-
-  function jump(){
-    if(!state.running) return;
-    if(car.onGround){ car.vy = -720; car.onGround = false; }
-  }
-
-  window.addEventListener('keydown', e=>{
-    if(e.code==='Space' || e.code==='ArrowUp'){ e.preventDefault(); jump(); }
-  });
-  canvas.addEventListener('pointerdown', ()=> jump(), {passive:true});
-
-  let last = performance.now();
-  (function loop(now){
-    const dt = Math.min(0.05, (now - last)/1000); // máx 50 ms para estabilidad
-    last = now;
-    update(dt); draw();
-    requestAnimationFrame(loop);
-  })(performance.now());
-
-  function update(dt){
-    if(!state.running) return;
-
-    state.speedFactor = Math.min(3.5, state.speedFactor + 0.09*dt); // acelera suave
-    const v = state.speed * state.speedFactor;
-
-    // mover obstáculos
-    for(const o of state.obstacles){ o.x -= v*dt; }
-    state.obstacles = state.obstacles.filter(o => o.x > -80);
-
-    // spawns
-    if(state.obstacles.length < 4 || (state.obstacles.length && state.obstacles[state.obstacles.length-1].x < W*0.6)){
-      if(Math.random() < (0.7 * dt) * state.speedFactor) spawnObstacle();
-    }
-
-    // gravedad / salto
-    if(!car.onGround){
-      car.vy += 2200*dt; // gravedad
-      car.y += car.vy*dt;
-      if(car.y >= GROUND_Y - car.h){ car.y = GROUND_Y - car.h; car.vy = 0; car.onGround = true; }
-    }
-
-    // colisiones AABB
-    for(const o of state.obstacles){
-      const ax=car.x, ay=car.y, aw=car.w, ah=car.h, bx=o.x, by=o.y, bw=o.w, bh=o.h;
-      if(ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by){
-        state.lives--; updateHUD(); o.x = -999;
-        if(state.lives <= 0){ state.running = false; }
-      }
-    }
-
-    state.score += Math.floor(60 * dt * state.speedFactor);
-    updateHUD();
-  }
-
-  function draw(){
-    ctx.fillStyle = '#0d0f16'; ctx.fillRect(0,0,W,H);
-    ctx.fillStyle = '#0b0d13'; ctx.fillRect(0,GROUND_Y, W, H - GROUND_Y);
-    ctx.strokeStyle = '#ffffff22'; ctx.setLineDash([18,18]); ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(0, GROUND_Y-22); ctx.lineTo(W, GROUND_Y-22); ctx.stroke(); ctx.setLineDash([]);
-
-    drawCar(car.x, car.y, car.w, car.h, car.color);
-
-    for(const o of state.obstacles){
-      if(o.type === 'cone') drawCone(o.x, o.y, o.w, o.h);
-      else drawBarrier(o.x, o.y, o.w, o.h);
-    }
-
-    if(!state.running){
-      ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fillRect(0,0,W,H);
-      ctx.fillStyle = '#fff'; ctx.font = '700 42px system-ui, sans-serif'; ctx.textAlign = 'center';
-      ctx.fillText('Fin del juego', W/2, H/2 - 10);
-      ctx.font = '500 18px system-ui, sans-serif';
-      ctx.fillText('Pulsa Reiniciar para jugar de nuevo', W/2, H/2 + 26);
-    }
-  }
-
-  function drawCar(x,y,w,h,color){
-    ctx.fillStyle = color;
-    ctx.fillRect(x+w*0.18, y+h*0.15, w*0.64, h*0.7);
-    ctx.fillRect(x, y+h*0.2, w*0.22, h*0.6);
-    ctx.fillRect(x+w*0.84, y+h*0.25, w*0.16, h*0.5);
-    ctx.fillStyle = '#222a';
-    ctx.fillRect(x+w*0.45, y+h*0.05, w*0.14, h*0.45);
-    ctx.fillStyle = '#111';
-    ctx.beginPath(); ctx.arc(x+w*0.25, y+h*0.92, h*0.18, 0, Math.PI*2); ctx.fill();
-    ctx.beginPath(); ctx.arc(x+w*0.78, y+h*0.92, h*0.18, 0, Math.PI*2); ctx.fill();
-  }
-  function drawCone(x,y,w,h){
-    ctx.fillStyle = '#f39c12';
-    ctx.beginPath(); ctx.moveTo(x, y+h); ctx.lineTo(x+w/2, y); ctx.lineTo(x+w, y+h); ctx.closePath(); ctx.fill();
-    ctx.fillStyle = '#ffffffcc';
-    ctx.fillRect(x+3, y+h-8, w-6, 4);
-  }
-  function drawBarrier(x,y,w,h){
-    ctx.fillStyle = '#c0392b';
-    ctx.fillRect(x, y, w, h);
-    ctx.fillStyle = '#ecf0f1';
-    ctx.fillRect(x+4, y+6, w-8, 6);
-    ctx.fillRect(x+4, y+h-12, w-8, 6);
-  }
-})();
-
-/* ========================
-   Comentarios locales (localStorage) + mailto
-======================== */
-(function(){
-  const KEY='elrayo_agustin_comments_v11';
-  const form=document.getElementById('commentForm');
-  const out=document.getElementById('comments');
-  const get=()=> JSON.parse(localStorage.getItem(KEY)||'[]');
-  const set=d=> localStorage.setItem(KEY, JSON.stringify(d));
-  const escapeHtml=s=> s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-
-  function render(){
-    const data=get().sort((a,b)=> b.ts-a.ts);
-    if(data.length===0){ out.innerHTML=⁠ <p class="empty">Aún no hay mensajes. Escribe el primero.</p> ⁠; return; }
-    out.innerHTML='';
-    data.forEach(c=>{
-      const div=document.createElement('div'); div.className='comment';
-      div.innerHTML=`<strong>${escapeHtml(c.name)}</strong> <span class="meta">• ${new Date(c.ts).toLocaleString('es-CL')}</span>
-      <p style="margin:6px 0 0">${escapeHtml(c.msg)}</p>`;
-      out.appendChild(div);
-    });
-  }
-
-  form.addEventListener('submit', e=>{
-    e.preventDefault();
-    const name=document.getElementById('name').value.trim();
-    const msg=document.getElementById('message').value.trim();
-    if(!name||!msg) return;
-    const arr=get(); arr.push({name,msg,ts:Date.now()}); set(arr); form.reset(); render();
-    const subject=encodeURIComponent(⁠ Mensaje para EL RAYO AGUSTÍN de ${name} ⁠);
-    const body=encodeURIComponent(⁠ ${msg}\n\n— Enviado desde el blog de EL RAYO AGUSTÍN ⁠);
-    window.location.href=⁠ mailto:elrayoagustin1@gmail.com?subject=${subject}&body=${body} ⁠;
-  });
-
-  render();
-})();
->>>>>>> 42259d297b086acdbb2e0c6bbf43e562e4eb32ec
 </script>
 </body>
 </html>
