@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Lector de Texto y PDF — Gratis (Web Speech API + PDF.js)</title>
+<title>Lector de Texto y PDF — Solución lectura manual</title>
 <style>
-:root { --bg:#0f172a; --panel:#111827; --accent:#22d3ee; --text:#e5e7eb; --muted:#94a3b8; --ok:#34d399; --warn:#f59e0b; --err:#f87171; }
+:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#94a3b8;--ok:#34d399;--warn:#f59e0b;--err:#f87171}
 *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,sans-serif}
 header{padding:22px 16px;text-align:center;border-bottom:1px solid #1f2937}
 header h1{margin:0;font-size:20px}
 main{max-width:1000px;margin:0 auto;padding:16px;display:grid;gap:16px}
-.card{background:var(--panel);border:1px solid #1f2937;border-radius:12px;padding:16px}
+.card{background:#111827;border:1px solid #1f2937;border-radius:12px;padding:16px}
 .row{display:grid;gap:12px}
 .grid-2{grid-template-columns:1fr 1fr}
 label{font-size:13px;color:var(--muted)}
@@ -19,7 +19,7 @@ input[type="file"],select{width:100%}
 select{background:#0b1220;color:var(--text);border:1px solid #293244;border-radius:8px;padding:10px}
 .controls{display:flex;flex-wrap:wrap;gap:8px}
 button{appearance:none;border:1px solid #1f2937;background:#0b1220;color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer}
-button.primary{background:linear-gradient(135deg,#0ea5e9,#22d3ee);color:#001018;border:none;font-weight:600}
+button.primary{background:#0ea5e9;color:#001018;border:none;font-weight:600}
 button:disabled{opacity:.5;cursor:not-allowed}
 .kv{background:#0b1220;border:1px dashed #293244;border-radius:10px;padding:10px;font-size:13px;color:var(--muted)}
 .kvs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
@@ -33,40 +33,47 @@ footer{padding:20px;text-align:center;color:var(--muted);font-size:12px}
 </head>
 <body>
 <header>
-<h1>🗣️ Lector de Texto y PDF — 100% Gratis, local en tu navegador</h1>
-<div class="small">Funciona con <span class="badge">Web Speech API</span> + <span class="badge">PDF.js</span>. No sube archivos a ningún servidor.</div>
+<h1>🗣️ Lector — Texto manual y PDF (local, gratis)</h1>
+<div class="small">Web Speech API (TTS local) + PDF.js. Nada se sube a servidores.</div>
 </header>
 
 <main>
 <!-- Entrada -->
 <section class="card">
-<h2 style="margin-top:0">1) Carga tu contenido</h2>
-<div class="row grid-2">
-<div>
-<label>Subir archivo (.pdf o .txt)</label>
-<input id="fileInput" type="file" accept=".pdf,.txt" />
-<div class="small">Los PDFs se procesan localmente con PDF.js. Los TXT se abren directo.</div>
-</div>
-<div>
-<label>Escribe o pega texto</label>
-<textarea id="textInput" placeholder="Pega aquí el texto que quieres escuchar..."></textarea>
-</div>
-</div>
+<h2 style="margin-top:0">1) Escribe/pega tu texto (prioridad)</h2>
+<label for="textInput">Texto</label>
+<textarea id="textInput" placeholder="Pega aquí el texto y presiona ▶️ Probar voz o ▶️ Leer"></textarea>
 <div class="kvs" style="margin-top:12px">
 <div class="kv"><b>Estado:</b> <span id="status">Listo</span></div>
-<div class="kv"><b>Idioma sugerido:</b> <span id="langHint">es-ES</span></div>
-<div class="kv"><b>Longitud (caracteres):</b> <span id="lenHint">0</span></div>
+<div class="kv"><b>Soporte voz:</b> <span id="support">—</span></div>
+<div class="kv"><b>Longitud (caracteres):</b> <span id="len">0</span></div>
+</div>
+</section>
+
+<!-- PDF opcional -->
+<section class="card">
+<h2 style="margin-top:0">2) (Opcional) Subir PDF / TXT</h2>
+<div class="row grid-2">
+<div>
+<label>Archivo (.pdf o .txt)</label>
+<input id="fileInput" type="file" accept=".pdf,.txt" />
+<div class="small">Si el PDF es escaneado (imagen), no tiene texto. Puedo añadir OCR si lo necesitas.</div>
+</div>
+<div>
+<label>Texto extraído</label>
+<textarea id="extracted" placeholder="Aquí aparecerá el texto del PDF/TXT…"></textarea>
+</div>
 </div>
 </section>
 
 <!-- Voces y parámetros -->
 <section class="card">
-<h2 style="margin-top:0">2) Voz y parámetros</h2>
+<h2 style="margin-top:0">3) Voz y parámetros</h2>
 <div class="row grid-2">
 <div>
-<label>Voz disponible en tu navegador</label>
+<label>Voz</label>
 <select id="voiceSelect"></select>
-<div class="small">Elige una voz <b>es-ES</b> o <b>es-LA</b> para español natural.</div>
+<div class="small">Sugerido: voces <b>es-ES</b> o <b>es-*</b> para español.</div>
 </div>
 <div>
 <label>Velocidad</label>
@@ -90,16 +97,17 @@ footer{padding:20px;text-align:center;color:var(--muted);font-size:12px}
 
 <!-- Controles -->
 <section class="card">
-<h2 style="margin-top:0">3) Controles</h2>
+<h2 style="margin-top:0">4) Controles</h2>
 <div class="controls">
-<button id="speakBtn" class="primary">▶️ Leer</button>
-<button id="pauseBtn">⏸️ Pausar</button>
-<button id="resumeBtn">▶️ Reanudar</button>
-<button id="stopBtn">⏹️ Detener</button>
+<button id="testBtn" class="primary" disabled>▶️ Probar voz</button>
+<button id="speakBtn" class="primary" disabled>▶️ Leer texto</button>
+<button id="pauseBtn" disabled>⏸️ Pausar</button>
+<button id="resumeBtn" disabled>▶️ Reanudar</button>
+<button id="stopBtn" disabled>⏹️ Detener</button>
 <button id="clearBtn">🧹 Limpiar</button>
 </div>
 <div class="small" style="margin-top:8px">
-El texto se divide en fragmentos para evitar cortes. Puedes pausar y reanudar cuando quieras.
+Requiere clic del usuario para iniciar audio (políticas del navegador).
 </div>
 </section>
 
@@ -110,180 +118,163 @@ El texto se divide en fragmentos para evitar cortes. Puedes pausar y reanudar cu
 <div class="small" style="margin-top:6px">
 <span id="progressText">0%</span> — <span id="chunkInfo">0 / 0</span> fragmentos
 </div>
-<div class="small" id="supportInfo" style="margin-top:8px"></div>
 </section>
 </main>
 
 <footer>
-Hecho para Raúl — uso libre. Requiere un navegador con soporte de <b>speechSynthesis</b>. PDF.js por CDN.
+Hecho para Raúl — versión foco: lectura de TEXTO MANUAL. PDF opcional.
 </footer>
 
-<!-- PDF.js (núcleo y worker) -->
+<!-- PDF.js (solo si quieres usar PDF) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha512-KiWzZfa7qv3Zj1mE2AQfCMyJOQ7NlXQK1yXQ2p6mQ2nKq35aSgQbY0ciV9ewVR5Xk+U9VujwQcZ1B1v+0s0y5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-// *** IMPORTANTE: configurar worker de PDF.js ***
-// Debe apuntar a la MISMA versión del CDN para evitar errores de "worker".
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-</script>
+<script>pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'</script>
 
 <script>
-// ---------- Utilidades y estado ----------
+// ========= Utilidades/UI =========
 const $ = s => document.querySelector(s);
-const state = {
-chunks: [], index: 0, voices: [], utter: null,
-paused: false
-};
 const UI = {
-status: $('#status'), lenHint: $('#lenHint'), langHint: $('#langHint'),
+status: $('#status'), support: $('#support'), len: $('#len'),
+textInput: $('#textInput'), extracted: $('#extracted'),
 voiceSelect: $('#voiceSelect'),
 rate: $('#rate'), pitch: $('#pitch'), volume: $('#volume'),
 rateBar: $('#rateBar'), pitchBar: $('#pitchBar'), volumeBar: $('#volumeBar'),
+testBtn: $('#testBtn'), speakBtn: $('#speakBtn'),
+pauseBtn: $('#pauseBtn'), resumeBtn: $('#resumeBtn'), stopBtn: $('#stopBtn'), clearBtn: $('#clearBtn'),
 progressBar: $('#progressBar'), progressText: $('#progressText'), chunkInfo: $('#chunkInfo'),
-supportInfo: $('#supportInfo')
+fileInput: $('#fileInput')
 };
+const state = { voices: [], chunks: [], index: 0, speaking: false, paused: false, utter: null };
 
-function setStatus(t, cls=''){ UI.status.textContent = t; UI.status.className = cls; }
-function updateLen(){ UI.lenHint.textContent = ($('#textInput').value || '').length; }
-function updateMeters(){
+const setStatus = (msg, cls='') => { UI.status.textContent = msg; UI.status.className = cls; };
+const setSupport = (msg) => UI.support.textContent = msg;
+const setButtons = () => {
+const hasSpeech = ('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window);
+const hasText = getSanitizedText(UI.textInput.value).length > 0;
+UI.testBtn.disabled = !hasSpeech;
+UI.speakBtn.disabled = !hasSpeech || !hasText;
+UI.pauseBtn.disabled = !(state.speaking && !speechSynthesis.paused);
+UI.resumeBtn.disabled= !(speechSynthesis.paused);
+UI.stopBtn.disabled = !state.speaking;
+};
+const updateLen = () => UI.len.textContent = getSanitizedText(UI.textInput.value).length;
+const updateMeters = () => {
 UI.rateBar.style.width = ((UI.rate.value-0.5)/1.5*100)+'%';
 UI.pitchBar.style.width = (UI.pitch.value/2*100)+'%';
 UI.volumeBar.style.width = (UI.volume.value*100)+'%';
-}
+};
 updateMeters();
 UI.rate.addEventListener('input', updateMeters);
 UI.pitch.addEventListener('input', updateMeters);
 UI.volume.addEventListener('input', updateMeters);
 
-// ---------- Soporte Web Speech ----------
-function checkSupport(){
-const ok = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
-UI.supportInfo.innerHTML = ok
-? '✅ Web Speech API disponible.'
-: '❌ Este navegador no soporta Web Speech API. Usa Chrome/Edge/Safari.';
+// ========= Limpieza de texto (arregla el “no reconoce caracteres”) =========
+function getSanitizedText(raw){
+if (!raw) return '';
+// Normaliza tildes/ñ, elimina controles no imprimibles excepto \n \t \r
+let t = raw.normalize('NFC').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g,'');
+// Quita espacios no separables raros
+t = t.replace(/\u00A0/g,' ');
+// Recorta excesos sin perder saltos importantes
+t = t.replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+return t;
 }
-checkSupport();
 
+function onTextChanged(){
+const clean = getSanitizedText(UI.textInput.value);
+if (UI.textInput.value !== clean) {
+// No sobreescribo mientras escribes; sólo actualizo métricas
+}
+updateLen();
+setButtons();
+}
+UI.textInput.addEventListener('input', onTextChanged);
+onTextChanged();
+
+// ========= Detección de soporte de voz =========
+function checkSpeechSupport(){
+const ok = ('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window);
+setSupport(ok ? '✅ Disponible' : '❌ No disponible (usa Chrome/Edge/Safari)');
+setButtons();
+}
+checkSpeechSupport();
+
+// ========= Voces =========
 function loadVoices(){
-const vs = speechSynthesis.getVoices();
-state.voices = vs.sort((a,b)=>a.lang.localeCompare(b.lang));
+const list = speechSynthesis.getVoices().sort((a,b)=>a.lang.localeCompare(b.lang));
+state.voices = list;
 UI.voiceSelect.innerHTML = '';
-state.voices.forEach((v,i)=>{
-const opt = document.createElement('option');
-opt.value = i; opt.textContent = `${v.name} — ${v.lang}${v.default?' (default)':''}`;
-UI.voiceSelect.appendChild(opt);
+list.forEach((v,i)=>{
+const o = document.createElement('option');
+o.value = i; o.textContent = `${v.name} — ${v.lang}${v.default?' (default)':''}`;
+UI.voiceSelect.appendChild(o);
 });
-const esIdx = state.voices.findIndex(v=>/^es(-|_)/i.test(v.lang));
+const esIdx = list.findIndex(v=>/^es(-|_)/i.test(v.lang));
 UI.voiceSelect.value = esIdx >= 0 ? esIdx : 0;
-UI.langHint.textContent = esIdx>=0 ? state.voices[esIdx].lang : (state.voices[0]?.lang || '—');
 }
 loadVoices();
 if (typeof speechSynthesis !== 'undefined') {
 speechSynthesis.onvoiceschanged = loadVoices;
 }
 
-// ---------- Carga de archivos ----------
-$('#fileInput').addEventListener('change', async (e)=>{
-const file = e.target.files?.[0];
-if(!file) return;
-const ext = (file.name.split('.').pop() || '').toLowerCase();
-setStatus('Procesando archivo…');
-try{
-if(ext === 'txt'){
-const text = await file.text();
-$('#textInput').value = text;
-setStatus('TXT cargado ✅','ok');
-updateLen();
-} else if(ext === 'pdf'){
-const buf = await file.arrayBuffer();
-const text = await extractTextFromPDF(buf);
-$('#textInput').value = text.trim();
-setStatus('PDF extraído ✅','ok');
-updateLen();
-} else {
-setStatus('Formato no soportado. Usa PDF o TXT.','warn');
-}
-}catch(err){
-console.error(err);
-setStatus('Error al leer el archivo. Revisa el PDF.','err');
-}
-});
-
-async function extractTextFromPDF(arrayBuffer){
-// Manejo de errores/contraseñas/corrupción
-const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
-const pdf = await loadingTask.promise;
-let out = '';
-for(let p=1; p<=pdf.numPages; p++){
-const page = await pdf.getPage(p);
-const content = await page.getTextContent();
-const strings = content.items.map(it=>{
-if (typeof it.str === 'string') return it.str;
-if (it?.chars) return it.chars.map(c=>c?.unicode||'').join('');
-return '';
-});
-out += strings.join(' ') + '\n\n';
-}
-if(!out.trim()){
-throw new Error('No se pudo extraer texto (PDF escaneado/imagen).');
-}
-return out;
-}
-
-// ---------- División en fragmentos ----------
-function chunkText(text, maxLen=1800){
+// ========= División en fragmentos =========
+function chunkText(text, maxLen=1500){
 const paras = text.split(/\n{2,}/);
 const chunks = [];
-let current='';
-const push=()=>{ if(current.trim()) {chunks.push(current.trim()); current='';} };
+let cur = '';
+const push = () => { if (cur.trim()) { chunks.push(cur.trim()); cur=''; } };
 
-paras.forEach(p=>{
-if((current+'\n\n'+p).length<=maxLen){
-current = current ? current+'\n\n'+p : p;
-}else{
-const sentences = p.split(/(?<=[\.\?\!…])\s+/);
-sentences.forEach(s=>{
-if((current+' '+s).length<=maxLen){
-current = current ? current+' '+s : s;
-}else{
+for (const p of paras){
+if ((cur+'\n\n'+p).length <= maxLen) {
+cur = cur ? cur+'\n\n'+p : p;
+} else {
+const sents = p.split(/(?<=[\.\?\!…:;])\s+/);
+for (const s of sents){
+if ((cur+' '+s).length <= maxLen) {
+cur = cur ? cur+' '+s : s;
+} else {
 push();
-if(s.length<=maxLen){ current=s; }
-else{
-for(let i=0;i<s.length;i+=maxLen) chunks.push(s.slice(i,i+maxLen));
-current='';
+if (s.length <= maxLen) cur = s;
+else {
+for (let i=0;i<s.length;i+=maxLen) chunks.push(s.slice(i,i+maxLen));
+cur = '';
 }
 }
-});
 }
-});
+}
+}
 push();
 return chunks;
 }
 
-// ---------- Lectura ----------
 function updateProgress(){
 const total = state.chunks.length || 1;
 const pct = Math.round((state.index/total)*100);
-UI.progressBar.style.width = pct+'%';
-UI.progressText.textContent = pct+'%';
+UI.progressBar.style.width = pct + '%';
+UI.progressText.textContent = pct + '%';
 UI.chunkInfo.textContent = `${Math.min(state.index,total)} / ${total}`;
+setButtons();
 }
 
+// ========= Lectura =========
 function speakNext(){
-if(state.index >= state.chunks.length){
+if (state.index >= state.chunks.length){
 setStatus('Lectura finalizada ✅','ok');
+state.speaking = false;
 updateProgress();
 return;
 }
 const utter = new SpeechSynthesisUtterance(state.chunks[state.index]);
 state.utter = utter;
+
 const v = state.voices[+UI.voiceSelect.value] || state.voices[0];
-if(v) utter.voice = v;
+if (v) utter.voice = v;
 utter.rate = +UI.rate.value;
 utter.pitch = +UI.pitch.value;
 utter.volume = +UI.volume.value;
 
 utter.onstart = ()=>{
-setStatus(`Leyendo fragmento ${state.index+1} de ${state.chunks.length}…`);
+state.speaking = true;
+setStatus(`Leyendo ${state.index+1}/${state.chunks.length}…`);
 updateProgress();
 };
 utter.onend = ()=>{
@@ -293,49 +284,108 @@ speakNext();
 };
 utter.onerror = (e)=>{
 console.error(e);
-setStatus('Error durante la lectura.','err');
+setStatus('Error durante la lectura. Revisa voz/permiso del navegador.','err');
+state.speaking = false;
+updateProgress();
 };
 speechSynthesis.speak(utter);
+setButtons();
 }
 
-$('#speakBtn').addEventListener('click', ()=>{
-const text = ($('#textInput').value||'').trim();
-if(!text){ setStatus('No hay texto para leer.','warn'); return; }
-if(!('speechSynthesis' in window)){ setStatus('Sin soporte Web Speech.','err'); return; }
-
-// Reiniciar sesión anterior
+UI.testBtn.addEventListener('click', ()=>{
+if (!('speechSynthesis' in window)) { setStatus('Sin soporte de voz.','err'); return; }
 speechSynthesis.cancel();
-state.chunks = chunkText(text, 1800);
+const u = new SpeechSynthesisUtterance('Hola, esta es una prueba de voz. Si me escuchas, la síntesis funciona.');
+const v = state.voices[+UI.voiceSelect.value] || state.voices[0];
+if (v) u.voice = v;
+u.rate = +UI.rate.value; u.pitch = +UI.pitch.value; u.volume = +UI.volume.value;
+u.onstart=()=>{ state.speaking=true; setStatus('Prueba de voz…'); setButtons(); };
+u.onend=()=>{ state.speaking=false; setStatus('Listo'); setButtons(); };
+speechSynthesis.speak(u);
+});
+
+UI.speakBtn.addEventListener('click', ()=>{
+const t = getSanitizedText(UI.textInput.value);
+if (!t) { setStatus('No hay texto limpio para leer.','warn'); return; }
+speechSynthesis.cancel();
+state.chunks = chunkText(t, 1500);
 state.index = 0;
 updateProgress();
 setStatus('Iniciando lectura…');
 speakNext();
 });
 
-$('#pauseBtn').addEventListener('click', ()=>{
-if (speechSynthesis.speaking && !speechSynthesis.paused){
+UI.pauseBtn.addEventListener('click', ()=>{
+if (speechSynthesis.speaking && !speechSynthesis.paused) {
 speechSynthesis.pause();
+state.paused = true;
 setStatus('Pausado ⏸️');
+setButtons();
 }
 });
-$('#resumeBtn').addEventListener('click', ()=>{
-if (speechSynthesis.paused){
+UI.resumeBtn.addEventListener('click', ()=>{
+if (speechSynthesis.paused) {
 speechSynthesis.resume();
+state.paused = false;
 setStatus('Reanudando ▶️');
+setButtons();
 }
 });
-$('#stopBtn').addEventListener('click', ()=>{
+UI.stopBtn.addEventListener('click', ()=>{
 speechSynthesis.cancel();
+state.speaking = false;
 setStatus('Detenido ⏹️');
 updateProgress();
 });
-$('#clearBtn').addEventListener('click', ()=>{
+UI.clearBtn.addEventListener('click', ()=>{
 speechSynthesis.cancel();
-$('#textInput').value = '';
-updateLen(); state.chunks=[]; state.index=0; updateProgress();
-setStatus('Listo');
+UI.textInput.value = '';
+UI.extracted.value = '';
+state.chunks = []; state.index = 0; state.speaking = false;
+updateLen(); updateProgress(); setStatus('Listo');
 });
-$('#textInput').addEventListener('input', updateLen);
+
+// ========= PDF opcional =========
+UI.fileInput.addEventListener('change', async (e)=>{
+const f = e.target.files?.[0]; if (!f) return;
+const ext = (f.name.split('.').pop()||'').toLowerCase();
+setStatus('Procesando archivo…');
+try{
+if (ext==='txt'){
+const txt = await f.text();
+UI.extracted.value = txt;
+setStatus('TXT cargado ✅','ok');
+} else if (ext==='pdf'){
+const buf = await f.arrayBuffer();
+const text = await extractTextFromPDF(buf);
+UI.extracted.value = text.trim();
+setStatus('PDF extraído ✅','ok');
+} else {
+setStatus('Formato no soportado (usa .pdf o .txt).','warn');
+}
+}catch(err){
+console.error(err);
+setStatus('No se pudo extraer texto (PDF escaneado o error).','err');
+}
+});
+
+async function extractTextFromPDF(arrayBuffer){
+const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+let out = '';
+for (let p=1; p<=pdf.numPages; p++){
+const page = await pdf.getPage(p);
+const content = await page.getTextContent();
+const strings = content.items.map(it => (typeof it.str==='string') ? it.str : (it?.chars?.map(c=>c?.unicode||'').join('')||''));
+out += strings.join(' ') + '\n\n';
+}
+if (!out.trim()) throw new Error('PDF sin texto (escaneado).');
+return getSanitizedText(out);
+}
+
+// Inicial
+updateProgress(); setButtons();
 </script>
 </body>
 </html>
+
+
