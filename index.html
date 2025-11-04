@@ -1,410 +1,393 @@
 <!doctype html>
 <html lang="es">
 <head>
-<!-- =========================
-SEO / Metadatos
-========================== -->
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>El Rayo Agustín — Piloto chileno | Agustín Alfaro</title>
-<meta name="description" content="Sigue el camino de El Rayo Agustín (Agustín Alfaro), piloto chileno de automovilismo. Blog, mini-juego, videos y mensajes de fans."/>
-<meta name="keywords" content="Piloto chileno, Agustín Alfaro, El Rayo Agustín, karting, fórmula eléctrica, VChamp, ERA Racing School, monoplaza, motorsport Chile"/>
-<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
-<link rel="canonical" href="https://tudominio.cl/"/>
+
+<title>personapp — tu lector de texto gratis | TTS español y PDF</title>
+<meta name="description" content="personapp: lector de texto GRATIS en español. Léelo con voz (TTS), pega texto o carga PDF/TXT. Funciona directo en tu navegador (sin subir archivos)."/>
+<meta name="keywords" content="lector de texto gratis, TTS español, convertir texto a voz, leer PDF gratis, lectura en voz alta, sintetizador de voz, Web Speech API, pdf.js, accesibilidad, lectura rápida"/>
 
 <!-- Open Graph / Twitter -->
-<meta property="og:title" content="El Rayo Agustín — Piloto chileno (Agustín Alfaro)"/>
-<meta property="og:description" content="Mini-juego, videos, prensa y comunidad de El Rayo Agustín."/>
+<meta property="og:title" content="personapp — tu lector de texto gratis"/>
+<meta property="og:description" content="Lee en voz alta cualquier texto o PDF desde tu navegador. Rápido, privado y sin subir archivos."/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://tudominio.cl/"/>
-<meta property="og:image" content="https://tudominio.cl/og-image.jpg"/>
+<meta property="og:image" content="https://example.com/og-image.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
 
-<!-- Schema.org -->
+<!-- Datos estructurados -->
 <script type="application/ld+json">
 {
 "@context":"https://schema.org",
-"@graph":[
-{"@type":"WebSite","name":"El Rayo Agustín","url":"https://tudominio.cl/"},
-{"@type":["Person","Athlete"],
-"name":"Agustín Alfaro","alternateName":"El Rayo Agustín",
-"nationality":"Chile","sport":"Auto racing",
-"description":"Piloto chileno de automovilismo con experiencia en karting y proyección a monoplazas.",
-"url":"https://tudominio.cl/",
-"sameAs":[
-"https://www.youtube.com/channel/UCAi1UfkKLYyJWwbBmbmK2mA",
-"https://www.instagram.com/agustinalfaro_oficial"
-]}
-]
+"@type":"SoftwareApplication",
+"name":"personapp — lector de texto gratis",
+"applicationCategory":"UtilitiesApplication",
+"operatingSystem":"Web",
+"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+"description":"Lector de texto y PDF que usa Web Speech API (TTS) y pdf.js. Funciona localmente en el navegador.",
+"inLanguage":"es"
 }
 </script>
 
-<!-- Rendimiento YouTube -->
-<link rel="preconnect" href="https://www.youtube.com">
-<link rel="preconnect" href="https://www.youtube-nocookie.com">
-
-<!-- Seguridad (CSP) -->
-<meta http-equiv="Content-Security-Policy"
-content="default-src 'self';
-img-src 'self' data: blob: https:;
-style-src 'self' 'unsafe-inline';
-script-src 'self' 'unsafe-inline';
-frame-src https://www.youtube.com https://www.youtube-nocookie.com;
-media-src 'self' https:;
-connect-src 'self';">
-
-<!-- Favicon simple -->
-<link rel="icon" type="image/svg+xml"
-href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 32"><rect width="64" height="32" fill="white"/><path d="M6 20h10l6-6h16l8 6h6" stroke="black" stroke-width="2" fill="none"/></svg>'/>
-<meta name="theme-color" content="#ffffff"/>
-
-<!-- =========================
-Estilos (modo claro)
-========================== -->
+<!-- Estilos -->
 <style>
 :root{
---bg:#ffffff; --text:#0b0c0f; --muted:#5b6676; --brand:#0aa87a; --accent:#10c0e3;
---line:#e6e8ee; --card:#ffffff; --max:1120px; --radius:14px; --shadow:0 10px 24px rgba(0,0,0,.06);
+/* Modo claro */
+--bg:#ffffff; --text:#0b0c0f; --muted:#5b6676;
+--line:#e6e8ee; --panel:#ffffff;
+--ok:#10b981; --warn:#f59e0b; --err:#ef4444;
+--radius:14px; --max:1100px;
+/* Rutas del borde anime (reemplaza con tus imágenes) */
+--anime-left:url('/assets/anime/left.jpg');
+--anime-right:url('/assets/anime/right.jpg');
+--anime-top:url('/assets/anime/top.jpg');
+--anime-bottom:url('/assets/anime/bottom.jpg');
 }
+
+/* Reset base */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
 margin:0;background:var(--bg);color:var(--text);
-font:16px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Inter,Roboto,Arial,sans-serif;
+font:16px/1.55 -apple-system,BlinkMacSystemFont,Inter,Roboto,Segoe UI,Arial,sans-serif;
 -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
-a{color:inherit;text-decoration:none}
-.container{max-width:var(--max);margin:0 auto;padding:26px 16px}
-h1,h2{margin:0 0 12px 0}
-h1{font-size:clamp(34px,6.4vw,56px);font-weight:900;letter-spacing:-.02em}
-h2{font-size:clamp(22px,3.2vw,32px);font-weight:800}
 
-/* NAV */
-.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav .row{max-width:var(--max);margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between}
-.menu{display:flex;gap:16px;flex-wrap:wrap}
-.menu a{font-weight:700;padding:8px 10px;border-radius:10px;border:1px solid transparent}
-.menu a:hover{background:#fafbfc;border-color:var(--line)}
+/* Marco anime estético alrededor de la página */
+.frame{position:relative;min-height:100dvh;isolation:isolate;}
+.frame::before,
+.frame::after{content:"";position:fixed;top:0;bottom:0;width:28px;z-index:2;pointer-events:none;background-size:cover;background-position:center}
+.frame::before{left:0;background-image:var(--anime-left), linear-gradient(180deg,#ffd1f5,#c9e7ff);}
+.frame::after{right:0;background-image:var(--anime-right), linear-gradient(180deg,#c9e7ff,#ffd1f5);}
+.frame .top, .frame .bottom{content:"";position:fixed;left:28px;right:28px;height:24px;z-index:2;pointer-events:none;background-size:cover;background-position:center}
+.frame .top{top:0;background-image:var(--anime-top), linear-gradient(90deg,#ffd1f5,#c9e7ff);}
+.frame .bottom{bottom:0;background-image:var(--anime-bottom), linear-gradient(90deg,#c9e7ff,#ffd1f5);}
 
-/* HERO limpio */
-.hero{background:#fff}
-.hero .inner{max-width:var(--max);margin:0 auto;padding:40px 16px;display:grid;gap:20px;grid-template-columns:1.1fr .9fr}
-@media (max-width:960px){.hero .inner{grid-template-columns:1fr}}
-.hero .panel{display:flex;gap:10px;flex-wrap:wrap}
-.badge{padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:#fff}
+/* Layout */
+header{padding:34px 20px 18px;border-bottom:1px solid var(--line);text-align:center;background:#fff;position:relative;z-index:3}
+header h1{margin:0 0 6px;font-size:clamp(28px,5.4vw,40px);font-weight:900;letter-spacing:-.02em}
+header .sub{color:var(--muted);font-size:14px}
+main{max-width:var(--max);margin:24px auto;padding:0 24px 40px;display:grid;gap:16px;position:relative;z-index:1}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
+.row{display:grid;gap:12px}
+.grid-2{grid-template-columns:1fr 1fr}
+@media (max-width:900px){.grid-2{grid-template-columns:1fr}}
 
-/* Botones */
-.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
-.btn.primary{background:linear-gradient(135deg,var(--brand),var(--accent));border:none;color:#032015;font-weight:800}
-.icon{width:20px;height:20px}
+h2{margin:0 0 6px;font-size:clamp(18px,2.4vw,22px)}
+label{font-size:13px;color:var(--muted)}
 
-/* Cards */
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-.cardHeader{padding:14px 16px 0}.cardBody{padding:16px}
-.meta{color:var(--muted);font-size:13px;margin-top:6px}
+textarea{
+width:100%;min-height:220px;resize:vertical;
+background:#fff;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;line-height:1.6
+}
+input[type="file"],select{width:100%}
+select{background:#fff;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px}
 
-/* Videos */
-.embed{position:relative;width:100%;padding-top:56.25%;background:#000;border-radius:12px;overflow:hidden}
-.embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.controls{display:flex;flex-wrap:wrap;gap:8px}
+button{
+appearance:none;border:1px solid var(--line);background:#fff;color:var(--text);
+padding:10px 14px;border-radius:10px;cursor:pointer
+}
+button.primary{background:#111827;color:#fff;border-color:#111827;font-weight:700}
+button:disabled{opacity:.5;cursor:not-allowed}
 
-/* Fotos */
-.grid{display:grid;gap:10px}
-.grid.fotos{grid-template-columns:repeat(4,1fr)}
-@media (max-width:1100px){.grid.fotos{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:730px){.grid.fotos{grid-template-columns:repeat(2,1fr)}}
-.foto{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#eef2f7}
-.foto img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
-.foto:hover img{transform:scale(1.03)}
-.tools{display:flex;gap:10px;align-items:center;margin:10px 0}
-input[type="file"]{padding:10px;border:1px dashed var(--line);border-radius:12px;background:#fafbfc}
-.drop{padding:14px;border:2px dashed var(--line);border-radius:12px;background:#fafbfc;text-align:center;color:var(--muted)}
+.kv{background:#fafbfc;border:1px dashed var(--line);border-radius:10px;padding:10px;font-size:13px;color:var(--muted)}
+.kvs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media (max-width:720px){.kvs{grid-template-columns:1fr}}
 
-/* Chat */
-#comments .comment{border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px;margin-top:12px}
-#commentForm{display:grid;gap:10px}
-input,textarea{width:100%;background:#fff;border:1px solid var(--line);color:var(--text);padding:10px 12px;border-radius:10px;resize:vertical}
-textarea{min-height:100px}
-.btn.submit{background:var(--brand);color:#fff;border:none}
+.meter{height:8px;border-radius:999px;background:#fafbfc;border:1px solid var(--line);overflow:hidden}
+.meter > i{display:block;height:100%;width:0;background:linear-gradient(90deg,#22d3ee,#10b981)}
+.small{font-size:12px;color:var(--muted)}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .err{color:var(--err)}
 
-/* Juego */
-#gameWrap{border:1px solid var(--line);border-radius:12px}
-#hud{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);background:#fafbfc}
-#hud span{font-weight:800}
-#game{display:block;width:100%;height:auto;background:linear-gradient(180deg,#f3f6fb,#eaeef6);border-bottom-left-radius:12px;border-bottom-right-radius:12px}
-.help{color:var(--muted);font-size:14px;padding:10px 16px}
-
-/* Footer */
-footer{border-top:1px solid var(--line);color:var(--muted);text-align:center;padding:26px 16px;margin-top:24px}
+footer{padding:20px 24px 40px;text-align:center;color:var(--muted);font-size:12px;border-top:1px solid var(--line);background:#fff;position:relative;z-index:1}
 </style>
 </head>
 <body>
-<!-- NAV -->
-<nav class="nav" aria-label="Navegación principal">
-<div class="row">
-<strong>El Rayo Agustín</strong>
-<div class="menu">
-<a href="#videos">Videos</a>
-<a href="#fotos">Fotos</a>
-<a href="#juego">Mini-juego</a>
-<a href="#fans">Fans</a>
-</div>
-</div>
-</nav>
+<div class="frame">
+<div class="top"></div>
 
-<!-- HERO -->
-<header class="hero" role="banner">
-<div class="inner">
-<div>
-<h1>Agustín Alfaro</h1>
-<p>Piloto chileno — karting & fórmula eléctrica. Velocidad, disciplina y corazón. 🇨🇱</p>
-<div class="panel">
-<span class="badge">Monoplaza eléctrico</span>
-<span class="badge">Karting</span>
-<span class="badge">Disciplina & foco</span>
-</div>
-<div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-<a class="btn primary" href="https://www.instagram.com/agustinalfaro_oficial" target="_blank" rel="noopener">
-<!-- Ícono Instagram -->
-<svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-<rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="#03180f" stroke-opacity=".6"/>
-<path d="M12 8.2a3.8 3.8 0 1 1 0 7.6 3.8 3.8 0 0 1 0-7.6Z" stroke="#03180f" stroke-opacity=".6"/>
-<circle cx="17.5" cy="6.5" r="1.2" fill="#03180f" fill-opacity=".8"/>
-</svg>
-&nbsp; Instagram @agustinalfaro_oficial
-</a>
-<a class="btn" href="https://youtube.com/@elrayoagustin" target="_blank" rel="noopener">
-Canal de YouTube
-</a>
-</div>
-</div>
-<div class="card">
-<div class="embed">
-<!-- Playlist de subidas: autoplay + mute para que arranque en móviles -->
-<iframe title="Subidas recientes — EL RAYO AGUSTÍN"
-src="https://www.youtube.com/embed?listType=playlist&list=UUAi1UfkKLYyJWwbBmbmK2mA&autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1"
-allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen></iframe>
-</div>
-<div class="cardBody">
-<p class="meta">Autoplay inicia en silencio por políticas del navegador; activa sonido en el reproductor.</p>
-</div>
-</div>
-</div>
+<header>
+<h1>personapp — tu lector de texto gratis</h1>
+<div class="sub">Lee en voz alta tu texto o PDF con voces del navegador. 100% local, rápido y privado.</div>
 </header>
 
-<main class="container">
-
-<!-- FOTOS -->
-<section id="fotos" aria-labelledby="title-fotos">
-<h2 id="title-fotos">Fotos</h2>
-<div class="tools">
-<label class="btn" for="fileInput">Elegir archivos</label>
-<input id="fileInput" type="file" accept="image/*" multiple style="display:none">
-<div id="drop" class="drop">Arrastra y suelta fotos aquí (también se cargan automáticamente desde <code>assets/fotos/</code> si existen)</div>
-</div>
-<div id="galeria" class="grid fotos"></div>
-<p class="meta">Sugerencia: coloca tus fotos en <code>/assets/fotos/</code> con nombres <code>agustin_01.jpeg</code>…<code>agustin_10.jpeg</code>. Si no están, puedes subirlas con el botón/drag-drop.</p>
-</section>
-
-<!-- VIDEOS -->
-<section id="videos" aria-labelledby="title-videos" style="margin-top:28px">
-<h2 id="title-videos">Videos (se actualizan automáticamente)</h2>
-<div class="card">
-<div class="cardHeader"><strong>Subidas del canal</strong></div>
-<div class="embed">
-<iframe title="Subidas del canal — EL RAYO AGUSTÍN"
-src="https://www.youtube.com/embed?listType=playlist&list=UUAi1UfkKLYyJWwbBmbmK2mA&autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1"
-allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen></iframe>
-</div>
-<div class="cardBody">
-<p class="meta">Fuente: <a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCAi1UfkKLYyJWwbBmbmK2mA/videos">Canal de YouTube</a>.</p>
-</div>
+<main role="main">
+<!-- Entrada -->
+<section class="card" aria-labelledby="t1">
+<h2 id="t1">1) Escribe o pega tu texto (prioridad)</h2>
+<label for="textInput">Texto</label>
+<textarea id="textInput" placeholder="Pega aquí el texto y presiona ▶️ Probar voz o ▶️ Leer"></textarea>
+<div class="kvs" style="margin-top:12px">
+<div class="kv"><b>Estado:</b> <span id="status">Listo</span></div>
+<div class="kv"><b>Soporte voz:</b> <span id="support">—</span></div>
+<div class="kv"><b>Longitud (caracteres):</b> <span id="len">0</span></div>
 </div>
 </section>
 
-<!-- MINI-JUEGO -->
-<section id="juego" aria-labelledby="title-juego" style="margin-top:28px">
-<h2 id="title-juego">Mini-juego: Conduce y esquiva</h2>
-<div id="gameWrap" class="card">
-<div id="hud">
-<div><span>Score:</span> <strong id="score">0</strong></div>
-<div><span>Velocidad:</span> <strong id="speed">1.0x</strong></div>
-<div><span>Vidas:</span> <strong id="lives">3</strong></div>
-<button id="restart" class="btn">Reiniciar</button>
+<!-- PDF opcional -->
+<section class="card" aria-labelledby="t2">
+<h2 id="t2">2) (Opcional) Subir PDF / TXT</h2>
+<div class="row grid-2">
+<div>
+<label for="fileInput">Archivo (.pdf o .txt)</label>
+<input id="fileInput" type="file" accept=".pdf,.txt"/>
+<div class="small">Si el PDF es escaneado (imagen), no tendrá texto. Podemos agregar OCR si lo necesitas.</div>
 </div>
-<canvas id="game" width="1100" height="420" aria-label="Pista de carrera"></canvas>
-<div class="help">Controles: Barra espaciadora o toque/clic para saltar. Evita obstáculos.</div>
+<div>
+<label for="extracted">Texto extraído</label>
+<textarea id="extracted" placeholder="Aquí aparecerá el texto del PDF/TXT…"></textarea>
+</div>
 </div>
 </section>
 
-<!-- FANS -->
-<section id="fans" aria-labelledby="title-fans" style="margin-top:28px">
-<h2 id="title-fans">Déjale un mensaje</h2>
-<div class="card">
-<div class="cardBody">
-<form id="commentForm" autocomplete="on">
-<input type="text" id="name" placeholder="Tu nombre" required>
-<textarea id="message" placeholder="Escribe tu mensaje para Agustín…" required></textarea>
-<button type="submit" class="btn submit">Enviar mensaje</button>
-<p class="meta" style="margin-top:8px">Tu mensaje se mostrará abajo y además abrirá un correo a <strong>elrayoagustin1@gmail.com</strong>.</p>
-</form>
+<!-- Voces y parámetros -->
+<section class="card" aria-labelledby="t3">
+<h2 id="t3">3) Voz y parámetros</h2>
+<div class="row grid-2">
+<div>
+<label for="voiceSelect">Voz</label>
+<select id="voiceSelect"></select>
+<div class="small">Sugerido: voces <b>es-ES</b> o <b>es-*</b> para español.</div>
+</div>
+<div>
+<label for="rate">Velocidad</label>
+<input id="rate" type="range" min="0.5" max="2" step="0.1" value="1"/>
+<div class="meter"><i id="rateBar"></i></div>
 </div>
 </div>
-<div id="comments" aria-live="polite"></div>
+<div class="row grid-2">
+<div>
+<label for="pitch">Tono</label>
+<input id="pitch" type="range" min="0" max="2" step="0.1" value="1"/>
+<div class="meter"><i id="pitchBar"></i></div>
+</div>
+<div>
+<label for="volume">Volumen</label>
+<input id="volume" type="range" min="0" max="1" step="0.1" value="1"/>
+<div class="meter"><i id="volumeBar"></i></div>
+</div>
+</div>
+</section>
+
+<!-- Controles -->
+<section class="card" aria-labelledby="t4">
+<h2 id="t4">4) Controles</h2>
+<div class="controls">
+<button id="testBtn" class="primary" disabled>▶️ Probar voz</button>
+<button id="speakBtn" class="primary" disabled>▶️ Leer texto</button>
+<button id="pauseBtn" disabled>⏸️ Pausar</button>
+<button id="resumeBtn" disabled>▶️ Reanudar</button>
+<button id="stopBtn" disabled>⏹️ Detener</button>
+<button id="clearBtn">🧹 Limpiar</button>
+</div>
+<div class="small" style="margin-top:8px">
+Por políticas del navegador, el audio comienza tras un clic del usuario.
+</div>
+</section>
+
+<!-- Progreso -->
+<section class="card" aria-labelledby="t5">
+<h2 id="t5">Progreso</h2>
+<div class="meter"><i id="progressBar"></i></div>
+<div class="small" style="margin-top:6px">
+<span id="progressText">0%</span> — <span id="chunkInfo">0 / 0</span> fragmentos
+</div>
 </section>
 </main>
 
-<footer>© <span id="year"></span> Agustín “El Rayo” Alfaro — Comunidad oficial.</footer>
+<footer>
+Hecho con personapp — lector de texto gratis (Web Speech API + pdf.js). Nada se sube, todo queda en tu navegador.
+</footer>
 
-<!-- =========================
-Scripts
-========================== -->
+<div class="bottom"></div>
+</div>
+
+<!-- PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha512-KiWzZfa7qv3Zj1mE2AQfCMyJOQ7NlXQK1yXQ2p6mQ2nKq35aSgQbY0ciV9ewVR5Xk+U9VujwQcZ1B1v+0s0y5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'</script>
+
 <script>
-// Año
-document.getElementById('year').textContent = new Date().getFullYear();
+/* ========= Utilidades/UI ========= */
+const $ = s => document.querySelector(s);
+const UI = {
+status: $('#status'), support: $('#support'), len: $('#len'),
+textInput: $('#textInput'), extracted: $('#extracted'),
+voiceSelect: $('#voiceSelect'),
+rate: $('#rate'), pitch: $('#pitch'), volume: $('#volume'),
+rateBar: $('#rateBar'), pitchBar: $('#pitchBar'), volumeBar: $('#volumeBar'),
+testBtn: $('#testBtn'), speakBtn: $('#speakBtn'),
+pauseBtn: $('#pauseBtn'), resumeBtn: $('#resumeBtn'), stopBtn: $('#stopBtn'), clearBtn: $('#clearBtn'),
+progressBar: $('#progressBar'), progressText: $('#progressText'), chunkInfo: $('#chunkInfo'),
+fileInput: $('#fileInput')
+};
+const state = { voices: [], chunks: [], index: 0, speaking: false, paused: false, utter: null };
 
-/* ============= FOTOS =============
-1) Intenta precargar desde /assets/fotos/agustin_XX.jpeg
-2) Permite subir por input/drag&drop y se muestran al instante
-*/
-const gal = document.getElementById('galeria');
-const fileInput = document.getElementById('fileInput');
-const drop = document.getElementById('drop');
-const DEFAULTS = [
-'agustin_01.jpeg','agustin_02.jpeg','agustin_03.jpeg','agustin_04.jpeg','agustin_05.jpeg',
-'agustin_06.jpeg','agustin_07.jpeg','agustin_08.jpeg','agustin_09.jpeg','agustin_10.jpeg'
-].map(n => 'assets/fotos/'+n);
-const PLACEHOLDER = 'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="100%" height="100%" fill="#eef2f7"/><text x="50%" y="50%" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#8a96a8" font-family="system-ui,Arial">Foto</text></svg>');
+const setStatus = (msg, cls='') => { UI.status.textContent = msg; UI.status.className = cls; };
+const setSupport = (msg) => UI.support.textContent = msg;
+const updateLen = () => UI.len.textContent = getSanitizedText(UI.textInput.value).length;
+const setButtons = () => {
+const hasSpeech = ('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window);
+const hasText = getSanitizedText(UI.textInput.value).length > 0;
+UI.testBtn.disabled = !hasSpeech;
+UI.speakBtn.disabled = !hasSpeech || !hasText;
+UI.pauseBtn.disabled = !(state.speaking && !speechSynthesis.paused);
+UI.resumeBtn.disabled= !(speechSynthesis.paused);
+UI.stopBtn.disabled = !state.speaking;
+};
+function updateMeters(){
+UI.rateBar.style.width = ((UI.rate.value-0.5)/1.5*100)+'%';
+UI.pitchBar.style.width = (UI.pitch.value/2*100)+'%';
+UI.volumeBar.style.width = (UI.volume.value*100)+'%';
+}
+updateMeters();
+UI.rate.addEventListener('input', updateMeters);
+UI.pitch.addEventListener('input', updateMeters);
+UI.volume.addEventListener('input', updateMeters);
 
-function addImg(src){
-const fig = document.createElement('figure');
-fig.className='foto';
-const img = document.createElement('img');
-img.loading='lazy'; img.decoding='async'; img.src = src;
-img.onerror = () => { img.src = PLACEHOLDER; };
-fig.appendChild(img);
-gal.appendChild(fig);
+/* ========= Limpieza de texto ========= */
+function getSanitizedText(raw){
+if (!raw) return '';
+let t = raw.normalize('NFC').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g,'');
+t = t.replace(/\u00A0/g,' ');
+t = t.replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+return t;
 }
-function preloadDefaults(){
-DEFAULTS.forEach(addImg);
+function onTextChanged(){ updateLen(); setButtons(); }
+UI.textInput.addEventListener('input', onTextChanged); onTextChanged();
+
+/* ========= Soporte de voz ========= */
+function checkSpeechSupport(){
+const ok = ('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window);
+setSupport(ok ? '✅ Disponible' : '❌ No disponible (usa Chrome/Edge/Safari)');
+setButtons();
 }
-function handleFiles(files){
-[...files].forEach(f=>{
-const url = URL.createObjectURL(f);
-addImg(url);
+checkSpeechSupport();
+
+/* ========= Voces ========= */
+function loadVoices(){
+const list = speechSynthesis.getVoices().sort((a,b)=>a.lang.localeCompare(b.lang));
+state.voices = list;
+UI.voiceSelect.innerHTML = '';
+list.forEach((v,i)=>{
+const o = document.createElement('option');
+o.value = i; o.textContent = `${v.name} — ${v.lang}${v.default?' (default)':''}`;
+UI.voiceSelect.appendChild(o);
 });
+const esIdx = list.findIndex(v=>/^es(-|_)/i.test(v.lang));
+UI.voiceSelect.value = esIdx >= 0 ? esIdx : 0;
 }
-fileInput.addEventListener('change', e=>handleFiles(e.target.files));
-['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev, e=>{e.preventDefault(); drop.style.borderColor='#c7ccd8';}));
-['dragleave','drop'].forEach(ev=>drop.addEventListener(ev, e=>{e.preventDefault(); drop.style.borderColor='var(--line)';}));
-drop.addEventListener('drop', e=>{ handleFiles(e.dataTransfer.files); });
+loadVoices();
+if (typeof speechSynthesis !== 'undefined') speechSynthesis.onvoiceschanged = loadVoices;
 
-preloadDefaults();
-
-/* ============= MINI-JUEGO (igual al tuyo, sin cambios de mecánica) ============= */
-(function(){
-const canvas = document.getElementById('game');
-const ctx = canvas.getContext('2d');
-const W = canvas.width, H = canvas.height;
-const GROUND_Y = H - 70;
-
-const state = { running:true, score:0, speed:3.8, speedFactor:1, lives:3, obstacles:[], t:0 };
-const car = { x:120, y:GROUND_Y-34, w:120, h:34, vy:0, onGround:true, color:'#0aa87a' };
-
-const $score = document.getElementById('score');
-const $speed = document.getElementById('speed');
-const $lives = document.getElementById('lives');
-
-function updateHUD(){ $score.textContent = state.score; $speed.textContent = state.speedFactor.toFixed(1)+'x'; $lives.textContent = state.lives; }
-function resetGame(){
-state.running = true; state.score = 0; state.speed = 3.8; state.speedFactor = 1; state.lives = 3; state.obstacles = []; state.t = 0;
-car.x = 120; car.y = GROUND_Y - car.h; car.vy = 0; car.onGround = true; updateHUD();
-}
-document.getElementById('restart').addEventListener('click', resetGame);
-
-function spawnObstacle(){
-const lastX = state.obstacles.length ? Math.max(...state.obstacles.map(o=>o.x)) : W + 300;
-const gap = 260 + Math.random()*280;
-const x = Math.max(W + 40, lastX + gap);
-const type = Math.random() < 0.6 ? 'cone' : 'bar';
-const w = type === 'cone' ? 22 : 50;
-const h = type === 'cone' ? 28 : 34;
-state.obstacles.push({ type, x, y:GROUND_Y - h, w, h });
-}
-
-function update(){
-if(!state.running) return;
-state.t++;
-state.speedFactor += 0.0009;
-const v = state.speed * state.speedFactor;
-
-for(const o of state.obstacles){ o.x -= v; }
-state.obstacles = state.obstacles.filter(o => o.x > -80);
-
-if(state.obstacles.length < 4 || (state.obstacles.length && state.obstacles[state.obstacles.length-1].x < W*0.6)){
-if(Math.random() < 0.05 * state.speedFactor) spawnObstacle();
-}
-
-if(!car.onGround){
-car.vy += 0.55; car.y += car.vy;
-if(car.y >= GROUND_Y - car.h){ car.y = GROUND_Y - car.h; car.vy = 0; car.onGround = true; }
-}
-
-for(const o of state.obstacles){
-const ax=car.x, ay=car.y, aw=car.w, ah=car.h, bx=o.x, by=o.y, bw=o.w, bh=o.h;
-if(ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by){
-state.lives--; updateHUD(); o.x = -999; if(state.lives <= 0){ state.running = false; }
+/* ========= División en fragmentos ========= */
+function chunkText(text, maxLen=1500){
+const paras = text.split(/\n{2,}/);
+const chunks = []; let cur = '';
+const push = ()=>{ if(cur.trim()) { chunks.push(cur.trim()); cur=''; } };
+for(const p of paras){
+if((cur+'\n\n'+p).length <= maxLen){ cur = cur ? cur+'\n\n'+p : p; }
+else{
+const sents = p.split(/(?<=[\.\?\!…:;])\s+/);
+for(const s of sents){
+if((cur+' '+s).length <= maxLen){ cur = cur ? cur+' '+s : s; }
+else{
+push();
+if(s.length <= maxLen) cur = s;
+else{ for(let i=0;i<s.length;i+=maxLen) chunks.push(s.slice(i,i+maxLen)); cur=''; }
 }
 }
-
-state.score += Math.floor(1 * state.speedFactor); updateHUD();
-}
-
-function draw(){
-ctx.fillStyle = '#f3f6fb'; ctx.fillRect(0,0,W,H);
-ctx.fillStyle = '#e8edf6'; ctx.fillRect(0,GROUND_Y, W, H - GROUND_Y);
-ctx.strokeStyle = '#cfd6e6'; ctx.setLineDash([18,18]); ctx.lineWidth = 3;
-ctx.beginPath(); ctx.moveTo(0, GROUND_Y-22); ctx.lineTo(W, GROUND_Y-22); ctx.stroke(); ctx.setLineDash([]);
-
-// Auto
-ctx.fillStyle = car.color;
-ctx.fillRect(car.x+car.w*0.18, car.y+car.h*0.15, car.w*0.64, car.h*0.7);
-ctx.fillRect(car.x, car.y+car.h*0.2, car.w*0.22, car.h*0.6);
-ctx.fillRect(car.x+car.w*0.84, car.y+car.h*0.25, car.w*0.16, car.h*0.5);
-ctx.fillStyle = '#2a3a3a'; ctx.fillRect(car.x+car.w*0.45, car.y+car.h*0.05, car.w*0.14, car.h*0.45);
-ctx.fillStyle = '#222';
-ctx.beginPath(); ctx.arc(car.x+car.w*0.25, car.y+car.h*0.92, car.h*0.18, 0, Math.PI*2); ctx.fill();
-ctx.beginPath(); ctx.arc(car.x+car.w*0.78, car.y+car.h*0.92, car.h*0.18, 0, Math.PI*2); ctx.fill();
-
-// Obstáculos
-for(const o of state.obstacles){
-if(o.type === 'cone'){
-ctx.fillStyle = '#f39c12';
-ctx.beginPath(); ctx.moveTo(o.x, o.y+o.h); ctx.lineTo(o.x+o.w/2, o.y); ctx.lineTo(o.x+o.w, o.y+o.h); ctx.closePath(); ctx.fill();
-ctx.fillStyle = '#fff'; ctx.fillRect(o.x+3, o.y+o.h-8, o.w-6, 4);
-}else{
-ctx.fillStyle = '#c0392b'; ctx.fillRect(o.x, o.y, o.w, o.h);
-ctx.fillStyle = '#ecf0f1'; ctx.fillRect(o.x+4, o.y+6, o.w-8, 6); ctx.fillRect(o.x+4, o.y+o.h-12, o.w-8, 6);
 }
 }
-
-if(!state.running){
-ctx.fillStyle = 'rgba(0,0,0,.05)'; ctx.fillRect(0,0,W,H);
-ctx.fillStyle = '#0b0c0f'; ctx.font = '700 42px system-ui, sans-serif'; ctx.textAlign = 'center';
-ctx.fillText('Fin del juego', W/2, H/2 - 10);
-ctx.font = '500 18px system-ui, sans-serif';
-ctx.fillText('Pulsa Reiniciar para jugar de nuevo', W/2, H/2 + 26);
+push(); return chunks;
 }
+function updateProgress(){
+const total = state.chunks.length || 1;
+const pct = Math.round((state.index/total)*100);
+UI.progressBar.style.width = pct + '%';
+UI.progressText.textContent = pct + '%';
+UI.chunkInfo.textContent = `${Math.min(state.index,total)} / ${total}`;
+setButtons();
 }
 
-function loop(){ update(); draw(); requestAnimationFrame(loop); }
-loop();
+/* ========= Lectura ========= */
+function speakNext(){
+if(state.index >= state.chunks.length){
+setStatus('Lectura finalizada ✅','ok');
+state.speaking = false; updateProgress(); return;
+}
+const utter = new SpeechSynthesisUtterance(state.chunks[state.index]);
+state.utter = utter;
+const v = state.voices[+UI.voiceSelect.value] || state.voices[0];
+if(v) utter.voice = v;
+utter.rate = +UI.rate.value; utter.pitch = +UI.pitch.value; utter.volume = +UI.volume.value;
 
-function jump(){ if(!state.running) return; if(car.onGround){ car.vy = -11.2; car.onGround = false; } }
-window.addEventListener('keydown', e=>{ if(e.code==='Space' || e.code==='ArrowUp'){ e.preventDefault(); jump(); } });
-document.getElementById('game').addEventListener('pointerdown', ()=> jump(), {passive:true});
-})();
+utter.onstart = ()=>{ state.speaking = true; setStatus(`Leyendo ${state.index+1}/${state.chunks.length}…`); updateProgress(); };
+utter.onend = ()=>{ state.index++; updateProgress(); speakNext(); };
+utter.onerror = (e)=>{ console.error(e); setStatus('Error durante la lectura.','err'); state.speaking=false; updateProgress(); };
+
+speechSynthesis.speak(utter); setButtons();
+}
+
+UI.testBtn.addEventListener('click', ()=>{
+if (!('speechSynthesis' in window)) { setStatus('Sin soporte de voz.','err'); return; }
+speechSynthesis.cancel();
+const u = new SpeechSynthesisUtterance('Hola, esta es una prueba de voz de personapp.');
+const v = state.voices[+UI.voiceSelect.value] || state.voices[0];
+if(v) u.voice = v;
+u.rate = +UI.rate.value; u.pitch = +UI.pitch.value; u.volume = +UI.volume.value;
+u.onstart=()=>{ state.speaking=true; setStatus('Prueba de voz…'); setButtons(); };
+u.onend=()=>{ state.speaking=false; setStatus('Listo'); setButtons(); };
+speechSynthesis.speak(u);
+});
+
+UI.speakBtn.addEventListener('click', ()=>{
+const t = getSanitizedText(UI.textInput.value);
+if(!t){ setStatus('No hay texto limpio para leer.','warn'); return; }
+speechSynthesis.cancel();
+state.chunks = chunkText(t, 1500);
+state.index = 0; updateProgress(); setStatus('Iniciando lectura…'); speakNext();
+});
+
+UI.pauseBtn.addEventListener('click', ()=>{ if(speechSynthesis.speaking && !speechSynthesis.paused){ speechSynthesis.pause(); state.paused=true; setStatus('Pausado ⏸️'); setButtons(); }});
+UI.resumeBtn.addEventListener('click', ()=>{ if(speechSynthesis.paused){ speechSynthesis.resume(); state.paused=false; setStatus('Reanudando ▶️'); setButtons(); }});
+UI.stopBtn.addEventListener('click', ()=>{ speechSynthesis.cancel(); state.speaking=false; setStatus('Detenido ⏹️'); updateProgress(); });
+UI.clearBtn.addEventListener('click', ()=>{
+speechSynthesis.cancel(); UI.textInput.value=''; UI.extracted.value='';
+state.chunks=[]; state.index=0; state.speaking=false; updateLen(); updateProgress(); setStatus('Listo');
+});
+
+/* ========= PDF opcional ========= */
+UI.fileInput.addEventListener('change', async (e)=>{
+const f = e.target.files?.[0]; if(!f) return;
+const ext = (f.name.split('.').pop()||'').toLowerCase();
+setStatus('Procesando archivo…');
+try{
+if(ext==='txt'){
+const txt = await f.text(); UI.extracted.value = txt; setStatus('TXT cargado ✅','ok');
+}else if(ext==='pdf'){
+const buf = await f.arrayBuffer();
+const text = await extractTextFromPDF(buf);
+UI.extracted.value = text.trim(); setStatus('PDF extraído ✅','ok');
+}else{ setStatus('Formato no soportado (usa .pdf o .txt).','warn'); }
+}catch(err){ console.error(err); setStatus('No se pudo extraer texto (PDF escaneado o error).','err'); }
+});
+
+async function extractTextFromPDF(arrayBuffer){
+const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+let out = '';
+for(let p=1;p<=pdf.numPages;p++){
+const page = await pdf.getPage(p);
+const content = await page.getTextContent();
+const strings = content.items.map(it => (typeof it.str==='string') ? it.str : (it?.chars?.map(c=>c?.unicode||'').join('')||''));
+out += strings.join(' ') + '\n\n';
+}
+if(!out.trim()) throw new Error('PDF sin texto (escaneado).');
+return getSanitizedText(out);
+}
+
+/* Inicial */
+updateProgress(); setButtons();
 </script>
 </body>
 </html>
